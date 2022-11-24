@@ -23,6 +23,7 @@ namespace LTgarlic
         public MainWindow()
         {
             InitializeComponent();
+
         }
     }
 }
