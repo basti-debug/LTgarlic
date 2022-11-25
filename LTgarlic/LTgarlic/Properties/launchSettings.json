@@ -1,10 +1,10 @@
-{
-  "profiles": {
-    "LTgarlic (Package)": {
-      "commandName": "MsixPackage"
-    },
-    "LTgarlic (Unpackaged)": {
-      "commandName": "Project"
+﻿{
+    "profiles": {
+      "LTgarlic (Package)": {
+        "commandName": "MsixPackage"
+      },
+      "LTgarlic (Unpackaged)": {
+        "commandName": "Project"
+      }
     }
-  }
 }

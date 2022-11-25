@@ -224,21 +224,129 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[6];
+            _typeNameTable = new string[60];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Microsoft.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
             _typeNameTable[3] = "Boolean";
-            _typeNameTable[4] = "LTgarlic.MainWindow";
+            _typeNameTable[4] = "WinUIEx.WindowEx";
             _typeNameTable[5] = "Microsoft.UI.Xaml.Window";
+            _typeNameTable[6] = "Double";
+            _typeNameTable[7] = "String";
+            _typeNameTable[8] = "WinUIEx.SystemBackdrop";
+            _typeNameTable[9] = "Microsoft.UI.Windowing.AppWindow";
+            _typeNameTable[10] = "WinUIEx.Icon";
+            _typeNameTable[11] = "Microsoft.UI.Xaml.UIElement";
+            _typeNameTable[12] = "Microsoft.UI.Windowing.AppWindowPresenter";
+            _typeNameTable[13] = "Microsoft.UI.Windowing.AppWindowPresenterKind";
+            _typeNameTable[14] = "System.Enum";
+            _typeNameTable[15] = "System.ValueType";
+            _typeNameTable[16] = "WinUIEx.MicaSystemBackdrop";
+            _typeNameTable[17] = "Microsoft.UI.Composition.SystemBackdrops.MicaKind";
+            _typeNameTable[18] = "Windows.UI.Color";
+            _typeNameTable[19] = "LTgarlic.MainWindow";
+            _typeNameTable[20] = "Microsoft.UI.Xaml.Thickness";
+            _typeNameTable[21] = "Microsoft.UI.Xaml.CornerRadius";
+            _typeNameTable[22] = "LTgarlic.Views.EditingPage";
+            _typeNameTable[23] = "Microsoft.UI.Xaml.Controls.Page";
+            _typeNameTable[24] = "Microsoft.UI.Xaml.Controls.UserControl";
+            _typeNameTable[25] = "LTgarlic.ViewModels.EditingViewModel";
+            _typeNameTable[26] = "CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient";
+            _typeNameTable[27] = "CommunityToolkit.Mvvm.ComponentModel.ObservableObject";
+            _typeNameTable[28] = "LTgarlic.Helpers.EnumToBooleanConverter";
+            _typeNameTable[29] = "LTgarlic.Views.SettingsPage";
+            _typeNameTable[30] = "LTgarlic.ViewModels.SettingsViewModel";
+            _typeNameTable[31] = "Microsoft.UI.Xaml.Controls.NavigationView";
+            _typeNameTable[32] = "Microsoft.UI.Xaml.Controls.ContentControl";
+            _typeNameTable[33] = "Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible";
+            _typeNameTable[34] = "System.Collections.Generic.IList`1<Object>";
+            _typeNameTable[35] = "Microsoft.UI.Xaml.DataTemplate";
+            _typeNameTable[36] = "Microsoft.UI.Xaml.Controls.AutoSuggestBox";
+            _typeNameTable[37] = "Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode";
+            _typeNameTable[38] = "Microsoft.UI.Xaml.Style";
+            _typeNameTable[39] = "Microsoft.UI.Xaml.Controls.StyleSelector";
+            _typeNameTable[40] = "Microsoft.UI.Xaml.Controls.DataTemplateSelector";
+            _typeNameTable[41] = "Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode";
+            _typeNameTable[42] = "Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode";
+            _typeNameTable[43] = "Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus";
+            _typeNameTable[44] = "Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled";
+            _typeNameTable[45] = "Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings";
+            _typeNameTable[46] = "Microsoft.UI.Xaml.DependencyObject";
+            _typeNameTable[47] = "Microsoft.Xaml.Interactivity.Interaction";
+            _typeNameTable[48] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
+            _typeNameTable[49] = "Microsoft.UI.Xaml.DependencyObjectCollection";
+            _typeNameTable[50] = "Microsoft.UI.Xaml.Controls.NavigationViewItem";
+            _typeNameTable[51] = "Microsoft.UI.Xaml.Controls.NavigationViewItemBase";
+            _typeNameTable[52] = "Microsoft.UI.Xaml.Controls.IconElement";
+            _typeNameTable[53] = "LTgarlic.Helpers.NavigationHelper";
+            _typeNameTable[54] = "LTgarlic.Behaviors.NavigationViewHeaderBehavior";
+            _typeNameTable[55] = "Microsoft.Xaml.Interactivity.Behavior`1<Microsoft.UI.Xaml.Controls.NavigationView>";
+            _typeNameTable[56] = "Microsoft.Xaml.Interactivity.Behavior";
+            _typeNameTable[57] = "LTgarlic.Behaviors.NavigationViewHeaderMode";
+            _typeNameTable[58] = "LTgarlic.Views.ShellPage";
+            _typeNameTable[59] = "LTgarlic.ViewModels.ShellViewModel";
 
-            _typeTable = new global::System.Type[6];
+            _typeTable = new global::System.Type[60];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Microsoft.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
             _typeTable[3] = typeof(global::System.Boolean);
-            _typeTable[4] = typeof(global::LTgarlic.MainWindow);
+            _typeTable[4] = typeof(global::WinUIEx.WindowEx);
             _typeTable[5] = typeof(global::Microsoft.UI.Xaml.Window);
+            _typeTable[6] = typeof(global::System.Double);
+            _typeTable[7] = typeof(global::System.String);
+            _typeTable[8] = typeof(global::WinUIEx.SystemBackdrop);
+            _typeTable[9] = typeof(global::Microsoft.UI.Windowing.AppWindow);
+            _typeTable[10] = typeof(global::WinUIEx.Icon);
+            _typeTable[11] = typeof(global::Microsoft.UI.Xaml.UIElement);
+            _typeTable[12] = typeof(global::Microsoft.UI.Windowing.AppWindowPresenter);
+            _typeTable[13] = typeof(global::Microsoft.UI.Windowing.AppWindowPresenterKind);
+            _typeTable[14] = typeof(global::System.Enum);
+            _typeTable[15] = typeof(global::System.ValueType);
+            _typeTable[16] = typeof(global::WinUIEx.MicaSystemBackdrop);
+            _typeTable[17] = typeof(global::Microsoft.UI.Composition.SystemBackdrops.MicaKind);
+            _typeTable[18] = typeof(global::Windows.UI.Color);
+            _typeTable[19] = typeof(global::LTgarlic.MainWindow);
+            _typeTable[20] = typeof(global::Microsoft.UI.Xaml.Thickness);
+            _typeTable[21] = typeof(global::Microsoft.UI.Xaml.CornerRadius);
+            _typeTable[22] = typeof(global::LTgarlic.Views.EditingPage);
+            _typeTable[23] = typeof(global::Microsoft.UI.Xaml.Controls.Page);
+            _typeTable[24] = typeof(global::Microsoft.UI.Xaml.Controls.UserControl);
+            _typeTable[25] = typeof(global::LTgarlic.ViewModels.EditingViewModel);
+            _typeTable[26] = typeof(global::CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient);
+            _typeTable[27] = typeof(global::CommunityToolkit.Mvvm.ComponentModel.ObservableObject);
+            _typeTable[28] = typeof(global::LTgarlic.Helpers.EnumToBooleanConverter);
+            _typeTable[29] = typeof(global::LTgarlic.Views.SettingsPage);
+            _typeTable[30] = typeof(global::LTgarlic.ViewModels.SettingsViewModel);
+            _typeTable[31] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationView);
+            _typeTable[32] = typeof(global::Microsoft.UI.Xaml.Controls.ContentControl);
+            _typeTable[33] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible);
+            _typeTable[34] = typeof(global::System.Collections.Generic.IList<global::System.Object>);
+            _typeTable[35] = typeof(global::Microsoft.UI.Xaml.DataTemplate);
+            _typeTable[36] = typeof(global::Microsoft.UI.Xaml.Controls.AutoSuggestBox);
+            _typeTable[37] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode);
+            _typeTable[38] = typeof(global::Microsoft.UI.Xaml.Style);
+            _typeTable[39] = typeof(global::Microsoft.UI.Xaml.Controls.StyleSelector);
+            _typeTable[40] = typeof(global::Microsoft.UI.Xaml.Controls.DataTemplateSelector);
+            _typeTable[41] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode);
+            _typeTable[42] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode);
+            _typeTable[43] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus);
+            _typeTable[44] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled);
+            _typeTable[45] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings);
+            _typeTable[46] = typeof(global::Microsoft.UI.Xaml.DependencyObject);
+            _typeTable[47] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
+            _typeTable[48] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
+            _typeTable[49] = typeof(global::Microsoft.UI.Xaml.DependencyObjectCollection);
+            _typeTable[50] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItem);
+            _typeTable[51] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase);
+            _typeTable[52] = typeof(global::Microsoft.UI.Xaml.Controls.IconElement);
+            _typeTable[53] = typeof(global::LTgarlic.Helpers.NavigationHelper);
+            _typeTable[54] = typeof(global::LTgarlic.Behaviors.NavigationViewHeaderBehavior);
+            _typeTable[55] = typeof(global::Microsoft.Xaml.Interactivity.Behavior<global::Microsoft.UI.Xaml.Controls.NavigationView>);
+            _typeTable[56] = typeof(global::Microsoft.Xaml.Interactivity.Behavior);
+            _typeTable[57] = typeof(global::LTgarlic.Behaviors.NavigationViewHeaderMode);
+            _typeTable[58] = typeof(global::LTgarlic.Views.ShellPage);
+            _typeTable[59] = typeof(global::LTgarlic.ViewModels.ShellViewModel);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -274,13 +382,37 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
         }
 
         private object Activate_0_XamlControlsResources() { return new global::Microsoft.UI.Xaml.Controls.XamlControlsResources(); }
-        private object Activate_4_MainWindow() { return new global::LTgarlic.MainWindow(); }
+        private object Activate_4_WindowEx() { return new global::WinUIEx.WindowEx(); }
+        private object Activate_16_MicaSystemBackdrop() { return new global::WinUIEx.MicaSystemBackdrop(); }
+        private object Activate_19_MainWindow() { return new global::LTgarlic.MainWindow(); }
+        private object Activate_22_EditingPage() { return new global::LTgarlic.Views.EditingPage(); }
+        private object Activate_25_EditingViewModel() { return new global::LTgarlic.ViewModels.EditingViewModel(); }
+        private object Activate_28_EnumToBooleanConverter() { return new global::LTgarlic.Helpers.EnumToBooleanConverter(); }
+        private object Activate_29_SettingsPage() { return new global::LTgarlic.Views.SettingsPage(); }
+        private object Activate_31_NavigationView() { return new global::Microsoft.UI.Xaml.Controls.NavigationView(); }
+        private object Activate_45_NavigationViewTemplateSettings() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings(); }
+        private object Activate_48_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
+        private object Activate_50_NavigationViewItem() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewItem(); }
+        private object Activate_53_NavigationHelper() { return new global::LTgarlic.Helpers.NavigationHelper(); }
+        private object Activate_54_NavigationViewHeaderBehavior() { return new global::LTgarlic.Behaviors.NavigationViewHeaderBehavior(); }
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
             var newKey = (global::System.Object)key;
             var newItem = (global::System.Object)item;
             collection.Add(newKey, newItem);
+        }
+        private void VectorAdd_34_IList(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::System.Object>)instance;
+            var newItem = (global::System.Object)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_48_BehaviorCollection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::Microsoft.UI.Xaml.DependencyObject>)instance;
+            var newItem = (global::Microsoft.UI.Xaml.DependencyObject)item;
+            collection.Add(newItem);
         }
 
         private global::Microsoft.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
@@ -313,15 +445,426 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
                 xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 4:   //  LTgarlic.MainWindow
+            case 4:   //  WinUIEx.WindowEx
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
-                userType.Activator = Activate_4_MainWindow;
-                userType.SetIsLocalType();
+                userType.Activator = Activate_4_WindowEx;
+                userType.SetContentPropertyName("WinUIEx.WindowEx.WindowContent");
+                userType.AddMemberName("WindowContent");
+                userType.AddMemberName("MinWidth");
+                userType.AddMemberName("MinHeight");
+                userType.AddMemberName("PersistenceId");
+                userType.AddMemberName("Backdrop");
+                userType.AddMemberName("AppWindow");
+                userType.AddMemberName("TaskBarIcon");
+                userType.AddMemberName("Title");
+                userType.AddMemberName("TitleBar");
+                userType.AddMemberName("IsTitleBarVisible");
+                userType.AddMemberName("IsMinimizable");
+                userType.AddMemberName("IsMaximizable");
+                userType.AddMemberName("IsResizable");
+                userType.AddMemberName("IsShownInSwitchers");
+                userType.AddMemberName("IsAlwaysOnTop");
+                userType.AddMemberName("Presenter");
+                userType.AddMemberName("PresenterKind");
+                userType.AddMemberName("Width");
+                userType.AddMemberName("Height");
                 xamlType = userType;
                 break;
 
             case 5:   //  Microsoft.UI.Xaml.Window
                 xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 6:   //  Double
+                xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 7:   //  String
+                xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 8:   //  WinUIEx.SystemBackdrop
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.AddMemberName("DarkTintColor");
+                userType.AddMemberName("LightTintColor");
+                userType.AddMemberName("DarkFallbackColor");
+                userType.AddMemberName("LightFallbackColor");
+                userType.AddMemberName("DarkTintOpacity");
+                userType.AddMemberName("LightTintOpacity");
+                userType.AddMemberName("DarkLuminosityOpacity");
+                userType.AddMemberName("LightLuminosityOpacity");
+                xamlType = userType;
+                break;
+
+            case 9:   //  Microsoft.UI.Windowing.AppWindow
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 10:   //  WinUIEx.Icon
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.CreateFromStringMethod = global::WinUIEx.Icon.FromFile;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 11:   //  Microsoft.UI.Xaml.UIElement
+                xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 12:   //  Microsoft.UI.Windowing.AppWindowPresenter
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 13:   //  Microsoft.UI.Windowing.AppWindowPresenterKind
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("Default", global::Microsoft.UI.Windowing.AppWindowPresenterKind.Default);
+                userType.AddEnumValue("CompactOverlay", global::Microsoft.UI.Windowing.AppWindowPresenterKind.CompactOverlay);
+                userType.AddEnumValue("FullScreen", global::Microsoft.UI.Windowing.AppWindowPresenterKind.FullScreen);
+                userType.AddEnumValue("Overlapped", global::Microsoft.UI.Windowing.AppWindowPresenterKind.Overlapped);
+                xamlType = userType;
+                break;
+
+            case 14:   //  System.Enum
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
+                xamlType = userType;
+                break;
+
+            case 15:   //  System.ValueType
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                xamlType = userType;
+                break;
+
+            case 16:   //  WinUIEx.MicaSystemBackdrop
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("WinUIEx.SystemBackdrop"));
+                userType.Activator = Activate_16_MicaSystemBackdrop;
+                userType.AddMemberName("Kind");
+                userType.AddMemberName("IsSupported");
+                xamlType = userType;
+                break;
+
+            case 17:   //  Microsoft.UI.Composition.SystemBackdrops.MicaKind
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("Base", global::Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base);
+                userType.AddEnumValue("BaseAlt", global::Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt);
+                xamlType = userType;
+                break;
+
+            case 18:   //  Windows.UI.Color
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 19:   //  LTgarlic.MainWindow
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("WinUIEx.WindowEx"));
+                userType.Activator = Activate_19_MainWindow;
+                userType.SetContentPropertyName("WinUIEx.WindowEx.WindowContent");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 20:   //  Microsoft.UI.Xaml.Thickness
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
+                userType.AddMemberName("Left");
+                userType.AddMemberName("Top");
+                userType.AddMemberName("Right");
+                userType.AddMemberName("Bottom");
+                xamlType = userType;
+                break;
+
+            case 21:   //  Microsoft.UI.Xaml.CornerRadius
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
+                userType.AddMemberName("TopLeft");
+                userType.AddMemberName("TopRight");
+                userType.AddMemberName("BottomRight");
+                userType.AddMemberName("BottomLeft");
+                xamlType = userType;
+                break;
+
+            case 22:   //  LTgarlic.Views.EditingPage
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_22_EditingPage;
+                userType.AddMemberName("ViewModel");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 23:   //  Microsoft.UI.Xaml.Controls.Page
+                xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 24:   //  Microsoft.UI.Xaml.Controls.UserControl
+                xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 25:   //  LTgarlic.ViewModels.EditingViewModel
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient"));
+                userType.SetIsReturnTypeStub();
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 26:   //  CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableObject"));
+                xamlType = userType;
+                break;
+
+            case 27:   //  CommunityToolkit.Mvvm.ComponentModel.ObservableObject
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                xamlType = userType;
+                break;
+
+            case 28:   //  LTgarlic.Helpers.EnumToBooleanConverter
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_28_EnumToBooleanConverter;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 29:   //  LTgarlic.Views.SettingsPage
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_29_SettingsPage;
+                userType.AddMemberName("ViewModel");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 30:   //  LTgarlic.ViewModels.SettingsViewModel
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient"));
+                userType.SetIsReturnTypeStub();
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 31:   //  Microsoft.UI.Xaml.Controls.NavigationView
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.ContentControl"));
+                userType.Activator = Activate_31_NavigationView;
+                userType.AddMemberName("IsBackButtonVisible");
+                userType.AddMemberName("IsBackEnabled");
+                userType.AddMemberName("SelectedItem");
+                userType.AddMemberName("IsSettingsVisible");
+                userType.AddMemberName("ExpandedModeThresholdWidth");
+                userType.AddMemberName("Header");
+                userType.AddMemberName("MenuItems");
+                userType.AddMemberName("HeaderTemplate");
+                userType.AddMemberName("AlwaysShowHeader");
+                userType.AddMemberName("AutoSuggestBox");
+                userType.AddMemberName("CompactModeThresholdWidth");
+                userType.AddMemberName("CompactPaneLength");
+                userType.AddMemberName("ContentOverlay");
+                userType.AddMemberName("DisplayMode");
+                userType.AddMemberName("FooterMenuItems");
+                userType.AddMemberName("FooterMenuItemsSource");
+                userType.AddMemberName("IsPaneOpen");
+                userType.AddMemberName("IsPaneToggleButtonVisible");
+                userType.AddMemberName("IsPaneVisible");
+                userType.AddMemberName("IsTitleBarAutoPaddingEnabled");
+                userType.AddMemberName("MenuItemContainerStyle");
+                userType.AddMemberName("MenuItemContainerStyleSelector");
+                userType.AddMemberName("MenuItemTemplate");
+                userType.AddMemberName("MenuItemTemplateSelector");
+                userType.AddMemberName("MenuItemsSource");
+                userType.AddMemberName("OpenPaneLength");
+                userType.AddMemberName("OverflowLabelMode");
+                userType.AddMemberName("PaneCustomContent");
+                userType.AddMemberName("PaneDisplayMode");
+                userType.AddMemberName("PaneFooter");
+                userType.AddMemberName("PaneHeader");
+                userType.AddMemberName("PaneTitle");
+                userType.AddMemberName("PaneToggleButtonStyle");
+                userType.AddMemberName("SelectionFollowsFocus");
+                userType.AddMemberName("SettingsItem");
+                userType.AddMemberName("ShoulderNavigationEnabled");
+                userType.AddMemberName("TemplateSettings");
+                xamlType = userType;
+                break;
+
+            case 32:   //  Microsoft.UI.Xaml.Controls.ContentControl
+                xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 33:   //  Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("Collapsed", global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Collapsed);
+                userType.AddEnumValue("Visible", global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Visible);
+                userType.AddEnumValue("Auto", global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Auto);
+                xamlType = userType;
+                break;
+
+            case 34:   //  System.Collections.Generic.IList`1<Object>
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, null);
+                userType.CollectionAdd = VectorAdd_34_IList;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 35:   //  Microsoft.UI.Xaml.DataTemplate
+                xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 36:   //  Microsoft.UI.Xaml.Controls.AutoSuggestBox
+                xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 37:   //  Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("Minimal", global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal);
+                userType.AddEnumValue("Compact", global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact);
+                userType.AddEnumValue("Expanded", global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded);
+                xamlType = userType;
+                break;
+
+            case 38:   //  Microsoft.UI.Xaml.Style
+                xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 39:   //  Microsoft.UI.Xaml.Controls.StyleSelector
+                xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 40:   //  Microsoft.UI.Xaml.Controls.DataTemplateSelector
+                xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 41:   //  Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("MoreLabel", global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode.MoreLabel);
+                userType.AddEnumValue("NoLabel", global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode.NoLabel);
+                xamlType = userType;
+                break;
+
+            case 42:   //  Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("Auto", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto);
+                userType.AddEnumValue("Left", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left);
+                userType.AddEnumValue("Top", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top);
+                userType.AddEnumValue("LeftCompact", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.LeftCompact);
+                userType.AddEnumValue("LeftMinimal", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.LeftMinimal);
+                xamlType = userType;
+                break;
+
+            case 43:   //  Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("Disabled", global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus.Disabled);
+                userType.AddEnumValue("Enabled", global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus.Enabled);
+                xamlType = userType;
+                break;
+
+            case 44:   //  Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("WhenSelectionFollowsFocus", global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled.WhenSelectionFollowsFocus);
+                userType.AddEnumValue("Always", global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled.Always);
+                userType.AddEnumValue("Never", global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled.Never);
+                xamlType = userType;
+                break;
+
+            case 45:   //  Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 46:   //  Microsoft.UI.Xaml.DependencyObject
+                xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 47:   //  Microsoft.Xaml.Interactivity.Interaction
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.AddMemberName("Behaviors");
+                xamlType = userType;
+                break;
+
+            case 48:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObjectCollection"));
+                userType.CollectionAdd = VectorAdd_48_BehaviorCollection;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 49:   //  Microsoft.UI.Xaml.DependencyObjectCollection
+                xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 50:   //  Microsoft.UI.Xaml.Controls.NavigationViewItem
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItemBase"));
+                userType.Activator = Activate_50_NavigationViewItem;
+                userType.AddMemberName("Icon");
+                userType.AddMemberName("CompactPaneLength");
+                userType.AddMemberName("HasUnrealizedChildren");
+                userType.AddMemberName("IsChildSelected");
+                userType.AddMemberName("IsExpanded");
+                userType.AddMemberName("MenuItems");
+                userType.AddMemberName("MenuItemsSource");
+                userType.AddMemberName("SelectsOnInvoked");
+                xamlType = userType;
+                break;
+
+            case 51:   //  Microsoft.UI.Xaml.Controls.NavigationViewItemBase
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.ContentControl"));
+                userType.AddMemberName("IsSelected");
+                xamlType = userType;
+                break;
+
+            case 52:   //  Microsoft.UI.Xaml.Controls.IconElement
+                xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 53:   //  LTgarlic.Helpers.NavigationHelper
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_53_NavigationHelper;
+                userType.AddMemberName("NavigateTo");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 54:   //  LTgarlic.Behaviors.NavigationViewHeaderBehavior
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.Xaml.Interactivity.Behavior`1<Microsoft.UI.Xaml.Controls.NavigationView>"));
+                userType.Activator = Activate_54_NavigationViewHeaderBehavior;
+                userType.AddMemberName("DefaultHeader");
+                userType.AddMemberName("DefaultHeaderTemplate");
+                userType.AddMemberName("HeaderMode");
+                userType.AddMemberName("HeaderContext");
+                userType.AddMemberName("HeaderTemplate");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 55:   //  Microsoft.Xaml.Interactivity.Behavior`1<Microsoft.UI.Xaml.Controls.NavigationView>
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.Xaml.Interactivity.Behavior"));
+                userType.AddMemberName("AssociatedObject");
+                xamlType = userType;
+                break;
+
+            case 56:   //  Microsoft.Xaml.Interactivity.Behavior
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
+                xamlType = userType;
+                break;
+
+            case 57:   //  LTgarlic.Behaviors.NavigationViewHeaderMode
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("Always", global::LTgarlic.Behaviors.NavigationViewHeaderMode.Always);
+                userType.AddEnumValue("Never", global::LTgarlic.Behaviors.NavigationViewHeaderMode.Never);
+                userType.AddEnumValue("Minimal", global::LTgarlic.Behaviors.NavigationViewHeaderMode.Minimal);
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 58:   //  LTgarlic.Views.ShellPage
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
+                userType.AddMemberName("ViewModel");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 59:   //  LTgarlic.ViewModels.ShellViewModel
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient"));
+                userType.SetIsReturnTypeStub();
+                userType.SetIsLocalType();
+                xamlType = userType;
                 break;
             }
             return xamlType;
@@ -337,6 +880,8 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
                     var otherProviders = new global::System.Collections.Generic.List<global::Microsoft.UI.Xaml.Markup.IXamlMetadataProvider>();
                     global::Microsoft.UI.Xaml.Markup.IXamlMetadataProvider provider;
                     provider = new global::Microsoft.UI.Xaml.XamlTypeInfo.XamlControlsXamlMetaDataProvider() as global::Microsoft.UI.Xaml.Markup.IXamlMetadataProvider;
+                    otherProviders.Add(provider); 
+                    provider = new global::WinUIEx.WinUIEx_XamlTypeInfo.XamlMetaDataProvider() as global::Microsoft.UI.Xaml.Markup.IXamlMetadataProvider;
                     otherProviders.Add(provider); 
                     _otherProviders = otherProviders;
                 }
@@ -392,6 +937,868 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
             var that = (global::Microsoft.UI.Xaml.Controls.XamlControlsResources)instance;
             that.UseCompactResources = (global::System.Boolean)Value;
         }
+        private object get_1_WindowEx_WindowContent(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.WindowContent;
+        }
+        private void set_1_WindowEx_WindowContent(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.WindowContent = (global::System.Object)Value;
+        }
+        private object get_2_WindowEx_MinWidth(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.MinWidth;
+        }
+        private void set_2_WindowEx_MinWidth(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.MinWidth = (global::System.Double)Value;
+        }
+        private object get_3_WindowEx_MinHeight(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.MinHeight;
+        }
+        private void set_3_WindowEx_MinHeight(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.MinHeight = (global::System.Double)Value;
+        }
+        private object get_4_WindowEx_PersistenceId(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.PersistenceId;
+        }
+        private void set_4_WindowEx_PersistenceId(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.PersistenceId = (global::System.String)Value;
+        }
+        private object get_5_WindowEx_Backdrop(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.Backdrop;
+        }
+        private void set_5_WindowEx_Backdrop(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.Backdrop = (global::WinUIEx.SystemBackdrop)Value;
+        }
+        private object get_6_WindowEx_AppWindow(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.AppWindow;
+        }
+        private object get_7_WindowEx_TaskBarIcon(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.TaskBarIcon;
+        }
+        private void set_7_WindowEx_TaskBarIcon(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.TaskBarIcon = (global::WinUIEx.Icon)Value;
+        }
+        private object get_8_WindowEx_Title(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.Title;
+        }
+        private void set_8_WindowEx_Title(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.Title = (global::System.String)Value;
+        }
+#pragma warning disable 0618  //   Warning on Deprecated usage
+        private object get_9_WindowEx_TitleBar(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.TitleBar;
+        }
+        private void set_9_WindowEx_TitleBar(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.TitleBar = (global::Microsoft.UI.Xaml.UIElement)Value;
+        }
+#pragma warning restore 0618
+        private object get_10_WindowEx_IsTitleBarVisible(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.IsTitleBarVisible;
+        }
+        private void set_10_WindowEx_IsTitleBarVisible(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.IsTitleBarVisible = (global::System.Boolean)Value;
+        }
+        private object get_11_WindowEx_IsMinimizable(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.IsMinimizable;
+        }
+        private void set_11_WindowEx_IsMinimizable(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.IsMinimizable = (global::System.Boolean)Value;
+        }
+        private object get_12_WindowEx_IsMaximizable(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.IsMaximizable;
+        }
+        private void set_12_WindowEx_IsMaximizable(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.IsMaximizable = (global::System.Boolean)Value;
+        }
+        private object get_13_WindowEx_IsResizable(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.IsResizable;
+        }
+        private void set_13_WindowEx_IsResizable(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.IsResizable = (global::System.Boolean)Value;
+        }
+        private object get_14_WindowEx_IsShownInSwitchers(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.IsShownInSwitchers;
+        }
+        private void set_14_WindowEx_IsShownInSwitchers(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.IsShownInSwitchers = (global::System.Boolean)Value;
+        }
+        private object get_15_WindowEx_IsAlwaysOnTop(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.IsAlwaysOnTop;
+        }
+        private void set_15_WindowEx_IsAlwaysOnTop(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.IsAlwaysOnTop = (global::System.Boolean)Value;
+        }
+        private object get_16_WindowEx_Presenter(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.Presenter;
+        }
+        private object get_17_WindowEx_PresenterKind(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.PresenterKind;
+        }
+        private void set_17_WindowEx_PresenterKind(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.PresenterKind = (global::Microsoft.UI.Windowing.AppWindowPresenterKind)Value;
+        }
+        private object get_18_WindowEx_Width(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.Width;
+        }
+        private void set_18_WindowEx_Width(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.Width = (global::System.Double)Value;
+        }
+        private object get_19_WindowEx_Height(object instance)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            return that.Height;
+        }
+        private void set_19_WindowEx_Height(object instance, object Value)
+        {
+            var that = (global::WinUIEx.WindowEx)instance;
+            that.Height = (global::System.Double)Value;
+        }
+        private object get_20_MicaSystemBackdrop_Kind(object instance)
+        {
+            var that = (global::WinUIEx.MicaSystemBackdrop)instance;
+            return that.Kind;
+        }
+        private void set_20_MicaSystemBackdrop_Kind(object instance, object Value)
+        {
+            var that = (global::WinUIEx.MicaSystemBackdrop)instance;
+            that.Kind = (global::Microsoft.UI.Composition.SystemBackdrops.MicaKind)Value;
+        }
+        private object get_21_MicaSystemBackdrop_IsSupported(object instance)
+        {
+            var that = (global::WinUIEx.MicaSystemBackdrop)instance;
+            return that.IsSupported;
+        }
+        private object get_22_SystemBackdrop_DarkTintColor(object instance)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            return that.DarkTintColor;
+        }
+        private void set_22_SystemBackdrop_DarkTintColor(object instance, object Value)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            that.DarkTintColor = (global::Windows.UI.Color)Value;
+        }
+        private object get_23_SystemBackdrop_LightTintColor(object instance)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            return that.LightTintColor;
+        }
+        private void set_23_SystemBackdrop_LightTintColor(object instance, object Value)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            that.LightTintColor = (global::Windows.UI.Color)Value;
+        }
+        private object get_24_SystemBackdrop_DarkFallbackColor(object instance)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            return that.DarkFallbackColor;
+        }
+        private void set_24_SystemBackdrop_DarkFallbackColor(object instance, object Value)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            that.DarkFallbackColor = (global::Windows.UI.Color)Value;
+        }
+        private object get_25_SystemBackdrop_LightFallbackColor(object instance)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            return that.LightFallbackColor;
+        }
+        private void set_25_SystemBackdrop_LightFallbackColor(object instance, object Value)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            that.LightFallbackColor = (global::Windows.UI.Color)Value;
+        }
+        private object get_26_SystemBackdrop_DarkTintOpacity(object instance)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            return that.DarkTintOpacity;
+        }
+        private void set_26_SystemBackdrop_DarkTintOpacity(object instance, object Value)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            that.DarkTintOpacity = (global::System.Double)Value;
+        }
+        private object get_27_SystemBackdrop_LightTintOpacity(object instance)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            return that.LightTintOpacity;
+        }
+        private void set_27_SystemBackdrop_LightTintOpacity(object instance, object Value)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            that.LightTintOpacity = (global::System.Double)Value;
+        }
+        private object get_28_SystemBackdrop_DarkLuminosityOpacity(object instance)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            return that.DarkLuminosityOpacity;
+        }
+        private void set_28_SystemBackdrop_DarkLuminosityOpacity(object instance, object Value)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            that.DarkLuminosityOpacity = (global::System.Double)Value;
+        }
+        private object get_29_SystemBackdrop_LightLuminosityOpacity(object instance)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            return that.LightLuminosityOpacity;
+        }
+        private void set_29_SystemBackdrop_LightLuminosityOpacity(object instance, object Value)
+        {
+            var that = (global::WinUIEx.SystemBackdrop)instance;
+            that.LightLuminosityOpacity = (global::System.Double)Value;
+        }
+        private object get_30_Thickness_Left(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Thickness)instance;
+            return that.Left;
+        }
+        private void set_30_Thickness_Left(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Thickness)instance;
+            that.Left = (global::System.Double)Value;
+        }
+        private object get_31_Thickness_Top(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Thickness)instance;
+            return that.Top;
+        }
+        private void set_31_Thickness_Top(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Thickness)instance;
+            that.Top = (global::System.Double)Value;
+        }
+        private object get_32_Thickness_Right(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Thickness)instance;
+            return that.Right;
+        }
+        private void set_32_Thickness_Right(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Thickness)instance;
+            that.Right = (global::System.Double)Value;
+        }
+        private object get_33_Thickness_Bottom(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Thickness)instance;
+            return that.Bottom;
+        }
+        private void set_33_Thickness_Bottom(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Thickness)instance;
+            that.Bottom = (global::System.Double)Value;
+        }
+        private object get_34_CornerRadius_TopLeft(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.CornerRadius)instance;
+            return that.TopLeft;
+        }
+        private void set_34_CornerRadius_TopLeft(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.CornerRadius)instance;
+            that.TopLeft = (global::System.Double)Value;
+        }
+        private object get_35_CornerRadius_TopRight(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.CornerRadius)instance;
+            return that.TopRight;
+        }
+        private void set_35_CornerRadius_TopRight(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.CornerRadius)instance;
+            that.TopRight = (global::System.Double)Value;
+        }
+        private object get_36_CornerRadius_BottomRight(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.CornerRadius)instance;
+            return that.BottomRight;
+        }
+        private void set_36_CornerRadius_BottomRight(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.CornerRadius)instance;
+            that.BottomRight = (global::System.Double)Value;
+        }
+        private object get_37_CornerRadius_BottomLeft(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.CornerRadius)instance;
+            return that.BottomLeft;
+        }
+        private void set_37_CornerRadius_BottomLeft(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.CornerRadius)instance;
+            that.BottomLeft = (global::System.Double)Value;
+        }
+        private object get_38_EditingPage_ViewModel(object instance)
+        {
+            var that = (global::LTgarlic.Views.EditingPage)instance;
+            return that.ViewModel;
+        }
+        private object get_39_SettingsPage_ViewModel(object instance)
+        {
+            var that = (global::LTgarlic.Views.SettingsPage)instance;
+            return that.ViewModel;
+        }
+        private object get_40_NavigationView_IsBackButtonVisible(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.IsBackButtonVisible;
+        }
+        private void set_40_NavigationView_IsBackButtonVisible(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.IsBackButtonVisible = (global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible)Value;
+        }
+        private object get_41_NavigationView_IsBackEnabled(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.IsBackEnabled;
+        }
+        private void set_41_NavigationView_IsBackEnabled(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.IsBackEnabled = (global::System.Boolean)Value;
+        }
+        private object get_42_NavigationView_SelectedItem(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.SelectedItem;
+        }
+        private void set_42_NavigationView_SelectedItem(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.SelectedItem = (global::System.Object)Value;
+        }
+        private object get_43_NavigationView_IsSettingsVisible(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.IsSettingsVisible;
+        }
+        private void set_43_NavigationView_IsSettingsVisible(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.IsSettingsVisible = (global::System.Boolean)Value;
+        }
+        private object get_44_NavigationView_ExpandedModeThresholdWidth(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.ExpandedModeThresholdWidth;
+        }
+        private void set_44_NavigationView_ExpandedModeThresholdWidth(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.ExpandedModeThresholdWidth = (global::System.Double)Value;
+        }
+        private object get_45_NavigationView_Header(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.Header;
+        }
+        private void set_45_NavigationView_Header(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.Header = (global::System.Object)Value;
+        }
+        private object get_46_NavigationView_MenuItems(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.MenuItems;
+        }
+        private object get_47_NavigationView_HeaderTemplate(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.HeaderTemplate;
+        }
+        private void set_47_NavigationView_HeaderTemplate(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.HeaderTemplate = (global::Microsoft.UI.Xaml.DataTemplate)Value;
+        }
+        private object get_48_NavigationView_AlwaysShowHeader(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.AlwaysShowHeader;
+        }
+        private void set_48_NavigationView_AlwaysShowHeader(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.AlwaysShowHeader = (global::System.Boolean)Value;
+        }
+        private object get_49_NavigationView_AutoSuggestBox(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.AutoSuggestBox;
+        }
+        private void set_49_NavigationView_AutoSuggestBox(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.AutoSuggestBox = (global::Microsoft.UI.Xaml.Controls.AutoSuggestBox)Value;
+        }
+        private object get_50_NavigationView_CompactModeThresholdWidth(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.CompactModeThresholdWidth;
+        }
+        private void set_50_NavigationView_CompactModeThresholdWidth(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.CompactModeThresholdWidth = (global::System.Double)Value;
+        }
+        private object get_51_NavigationView_CompactPaneLength(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.CompactPaneLength;
+        }
+        private void set_51_NavigationView_CompactPaneLength(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.CompactPaneLength = (global::System.Double)Value;
+        }
+        private object get_52_NavigationView_ContentOverlay(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.ContentOverlay;
+        }
+        private void set_52_NavigationView_ContentOverlay(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.ContentOverlay = (global::Microsoft.UI.Xaml.UIElement)Value;
+        }
+        private object get_53_NavigationView_DisplayMode(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.DisplayMode;
+        }
+        private object get_54_NavigationView_FooterMenuItems(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.FooterMenuItems;
+        }
+        private object get_55_NavigationView_FooterMenuItemsSource(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.FooterMenuItemsSource;
+        }
+        private void set_55_NavigationView_FooterMenuItemsSource(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.FooterMenuItemsSource = (global::System.Object)Value;
+        }
+        private object get_56_NavigationView_IsPaneOpen(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.IsPaneOpen;
+        }
+        private void set_56_NavigationView_IsPaneOpen(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.IsPaneOpen = (global::System.Boolean)Value;
+        }
+        private object get_57_NavigationView_IsPaneToggleButtonVisible(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.IsPaneToggleButtonVisible;
+        }
+        private void set_57_NavigationView_IsPaneToggleButtonVisible(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.IsPaneToggleButtonVisible = (global::System.Boolean)Value;
+        }
+        private object get_58_NavigationView_IsPaneVisible(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.IsPaneVisible;
+        }
+        private void set_58_NavigationView_IsPaneVisible(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.IsPaneVisible = (global::System.Boolean)Value;
+        }
+        private object get_59_NavigationView_IsTitleBarAutoPaddingEnabled(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.IsTitleBarAutoPaddingEnabled;
+        }
+        private void set_59_NavigationView_IsTitleBarAutoPaddingEnabled(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.IsTitleBarAutoPaddingEnabled = (global::System.Boolean)Value;
+        }
+        private object get_60_NavigationView_MenuItemContainerStyle(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.MenuItemContainerStyle;
+        }
+        private void set_60_NavigationView_MenuItemContainerStyle(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.MenuItemContainerStyle = (global::Microsoft.UI.Xaml.Style)Value;
+        }
+        private object get_61_NavigationView_MenuItemContainerStyleSelector(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.MenuItemContainerStyleSelector;
+        }
+        private void set_61_NavigationView_MenuItemContainerStyleSelector(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.MenuItemContainerStyleSelector = (global::Microsoft.UI.Xaml.Controls.StyleSelector)Value;
+        }
+        private object get_62_NavigationView_MenuItemTemplate(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.MenuItemTemplate;
+        }
+        private void set_62_NavigationView_MenuItemTemplate(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.MenuItemTemplate = (global::Microsoft.UI.Xaml.DataTemplate)Value;
+        }
+        private object get_63_NavigationView_MenuItemTemplateSelector(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.MenuItemTemplateSelector;
+        }
+        private void set_63_NavigationView_MenuItemTemplateSelector(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.MenuItemTemplateSelector = (global::Microsoft.UI.Xaml.Controls.DataTemplateSelector)Value;
+        }
+        private object get_64_NavigationView_MenuItemsSource(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.MenuItemsSource;
+        }
+        private void set_64_NavigationView_MenuItemsSource(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.MenuItemsSource = (global::System.Object)Value;
+        }
+        private object get_65_NavigationView_OpenPaneLength(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.OpenPaneLength;
+        }
+        private void set_65_NavigationView_OpenPaneLength(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.OpenPaneLength = (global::System.Double)Value;
+        }
+        private object get_66_NavigationView_OverflowLabelMode(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.OverflowLabelMode;
+        }
+        private void set_66_NavigationView_OverflowLabelMode(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.OverflowLabelMode = (global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode)Value;
+        }
+        private object get_67_NavigationView_PaneCustomContent(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.PaneCustomContent;
+        }
+        private void set_67_NavigationView_PaneCustomContent(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.PaneCustomContent = (global::Microsoft.UI.Xaml.UIElement)Value;
+        }
+        private object get_68_NavigationView_PaneDisplayMode(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.PaneDisplayMode;
+        }
+        private void set_68_NavigationView_PaneDisplayMode(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.PaneDisplayMode = (global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode)Value;
+        }
+        private object get_69_NavigationView_PaneFooter(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.PaneFooter;
+        }
+        private void set_69_NavigationView_PaneFooter(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.PaneFooter = (global::Microsoft.UI.Xaml.UIElement)Value;
+        }
+        private object get_70_NavigationView_PaneHeader(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.PaneHeader;
+        }
+        private void set_70_NavigationView_PaneHeader(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.PaneHeader = (global::Microsoft.UI.Xaml.UIElement)Value;
+        }
+        private object get_71_NavigationView_PaneTitle(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.PaneTitle;
+        }
+        private void set_71_NavigationView_PaneTitle(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.PaneTitle = (global::System.String)Value;
+        }
+        private object get_72_NavigationView_PaneToggleButtonStyle(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.PaneToggleButtonStyle;
+        }
+        private void set_72_NavigationView_PaneToggleButtonStyle(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.PaneToggleButtonStyle = (global::Microsoft.UI.Xaml.Style)Value;
+        }
+        private object get_73_NavigationView_SelectionFollowsFocus(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.SelectionFollowsFocus;
+        }
+        private void set_73_NavigationView_SelectionFollowsFocus(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.SelectionFollowsFocus = (global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus)Value;
+        }
+        private object get_74_NavigationView_SettingsItem(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.SettingsItem;
+        }
+        private object get_75_NavigationView_ShoulderNavigationEnabled(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.ShoulderNavigationEnabled;
+        }
+        private void set_75_NavigationView_ShoulderNavigationEnabled(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.ShoulderNavigationEnabled = (global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled)Value;
+        }
+        private object get_76_NavigationView_TemplateSettings(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.TemplateSettings;
+        }
+        private object get_77_Interaction_Behaviors(object instance)
+        {
+            return global::Microsoft.Xaml.Interactivity.Interaction.GetBehaviors((global::Microsoft.UI.Xaml.DependencyObject)instance);
+        }
+        private void set_77_Interaction_Behaviors(object instance, object Value)
+        {
+            global::Microsoft.Xaml.Interactivity.Interaction.SetBehaviors((global::Microsoft.UI.Xaml.DependencyObject)instance, (global::Microsoft.Xaml.Interactivity.BehaviorCollection)Value);
+        }
+        private object get_78_NavigationViewItem_Icon(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            return that.Icon;
+        }
+        private void set_78_NavigationViewItem_Icon(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            that.Icon = (global::Microsoft.UI.Xaml.Controls.IconElement)Value;
+        }
+        private object get_79_NavigationViewItem_CompactPaneLength(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            return that.CompactPaneLength;
+        }
+        private object get_80_NavigationViewItem_HasUnrealizedChildren(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            return that.HasUnrealizedChildren;
+        }
+        private void set_80_NavigationViewItem_HasUnrealizedChildren(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            that.HasUnrealizedChildren = (global::System.Boolean)Value;
+        }
+        private object get_81_NavigationViewItem_IsChildSelected(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            return that.IsChildSelected;
+        }
+        private void set_81_NavigationViewItem_IsChildSelected(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            that.IsChildSelected = (global::System.Boolean)Value;
+        }
+        private object get_82_NavigationViewItem_IsExpanded(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            return that.IsExpanded;
+        }
+        private void set_82_NavigationViewItem_IsExpanded(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            that.IsExpanded = (global::System.Boolean)Value;
+        }
+        private object get_83_NavigationViewItem_MenuItems(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            return that.MenuItems;
+        }
+        private object get_84_NavigationViewItem_MenuItemsSource(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            return that.MenuItemsSource;
+        }
+        private void set_84_NavigationViewItem_MenuItemsSource(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            that.MenuItemsSource = (global::System.Object)Value;
+        }
+        private object get_85_NavigationViewItem_SelectsOnInvoked(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            return that.SelectsOnInvoked;
+        }
+        private void set_85_NavigationViewItem_SelectsOnInvoked(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            that.SelectsOnInvoked = (global::System.Boolean)Value;
+        }
+        private object get_86_NavigationViewItemBase_IsSelected(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase)instance;
+            return that.IsSelected;
+        }
+        private void set_86_NavigationViewItemBase_IsSelected(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase)instance;
+            that.IsSelected = (global::System.Boolean)Value;
+        }
+        private object get_87_NavigationHelper_NavigateTo(object instance)
+        {
+            return global::LTgarlic.Helpers.NavigationHelper.GetNavigateTo((global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance);
+        }
+        private void set_87_NavigationHelper_NavigateTo(object instance, object Value)
+        {
+            global::LTgarlic.Helpers.NavigationHelper.SetNavigateTo((global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance, (global::System.String)Value);
+        }
+        private object get_88_NavigationViewHeaderBehavior_DefaultHeader(object instance)
+        {
+            var that = (global::LTgarlic.Behaviors.NavigationViewHeaderBehavior)instance;
+            return that.DefaultHeader;
+        }
+        private void set_88_NavigationViewHeaderBehavior_DefaultHeader(object instance, object Value)
+        {
+            var that = (global::LTgarlic.Behaviors.NavigationViewHeaderBehavior)instance;
+            that.DefaultHeader = (global::System.Object)Value;
+        }
+        private object get_89_NavigationViewHeaderBehavior_DefaultHeaderTemplate(object instance)
+        {
+            var that = (global::LTgarlic.Behaviors.NavigationViewHeaderBehavior)instance;
+            return that.DefaultHeaderTemplate;
+        }
+        private void set_89_NavigationViewHeaderBehavior_DefaultHeaderTemplate(object instance, object Value)
+        {
+            var that = (global::LTgarlic.Behaviors.NavigationViewHeaderBehavior)instance;
+            that.DefaultHeaderTemplate = (global::Microsoft.UI.Xaml.DataTemplate)Value;
+        }
+        private object get_90_Behavior_AssociatedObject(object instance)
+        {
+            var that = (global::Microsoft.Xaml.Interactivity.Behavior<global::Microsoft.UI.Xaml.Controls.NavigationView>)instance;
+            return that.AssociatedObject;
+        }
+        private object get_91_NavigationViewHeaderBehavior_HeaderMode(object instance)
+        {
+            return global::LTgarlic.Behaviors.NavigationViewHeaderBehavior.GetHeaderMode((global::Microsoft.UI.Xaml.Controls.Page)instance);
+        }
+        private void set_91_NavigationViewHeaderBehavior_HeaderMode(object instance, object Value)
+        {
+            global::LTgarlic.Behaviors.NavigationViewHeaderBehavior.SetHeaderMode((global::Microsoft.UI.Xaml.Controls.Page)instance, (global::LTgarlic.Behaviors.NavigationViewHeaderMode)Value);
+        }
+        private object get_92_NavigationViewHeaderBehavior_HeaderContext(object instance)
+        {
+            return global::LTgarlic.Behaviors.NavigationViewHeaderBehavior.GetHeaderContext((global::Microsoft.UI.Xaml.Controls.Page)instance);
+        }
+        private void set_92_NavigationViewHeaderBehavior_HeaderContext(object instance, object Value)
+        {
+            global::LTgarlic.Behaviors.NavigationViewHeaderBehavior.SetHeaderContext((global::Microsoft.UI.Xaml.Controls.Page)instance, (global::System.Object)Value);
+        }
+        private object get_93_NavigationViewHeaderBehavior_HeaderTemplate(object instance)
+        {
+            return global::LTgarlic.Behaviors.NavigationViewHeaderBehavior.GetHeaderTemplate((global::Microsoft.UI.Xaml.Controls.Page)instance);
+        }
+        private void set_93_NavigationViewHeaderBehavior_HeaderTemplate(object instance, object Value)
+        {
+            global::LTgarlic.Behaviors.NavigationViewHeaderBehavior.SetHeaderTemplate((global::Microsoft.UI.Xaml.Controls.Page)instance, (global::Microsoft.UI.Xaml.DataTemplate)Value);
+        }
+        private object get_94_ShellPage_ViewModel(object instance)
+        {
+            var that = (global::LTgarlic.Views.ShellPage)instance;
+            return that.ViewModel;
+        }
 
         private global::Microsoft.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
@@ -406,6 +1813,630 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
                 xamlMember.SetIsDependencyProperty();
                 xamlMember.Getter = get_0_XamlControlsResources_UseCompactResources;
                 xamlMember.Setter = set_0_XamlControlsResources_UseCompactResources;
+                break;
+            case "WinUIEx.WindowEx.WindowContent":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "WindowContent", "Object");
+                xamlMember.Getter = get_1_WindowEx_WindowContent;
+                xamlMember.Setter = set_1_WindowEx_WindowContent;
+                break;
+            case "WinUIEx.WindowEx.MinWidth":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "MinWidth", "Double");
+                xamlMember.Getter = get_2_WindowEx_MinWidth;
+                xamlMember.Setter = set_2_WindowEx_MinWidth;
+                break;
+            case "WinUIEx.WindowEx.MinHeight":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "MinHeight", "Double");
+                xamlMember.Getter = get_3_WindowEx_MinHeight;
+                xamlMember.Setter = set_3_WindowEx_MinHeight;
+                break;
+            case "WinUIEx.WindowEx.PersistenceId":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "PersistenceId", "String");
+                xamlMember.Getter = get_4_WindowEx_PersistenceId;
+                xamlMember.Setter = set_4_WindowEx_PersistenceId;
+                break;
+            case "WinUIEx.WindowEx.Backdrop":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "Backdrop", "WinUIEx.SystemBackdrop");
+                xamlMember.Getter = get_5_WindowEx_Backdrop;
+                xamlMember.Setter = set_5_WindowEx_Backdrop;
+                break;
+            case "WinUIEx.WindowEx.AppWindow":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "AppWindow", "Microsoft.UI.Windowing.AppWindow");
+                xamlMember.Getter = get_6_WindowEx_AppWindow;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "WinUIEx.WindowEx.TaskBarIcon":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "TaskBarIcon", "WinUIEx.Icon");
+                xamlMember.Getter = get_7_WindowEx_TaskBarIcon;
+                xamlMember.Setter = set_7_WindowEx_TaskBarIcon;
+                break;
+            case "WinUIEx.WindowEx.Title":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "Title", "String");
+                xamlMember.Getter = get_8_WindowEx_Title;
+                xamlMember.Setter = set_8_WindowEx_Title;
+                break;
+            case "WinUIEx.WindowEx.TitleBar":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "TitleBar", "Microsoft.UI.Xaml.UIElement");
+                xamlMember.Getter = get_9_WindowEx_TitleBar;
+                xamlMember.Setter = set_9_WindowEx_TitleBar;
+                break;
+            case "WinUIEx.WindowEx.IsTitleBarVisible":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsTitleBarVisible", "Boolean");
+                xamlMember.Getter = get_10_WindowEx_IsTitleBarVisible;
+                xamlMember.Setter = set_10_WindowEx_IsTitleBarVisible;
+                break;
+            case "WinUIEx.WindowEx.IsMinimizable":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsMinimizable", "Boolean");
+                xamlMember.Getter = get_11_WindowEx_IsMinimizable;
+                xamlMember.Setter = set_11_WindowEx_IsMinimizable;
+                break;
+            case "WinUIEx.WindowEx.IsMaximizable":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsMaximizable", "Boolean");
+                xamlMember.Getter = get_12_WindowEx_IsMaximizable;
+                xamlMember.Setter = set_12_WindowEx_IsMaximizable;
+                break;
+            case "WinUIEx.WindowEx.IsResizable":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsResizable", "Boolean");
+                xamlMember.Getter = get_13_WindowEx_IsResizable;
+                xamlMember.Setter = set_13_WindowEx_IsResizable;
+                break;
+            case "WinUIEx.WindowEx.IsShownInSwitchers":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsShownInSwitchers", "Boolean");
+                xamlMember.Getter = get_14_WindowEx_IsShownInSwitchers;
+                xamlMember.Setter = set_14_WindowEx_IsShownInSwitchers;
+                break;
+            case "WinUIEx.WindowEx.IsAlwaysOnTop":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsAlwaysOnTop", "Boolean");
+                xamlMember.Getter = get_15_WindowEx_IsAlwaysOnTop;
+                xamlMember.Setter = set_15_WindowEx_IsAlwaysOnTop;
+                break;
+            case "WinUIEx.WindowEx.Presenter":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "Presenter", "Microsoft.UI.Windowing.AppWindowPresenter");
+                xamlMember.Getter = get_16_WindowEx_Presenter;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "WinUIEx.WindowEx.PresenterKind":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "PresenterKind", "Microsoft.UI.Windowing.AppWindowPresenterKind");
+                xamlMember.Getter = get_17_WindowEx_PresenterKind;
+                xamlMember.Setter = set_17_WindowEx_PresenterKind;
+                break;
+            case "WinUIEx.WindowEx.Width":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "Width", "Double");
+                xamlMember.Getter = get_18_WindowEx_Width;
+                xamlMember.Setter = set_18_WindowEx_Width;
+                break;
+            case "WinUIEx.WindowEx.Height":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.WindowEx");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "Height", "Double");
+                xamlMember.Getter = get_19_WindowEx_Height;
+                xamlMember.Setter = set_19_WindowEx_Height;
+                break;
+            case "WinUIEx.MicaSystemBackdrop.Kind":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.MicaSystemBackdrop");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "Kind", "Microsoft.UI.Composition.SystemBackdrops.MicaKind");
+                xamlMember.Getter = get_20_MicaSystemBackdrop_Kind;
+                xamlMember.Setter = set_20_MicaSystemBackdrop_Kind;
+                break;
+            case "WinUIEx.MicaSystemBackdrop.IsSupported":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.MicaSystemBackdrop");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsSupported", "Boolean");
+                xamlMember.Getter = get_21_MicaSystemBackdrop_IsSupported;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "WinUIEx.SystemBackdrop.DarkTintColor":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.SystemBackdrop");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "DarkTintColor", "Windows.UI.Color");
+                xamlMember.Getter = get_22_SystemBackdrop_DarkTintColor;
+                xamlMember.Setter = set_22_SystemBackdrop_DarkTintColor;
+                break;
+            case "WinUIEx.SystemBackdrop.LightTintColor":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.SystemBackdrop");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "LightTintColor", "Windows.UI.Color");
+                xamlMember.Getter = get_23_SystemBackdrop_LightTintColor;
+                xamlMember.Setter = set_23_SystemBackdrop_LightTintColor;
+                break;
+            case "WinUIEx.SystemBackdrop.DarkFallbackColor":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.SystemBackdrop");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "DarkFallbackColor", "Windows.UI.Color");
+                xamlMember.Getter = get_24_SystemBackdrop_DarkFallbackColor;
+                xamlMember.Setter = set_24_SystemBackdrop_DarkFallbackColor;
+                break;
+            case "WinUIEx.SystemBackdrop.LightFallbackColor":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.SystemBackdrop");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "LightFallbackColor", "Windows.UI.Color");
+                xamlMember.Getter = get_25_SystemBackdrop_LightFallbackColor;
+                xamlMember.Setter = set_25_SystemBackdrop_LightFallbackColor;
+                break;
+            case "WinUIEx.SystemBackdrop.DarkTintOpacity":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.SystemBackdrop");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "DarkTintOpacity", "Double");
+                xamlMember.Getter = get_26_SystemBackdrop_DarkTintOpacity;
+                xamlMember.Setter = set_26_SystemBackdrop_DarkTintOpacity;
+                break;
+            case "WinUIEx.SystemBackdrop.LightTintOpacity":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.SystemBackdrop");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "LightTintOpacity", "Double");
+                xamlMember.Getter = get_27_SystemBackdrop_LightTintOpacity;
+                xamlMember.Setter = set_27_SystemBackdrop_LightTintOpacity;
+                break;
+            case "WinUIEx.SystemBackdrop.DarkLuminosityOpacity":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.SystemBackdrop");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "DarkLuminosityOpacity", "Double");
+                xamlMember.Getter = get_28_SystemBackdrop_DarkLuminosityOpacity;
+                xamlMember.Setter = set_28_SystemBackdrop_DarkLuminosityOpacity;
+                break;
+            case "WinUIEx.SystemBackdrop.LightLuminosityOpacity":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WinUIEx.SystemBackdrop");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "LightLuminosityOpacity", "Double");
+                xamlMember.Getter = get_29_SystemBackdrop_LightLuminosityOpacity;
+                xamlMember.Setter = set_29_SystemBackdrop_LightLuminosityOpacity;
+                break;
+            case "Microsoft.UI.Xaml.Thickness.Left":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Thickness");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "Left", "Double");
+                xamlMember.Getter = get_30_Thickness_Left;
+                xamlMember.Setter = set_30_Thickness_Left;
+                break;
+            case "Microsoft.UI.Xaml.Thickness.Top":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Thickness");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "Top", "Double");
+                xamlMember.Getter = get_31_Thickness_Top;
+                xamlMember.Setter = set_31_Thickness_Top;
+                break;
+            case "Microsoft.UI.Xaml.Thickness.Right":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Thickness");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "Right", "Double");
+                xamlMember.Getter = get_32_Thickness_Right;
+                xamlMember.Setter = set_32_Thickness_Right;
+                break;
+            case "Microsoft.UI.Xaml.Thickness.Bottom":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Thickness");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "Bottom", "Double");
+                xamlMember.Getter = get_33_Thickness_Bottom;
+                xamlMember.Setter = set_33_Thickness_Bottom;
+                break;
+            case "Microsoft.UI.Xaml.CornerRadius.TopLeft":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.CornerRadius");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "TopLeft", "Double");
+                xamlMember.Getter = get_34_CornerRadius_TopLeft;
+                xamlMember.Setter = set_34_CornerRadius_TopLeft;
+                break;
+            case "Microsoft.UI.Xaml.CornerRadius.TopRight":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.CornerRadius");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "TopRight", "Double");
+                xamlMember.Getter = get_35_CornerRadius_TopRight;
+                xamlMember.Setter = set_35_CornerRadius_TopRight;
+                break;
+            case "Microsoft.UI.Xaml.CornerRadius.BottomRight":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.CornerRadius");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "BottomRight", "Double");
+                xamlMember.Getter = get_36_CornerRadius_BottomRight;
+                xamlMember.Setter = set_36_CornerRadius_BottomRight;
+                break;
+            case "Microsoft.UI.Xaml.CornerRadius.BottomLeft":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.CornerRadius");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "BottomLeft", "Double");
+                xamlMember.Getter = get_37_CornerRadius_BottomLeft;
+                xamlMember.Setter = set_37_CornerRadius_BottomLeft;
+                break;
+            case "LTgarlic.Views.EditingPage.ViewModel":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("LTgarlic.Views.EditingPage");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "ViewModel", "LTgarlic.ViewModels.EditingViewModel");
+                xamlMember.Getter = get_38_EditingPage_ViewModel;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "LTgarlic.Views.SettingsPage.ViewModel":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("LTgarlic.Views.SettingsPage");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "ViewModel", "LTgarlic.ViewModels.SettingsViewModel");
+                xamlMember.Getter = get_39_SettingsPage_ViewModel;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.IsBackButtonVisible":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsBackButtonVisible", "Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_40_NavigationView_IsBackButtonVisible;
+                xamlMember.Setter = set_40_NavigationView_IsBackButtonVisible;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.IsBackEnabled":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsBackEnabled", "Boolean");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_41_NavigationView_IsBackEnabled;
+                xamlMember.Setter = set_41_NavigationView_IsBackEnabled;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.SelectedItem":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "SelectedItem", "Object");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_42_NavigationView_SelectedItem;
+                xamlMember.Setter = set_42_NavigationView_SelectedItem;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.IsSettingsVisible":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsSettingsVisible", "Boolean");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_43_NavigationView_IsSettingsVisible;
+                xamlMember.Setter = set_43_NavigationView_IsSettingsVisible;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.ExpandedModeThresholdWidth":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "ExpandedModeThresholdWidth", "Double");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_44_NavigationView_ExpandedModeThresholdWidth;
+                xamlMember.Setter = set_44_NavigationView_ExpandedModeThresholdWidth;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.Header":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "Header", "Object");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_45_NavigationView_Header;
+                xamlMember.Setter = set_45_NavigationView_Header;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.MenuItems":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "MenuItems", "System.Collections.Generic.IList`1<Object>");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_46_NavigationView_MenuItems;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.HeaderTemplate":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "HeaderTemplate", "Microsoft.UI.Xaml.DataTemplate");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_47_NavigationView_HeaderTemplate;
+                xamlMember.Setter = set_47_NavigationView_HeaderTemplate;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.AlwaysShowHeader":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "AlwaysShowHeader", "Boolean");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_48_NavigationView_AlwaysShowHeader;
+                xamlMember.Setter = set_48_NavigationView_AlwaysShowHeader;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.AutoSuggestBox":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "AutoSuggestBox", "Microsoft.UI.Xaml.Controls.AutoSuggestBox");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_49_NavigationView_AutoSuggestBox;
+                xamlMember.Setter = set_49_NavigationView_AutoSuggestBox;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.CompactModeThresholdWidth":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "CompactModeThresholdWidth", "Double");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_50_NavigationView_CompactModeThresholdWidth;
+                xamlMember.Setter = set_50_NavigationView_CompactModeThresholdWidth;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.CompactPaneLength":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "CompactPaneLength", "Double");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_51_NavigationView_CompactPaneLength;
+                xamlMember.Setter = set_51_NavigationView_CompactPaneLength;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.ContentOverlay":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "ContentOverlay", "Microsoft.UI.Xaml.UIElement");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_52_NavigationView_ContentOverlay;
+                xamlMember.Setter = set_52_NavigationView_ContentOverlay;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.DisplayMode":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "DisplayMode", "Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_53_NavigationView_DisplayMode;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.FooterMenuItems":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "FooterMenuItems", "System.Collections.Generic.IList`1<Object>");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_54_NavigationView_FooterMenuItems;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.FooterMenuItemsSource":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "FooterMenuItemsSource", "Object");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_55_NavigationView_FooterMenuItemsSource;
+                xamlMember.Setter = set_55_NavigationView_FooterMenuItemsSource;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.IsPaneOpen":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsPaneOpen", "Boolean");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_56_NavigationView_IsPaneOpen;
+                xamlMember.Setter = set_56_NavigationView_IsPaneOpen;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.IsPaneToggleButtonVisible":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsPaneToggleButtonVisible", "Boolean");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_57_NavigationView_IsPaneToggleButtonVisible;
+                xamlMember.Setter = set_57_NavigationView_IsPaneToggleButtonVisible;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.IsPaneVisible":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsPaneVisible", "Boolean");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_58_NavigationView_IsPaneVisible;
+                xamlMember.Setter = set_58_NavigationView_IsPaneVisible;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.IsTitleBarAutoPaddingEnabled":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsTitleBarAutoPaddingEnabled", "Boolean");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_59_NavigationView_IsTitleBarAutoPaddingEnabled;
+                xamlMember.Setter = set_59_NavigationView_IsTitleBarAutoPaddingEnabled;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.MenuItemContainerStyle":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "MenuItemContainerStyle", "Microsoft.UI.Xaml.Style");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_60_NavigationView_MenuItemContainerStyle;
+                xamlMember.Setter = set_60_NavigationView_MenuItemContainerStyle;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.MenuItemContainerStyleSelector":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "MenuItemContainerStyleSelector", "Microsoft.UI.Xaml.Controls.StyleSelector");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_61_NavigationView_MenuItemContainerStyleSelector;
+                xamlMember.Setter = set_61_NavigationView_MenuItemContainerStyleSelector;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.MenuItemTemplate":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "MenuItemTemplate", "Microsoft.UI.Xaml.DataTemplate");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_62_NavigationView_MenuItemTemplate;
+                xamlMember.Setter = set_62_NavigationView_MenuItemTemplate;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.MenuItemTemplateSelector":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "MenuItemTemplateSelector", "Microsoft.UI.Xaml.Controls.DataTemplateSelector");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_63_NavigationView_MenuItemTemplateSelector;
+                xamlMember.Setter = set_63_NavigationView_MenuItemTemplateSelector;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.MenuItemsSource":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "MenuItemsSource", "Object");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_64_NavigationView_MenuItemsSource;
+                xamlMember.Setter = set_64_NavigationView_MenuItemsSource;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.OpenPaneLength":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "OpenPaneLength", "Double");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_65_NavigationView_OpenPaneLength;
+                xamlMember.Setter = set_65_NavigationView_OpenPaneLength;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.OverflowLabelMode":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "OverflowLabelMode", "Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_66_NavigationView_OverflowLabelMode;
+                xamlMember.Setter = set_66_NavigationView_OverflowLabelMode;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.PaneCustomContent":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "PaneCustomContent", "Microsoft.UI.Xaml.UIElement");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_67_NavigationView_PaneCustomContent;
+                xamlMember.Setter = set_67_NavigationView_PaneCustomContent;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.PaneDisplayMode":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "PaneDisplayMode", "Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_68_NavigationView_PaneDisplayMode;
+                xamlMember.Setter = set_68_NavigationView_PaneDisplayMode;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.PaneFooter":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "PaneFooter", "Microsoft.UI.Xaml.UIElement");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_69_NavigationView_PaneFooter;
+                xamlMember.Setter = set_69_NavigationView_PaneFooter;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.PaneHeader":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "PaneHeader", "Microsoft.UI.Xaml.UIElement");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_70_NavigationView_PaneHeader;
+                xamlMember.Setter = set_70_NavigationView_PaneHeader;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.PaneTitle":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "PaneTitle", "String");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_71_NavigationView_PaneTitle;
+                xamlMember.Setter = set_71_NavigationView_PaneTitle;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.PaneToggleButtonStyle":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "PaneToggleButtonStyle", "Microsoft.UI.Xaml.Style");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_72_NavigationView_PaneToggleButtonStyle;
+                xamlMember.Setter = set_72_NavigationView_PaneToggleButtonStyle;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.SelectionFollowsFocus":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "SelectionFollowsFocus", "Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_73_NavigationView_SelectionFollowsFocus;
+                xamlMember.Setter = set_73_NavigationView_SelectionFollowsFocus;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.SettingsItem":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "SettingsItem", "Object");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_74_NavigationView_SettingsItem;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.ShoulderNavigationEnabled":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "ShoulderNavigationEnabled", "Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_75_NavigationView_ShoulderNavigationEnabled;
+                xamlMember.Setter = set_75_NavigationView_ShoulderNavigationEnabled;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.TemplateSettings":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "TemplateSettings", "Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_76_NavigationView_TemplateSettings;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.Xaml.Interactivity.Interaction.Behaviors":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactivity.Interaction");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "Behaviors", "Microsoft.Xaml.Interactivity.BehaviorCollection");
+                xamlMember.SetTargetTypeName("Microsoft.UI.Xaml.DependencyObject");
+                xamlMember.SetIsAttachable();
+                xamlMember.Getter = get_77_Interaction_Behaviors;
+                xamlMember.Setter = set_77_Interaction_Behaviors;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationViewItem.Icon":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "Icon", "Microsoft.UI.Xaml.Controls.IconElement");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_78_NavigationViewItem_Icon;
+                xamlMember.Setter = set_78_NavigationViewItem_Icon;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationViewItem.CompactPaneLength":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "CompactPaneLength", "Double");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_79_NavigationViewItem_CompactPaneLength;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationViewItem.HasUnrealizedChildren":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "HasUnrealizedChildren", "Boolean");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_80_NavigationViewItem_HasUnrealizedChildren;
+                xamlMember.Setter = set_80_NavigationViewItem_HasUnrealizedChildren;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationViewItem.IsChildSelected":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsChildSelected", "Boolean");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_81_NavigationViewItem_IsChildSelected;
+                xamlMember.Setter = set_81_NavigationViewItem_IsChildSelected;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationViewItem.IsExpanded":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsExpanded", "Boolean");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_82_NavigationViewItem_IsExpanded;
+                xamlMember.Setter = set_82_NavigationViewItem_IsExpanded;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationViewItem.MenuItems":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "MenuItems", "System.Collections.Generic.IList`1<Object>");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_83_NavigationViewItem_MenuItems;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationViewItem.MenuItemsSource":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "MenuItemsSource", "Object");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_84_NavigationViewItem_MenuItemsSource;
+                xamlMember.Setter = set_84_NavigationViewItem_MenuItemsSource;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationViewItem.SelectsOnInvoked":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "SelectsOnInvoked", "Boolean");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_85_NavigationViewItem_SelectsOnInvoked;
+                xamlMember.Setter = set_85_NavigationViewItem_SelectsOnInvoked;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationViewItemBase.IsSelected":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItemBase");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "IsSelected", "Boolean");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_86_NavigationViewItemBase_IsSelected;
+                xamlMember.Setter = set_86_NavigationViewItemBase_IsSelected;
+                break;
+            case "LTgarlic.Helpers.NavigationHelper.NavigateTo":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("LTgarlic.Helpers.NavigationHelper");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "NavigateTo", "String");
+                xamlMember.SetTargetTypeName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
+                xamlMember.SetIsAttachable();
+                xamlMember.Getter = get_87_NavigationHelper_NavigateTo;
+                xamlMember.Setter = set_87_NavigationHelper_NavigateTo;
+                break;
+            case "LTgarlic.Behaviors.NavigationViewHeaderBehavior.DefaultHeader":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("LTgarlic.Behaviors.NavigationViewHeaderBehavior");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "DefaultHeader", "Object");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_88_NavigationViewHeaderBehavior_DefaultHeader;
+                xamlMember.Setter = set_88_NavigationViewHeaderBehavior_DefaultHeader;
+                break;
+            case "LTgarlic.Behaviors.NavigationViewHeaderBehavior.DefaultHeaderTemplate":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("LTgarlic.Behaviors.NavigationViewHeaderBehavior");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "DefaultHeaderTemplate", "Microsoft.UI.Xaml.DataTemplate");
+                xamlMember.Getter = get_89_NavigationViewHeaderBehavior_DefaultHeaderTemplate;
+                xamlMember.Setter = set_89_NavigationViewHeaderBehavior_DefaultHeaderTemplate;
+                break;
+            case "Microsoft.Xaml.Interactivity.Behavior`1<Microsoft.UI.Xaml.Controls.NavigationView>.AssociatedObject":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactivity.Behavior`1<Microsoft.UI.Xaml.Controls.NavigationView>");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "AssociatedObject", "Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember.Getter = get_90_Behavior_AssociatedObject;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "LTgarlic.Behaviors.NavigationViewHeaderBehavior.HeaderMode":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("LTgarlic.Behaviors.NavigationViewHeaderBehavior");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "HeaderMode", "LTgarlic.Behaviors.NavigationViewHeaderMode");
+                xamlMember.SetTargetTypeName("Microsoft.UI.Xaml.Controls.Page");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.SetIsAttachable();
+                xamlMember.Getter = get_91_NavigationViewHeaderBehavior_HeaderMode;
+                xamlMember.Setter = set_91_NavigationViewHeaderBehavior_HeaderMode;
+                break;
+            case "LTgarlic.Behaviors.NavigationViewHeaderBehavior.HeaderContext":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("LTgarlic.Behaviors.NavigationViewHeaderBehavior");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "HeaderContext", "Object");
+                xamlMember.SetTargetTypeName("Microsoft.UI.Xaml.Controls.Page");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.SetIsAttachable();
+                xamlMember.Getter = get_92_NavigationViewHeaderBehavior_HeaderContext;
+                xamlMember.Setter = set_92_NavigationViewHeaderBehavior_HeaderContext;
+                break;
+            case "LTgarlic.Behaviors.NavigationViewHeaderBehavior.HeaderTemplate":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("LTgarlic.Behaviors.NavigationViewHeaderBehavior");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "HeaderTemplate", "Microsoft.UI.Xaml.DataTemplate");
+                xamlMember.SetTargetTypeName("Microsoft.UI.Xaml.Controls.Page");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.SetIsAttachable();
+                xamlMember.Getter = get_93_NavigationViewHeaderBehavior_HeaderTemplate;
+                xamlMember.Setter = set_93_NavigationViewHeaderBehavior_HeaderTemplate;
+                break;
+            case "LTgarlic.Views.ShellPage.ViewModel":
+                userType = (global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType)GetXamlTypeByName("LTgarlic.Views.ShellPage");
+                xamlMember = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlMember(this, "ViewModel", "LTgarlic.ViewModels.ShellViewModel");
+                xamlMember.Getter = get_94_ShellPage_ViewModel;
+                xamlMember.SetIsReadOnly();
                 break;
             }
             return xamlMember;

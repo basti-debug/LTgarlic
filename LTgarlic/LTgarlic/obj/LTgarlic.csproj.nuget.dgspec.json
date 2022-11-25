@@ -4,6 +4,71 @@
     "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic\\LTgarlic.csproj": {}
   },
   "projects": {
+    "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj",
+        "projectName": "LTgarlic.Core",
+        "projectPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj",
+        "packagesPath": "C:\\Users\\basti\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\basti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic\\LTgarlic.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -31,7 +96,11 @@
         "frameworks": {
           "net6.0-windows10.0.19041": {
             "targetAlias": "net6.0-windows10.0.19041.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj": {
+                "projectPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -44,13 +113,25 @@
         "net6.0-windows10.0.19041": {
           "targetAlias": "net6.0-windows10.0.19041.0",
           "dependencies": {
-            "Microsoft.Windows.SDK.BuildTools": {
+            "CommunityToolkit.Mvvm": {
               "target": "Package",
-              "version": "[10.0.22621.755, )"
+              "version": "[7.1.2, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[6.0.1, )"
             },
             "Microsoft.WindowsAppSDK": {
               "target": "Package",
-              "version": "[1.2.221116.1, )"
+              "version": "[1.1.3, )"
+            },
+            "Microsoft.Xaml.Behaviors.WinUI.Managed": {
+              "target": "Package",
+              "version": "[2.0.8, )"
+            },
+            "WinUIEx": {
+              "target": "Package",
+              "version": "[1.8.0, )"
             }
           },
           "imports": [
@@ -67,27 +148,27 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-arm64",
-              "version": "[6.0.9, 6.0.9]"
+              "version": "[6.0.11, 6.0.11]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[6.0.9, 6.0.9]"
+              "version": "[6.0.11, 6.0.11]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-              "version": "[6.0.9, 6.0.9]"
+              "version": "[6.0.11, 6.0.11]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-arm64",
-              "version": "[6.0.9, 6.0.9]"
+              "version": "[6.0.11, 6.0.11]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[6.0.9, 6.0.9]"
+              "version": "[6.0.11, 6.0.11]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x86",
-              "version": "[6.0.9, 6.0.9]"
+              "version": "[6.0.11, 6.0.11]"
             },
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -95,15 +176,15 @@
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
-              "version": "[6.0.9, 6.0.9]"
+              "version": "[6.0.11, 6.0.11]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[6.0.9, 6.0.9]"
+              "version": "[6.0.11, 6.0.11]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-              "version": "[6.0.9, 6.0.9]"
+              "version": "[6.0.11, 6.0.11]"
             }
           ],
           "frameworkReferences": {
@@ -114,7 +195,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
