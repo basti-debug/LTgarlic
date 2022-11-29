@@ -51,7 +51,17 @@
                 </StackPanel>
             </StackPanel>
 
-            <TextBlock x:Uid="Settings_About" Style="{ThemeResource SubtitleTextBlockStyle}" />
+            <TextBlock x:Uid="Settings_Savinglocation" Style="{ThemeResource SubtitleTextBlockStyle}" Text="Change default saving location"/>
+
+
+            <StackPanel>
+                <TextBox x:Uid="currentlocation" x:Name="currentlocation" Style="{ThemeResource DefaultTextBoxStyle}" PlaceholderText="C:\Users\basti\Documents" Margin="{StaticResource XSmallTopMargin}" />
+                <Button x:Uid="changelocation" Style="{ThemeResource AccentButtonStyle}" Content="Change Location" Margin="{StaticResource XSmallTopMargin}" Click="changelocat1ion_click"/>
+            </StackPanel>
+                
+           
+            
+            <TextBlock x:Uid="Settings_About" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="{StaticResource MediumTopMargin}"/>
 
             <StackPanel Margin="{StaticResource XSmallTopMargin}">
                 <TextBlock Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}" />

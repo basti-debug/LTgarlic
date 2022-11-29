@@ -17,4 +17,9 @@ public sealed partial class SettingsPage : Page
         ViewModel = App.GetService<SettingsViewModel>();
         InitializeComponent();
     }
+
+    private void changelocat1ion_click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        
+    }
 }

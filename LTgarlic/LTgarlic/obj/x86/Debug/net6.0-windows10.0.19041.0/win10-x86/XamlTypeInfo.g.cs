@@ -224,7 +224,7 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[60];
+            _typeNameTable = new string[61];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Microsoft.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
@@ -253,40 +253,41 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
             _typeNameTable[25] = "LTgarlic.ViewModels.EditingViewModel";
             _typeNameTable[26] = "CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient";
             _typeNameTable[27] = "CommunityToolkit.Mvvm.ComponentModel.ObservableObject";
-            _typeNameTable[28] = "LTgarlic.Helpers.EnumToBooleanConverter";
-            _typeNameTable[29] = "LTgarlic.Views.SettingsPage";
-            _typeNameTable[30] = "LTgarlic.ViewModels.SettingsViewModel";
-            _typeNameTable[31] = "Microsoft.UI.Xaml.Controls.NavigationView";
-            _typeNameTable[32] = "Microsoft.UI.Xaml.Controls.ContentControl";
-            _typeNameTable[33] = "Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible";
-            _typeNameTable[34] = "System.Collections.Generic.IList`1<Object>";
-            _typeNameTable[35] = "Microsoft.UI.Xaml.DataTemplate";
-            _typeNameTable[36] = "Microsoft.UI.Xaml.Controls.AutoSuggestBox";
-            _typeNameTable[37] = "Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode";
-            _typeNameTable[38] = "Microsoft.UI.Xaml.Style";
-            _typeNameTable[39] = "Microsoft.UI.Xaml.Controls.StyleSelector";
-            _typeNameTable[40] = "Microsoft.UI.Xaml.Controls.DataTemplateSelector";
-            _typeNameTable[41] = "Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode";
-            _typeNameTable[42] = "Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode";
-            _typeNameTable[43] = "Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus";
-            _typeNameTable[44] = "Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled";
-            _typeNameTable[45] = "Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings";
-            _typeNameTable[46] = "Microsoft.UI.Xaml.DependencyObject";
-            _typeNameTable[47] = "Microsoft.Xaml.Interactivity.Interaction";
-            _typeNameTable[48] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
-            _typeNameTable[49] = "Microsoft.UI.Xaml.DependencyObjectCollection";
-            _typeNameTable[50] = "Microsoft.UI.Xaml.Controls.NavigationViewItem";
-            _typeNameTable[51] = "Microsoft.UI.Xaml.Controls.NavigationViewItemBase";
-            _typeNameTable[52] = "Microsoft.UI.Xaml.Controls.IconElement";
-            _typeNameTable[53] = "LTgarlic.Helpers.NavigationHelper";
-            _typeNameTable[54] = "LTgarlic.Behaviors.NavigationViewHeaderBehavior";
-            _typeNameTable[55] = "Microsoft.Xaml.Interactivity.Behavior`1<Microsoft.UI.Xaml.Controls.NavigationView>";
-            _typeNameTable[56] = "Microsoft.Xaml.Interactivity.Behavior";
-            _typeNameTable[57] = "LTgarlic.Behaviors.NavigationViewHeaderMode";
-            _typeNameTable[58] = "LTgarlic.Views.ShellPage";
-            _typeNameTable[59] = "LTgarlic.ViewModels.ShellViewModel";
+            _typeNameTable[28] = "LTgarlic.Views.File2";
+            _typeNameTable[29] = "LTgarlic.Helpers.EnumToBooleanConverter";
+            _typeNameTable[30] = "LTgarlic.Views.SettingsPage";
+            _typeNameTable[31] = "LTgarlic.ViewModels.SettingsViewModel";
+            _typeNameTable[32] = "Microsoft.UI.Xaml.Controls.NavigationView";
+            _typeNameTable[33] = "Microsoft.UI.Xaml.Controls.ContentControl";
+            _typeNameTable[34] = "Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible";
+            _typeNameTable[35] = "System.Collections.Generic.IList`1<Object>";
+            _typeNameTable[36] = "Microsoft.UI.Xaml.DataTemplate";
+            _typeNameTable[37] = "Microsoft.UI.Xaml.Controls.AutoSuggestBox";
+            _typeNameTable[38] = "Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode";
+            _typeNameTable[39] = "Microsoft.UI.Xaml.Style";
+            _typeNameTable[40] = "Microsoft.UI.Xaml.Controls.StyleSelector";
+            _typeNameTable[41] = "Microsoft.UI.Xaml.Controls.DataTemplateSelector";
+            _typeNameTable[42] = "Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode";
+            _typeNameTable[43] = "Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode";
+            _typeNameTable[44] = "Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus";
+            _typeNameTable[45] = "Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled";
+            _typeNameTable[46] = "Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings";
+            _typeNameTable[47] = "Microsoft.UI.Xaml.DependencyObject";
+            _typeNameTable[48] = "Microsoft.Xaml.Interactivity.Interaction";
+            _typeNameTable[49] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
+            _typeNameTable[50] = "Microsoft.UI.Xaml.DependencyObjectCollection";
+            _typeNameTable[51] = "Microsoft.UI.Xaml.Controls.NavigationViewItem";
+            _typeNameTable[52] = "Microsoft.UI.Xaml.Controls.NavigationViewItemBase";
+            _typeNameTable[53] = "Microsoft.UI.Xaml.Controls.IconElement";
+            _typeNameTable[54] = "LTgarlic.Helpers.NavigationHelper";
+            _typeNameTable[55] = "LTgarlic.Behaviors.NavigationViewHeaderBehavior";
+            _typeNameTable[56] = "Microsoft.Xaml.Interactivity.Behavior`1<Microsoft.UI.Xaml.Controls.NavigationView>";
+            _typeNameTable[57] = "Microsoft.Xaml.Interactivity.Behavior";
+            _typeNameTable[58] = "LTgarlic.Behaviors.NavigationViewHeaderMode";
+            _typeNameTable[59] = "LTgarlic.Views.ShellPage";
+            _typeNameTable[60] = "LTgarlic.ViewModels.ShellViewModel";
 
-            _typeTable = new global::System.Type[60];
+            _typeTable = new global::System.Type[61];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Microsoft.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
@@ -315,38 +316,39 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
             _typeTable[25] = typeof(global::LTgarlic.ViewModels.EditingViewModel);
             _typeTable[26] = typeof(global::CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient);
             _typeTable[27] = typeof(global::CommunityToolkit.Mvvm.ComponentModel.ObservableObject);
-            _typeTable[28] = typeof(global::LTgarlic.Helpers.EnumToBooleanConverter);
-            _typeTable[29] = typeof(global::LTgarlic.Views.SettingsPage);
-            _typeTable[30] = typeof(global::LTgarlic.ViewModels.SettingsViewModel);
-            _typeTable[31] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationView);
-            _typeTable[32] = typeof(global::Microsoft.UI.Xaml.Controls.ContentControl);
-            _typeTable[33] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible);
-            _typeTable[34] = typeof(global::System.Collections.Generic.IList<global::System.Object>);
-            _typeTable[35] = typeof(global::Microsoft.UI.Xaml.DataTemplate);
-            _typeTable[36] = typeof(global::Microsoft.UI.Xaml.Controls.AutoSuggestBox);
-            _typeTable[37] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode);
-            _typeTable[38] = typeof(global::Microsoft.UI.Xaml.Style);
-            _typeTable[39] = typeof(global::Microsoft.UI.Xaml.Controls.StyleSelector);
-            _typeTable[40] = typeof(global::Microsoft.UI.Xaml.Controls.DataTemplateSelector);
-            _typeTable[41] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode);
-            _typeTable[42] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode);
-            _typeTable[43] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus);
-            _typeTable[44] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled);
-            _typeTable[45] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings);
-            _typeTable[46] = typeof(global::Microsoft.UI.Xaml.DependencyObject);
-            _typeTable[47] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
-            _typeTable[48] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
-            _typeTable[49] = typeof(global::Microsoft.UI.Xaml.DependencyObjectCollection);
-            _typeTable[50] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItem);
-            _typeTable[51] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase);
-            _typeTable[52] = typeof(global::Microsoft.UI.Xaml.Controls.IconElement);
-            _typeTable[53] = typeof(global::LTgarlic.Helpers.NavigationHelper);
-            _typeTable[54] = typeof(global::LTgarlic.Behaviors.NavigationViewHeaderBehavior);
-            _typeTable[55] = typeof(global::Microsoft.Xaml.Interactivity.Behavior<global::Microsoft.UI.Xaml.Controls.NavigationView>);
-            _typeTable[56] = typeof(global::Microsoft.Xaml.Interactivity.Behavior);
-            _typeTable[57] = typeof(global::LTgarlic.Behaviors.NavigationViewHeaderMode);
-            _typeTable[58] = typeof(global::LTgarlic.Views.ShellPage);
-            _typeTable[59] = typeof(global::LTgarlic.ViewModels.ShellViewModel);
+            _typeTable[28] = typeof(global::LTgarlic.Views.File2);
+            _typeTable[29] = typeof(global::LTgarlic.Helpers.EnumToBooleanConverter);
+            _typeTable[30] = typeof(global::LTgarlic.Views.SettingsPage);
+            _typeTable[31] = typeof(global::LTgarlic.ViewModels.SettingsViewModel);
+            _typeTable[32] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationView);
+            _typeTable[33] = typeof(global::Microsoft.UI.Xaml.Controls.ContentControl);
+            _typeTable[34] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible);
+            _typeTable[35] = typeof(global::System.Collections.Generic.IList<global::System.Object>);
+            _typeTable[36] = typeof(global::Microsoft.UI.Xaml.DataTemplate);
+            _typeTable[37] = typeof(global::Microsoft.UI.Xaml.Controls.AutoSuggestBox);
+            _typeTable[38] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode);
+            _typeTable[39] = typeof(global::Microsoft.UI.Xaml.Style);
+            _typeTable[40] = typeof(global::Microsoft.UI.Xaml.Controls.StyleSelector);
+            _typeTable[41] = typeof(global::Microsoft.UI.Xaml.Controls.DataTemplateSelector);
+            _typeTable[42] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode);
+            _typeTable[43] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode);
+            _typeTable[44] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus);
+            _typeTable[45] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled);
+            _typeTable[46] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings);
+            _typeTable[47] = typeof(global::Microsoft.UI.Xaml.DependencyObject);
+            _typeTable[48] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
+            _typeTable[49] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
+            _typeTable[50] = typeof(global::Microsoft.UI.Xaml.DependencyObjectCollection);
+            _typeTable[51] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItem);
+            _typeTable[52] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase);
+            _typeTable[53] = typeof(global::Microsoft.UI.Xaml.Controls.IconElement);
+            _typeTable[54] = typeof(global::LTgarlic.Helpers.NavigationHelper);
+            _typeTable[55] = typeof(global::LTgarlic.Behaviors.NavigationViewHeaderBehavior);
+            _typeTable[56] = typeof(global::Microsoft.Xaml.Interactivity.Behavior<global::Microsoft.UI.Xaml.Controls.NavigationView>);
+            _typeTable[57] = typeof(global::Microsoft.Xaml.Interactivity.Behavior);
+            _typeTable[58] = typeof(global::LTgarlic.Behaviors.NavigationViewHeaderMode);
+            _typeTable[59] = typeof(global::LTgarlic.Views.ShellPage);
+            _typeTable[60] = typeof(global::LTgarlic.ViewModels.ShellViewModel);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -387,14 +389,15 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
         private object Activate_19_MainWindow() { return new global::LTgarlic.MainWindow(); }
         private object Activate_22_EditingPage() { return new global::LTgarlic.Views.EditingPage(); }
         private object Activate_25_EditingViewModel() { return new global::LTgarlic.ViewModels.EditingViewModel(); }
-        private object Activate_28_EnumToBooleanConverter() { return new global::LTgarlic.Helpers.EnumToBooleanConverter(); }
-        private object Activate_29_SettingsPage() { return new global::LTgarlic.Views.SettingsPage(); }
-        private object Activate_31_NavigationView() { return new global::Microsoft.UI.Xaml.Controls.NavigationView(); }
-        private object Activate_45_NavigationViewTemplateSettings() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings(); }
-        private object Activate_48_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
-        private object Activate_50_NavigationViewItem() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewItem(); }
-        private object Activate_53_NavigationHelper() { return new global::LTgarlic.Helpers.NavigationHelper(); }
-        private object Activate_54_NavigationViewHeaderBehavior() { return new global::LTgarlic.Behaviors.NavigationViewHeaderBehavior(); }
+        private object Activate_28_File2() { return new global::LTgarlic.Views.File2(); }
+        private object Activate_29_EnumToBooleanConverter() { return new global::LTgarlic.Helpers.EnumToBooleanConverter(); }
+        private object Activate_30_SettingsPage() { return new global::LTgarlic.Views.SettingsPage(); }
+        private object Activate_32_NavigationView() { return new global::Microsoft.UI.Xaml.Controls.NavigationView(); }
+        private object Activate_46_NavigationViewTemplateSettings() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings(); }
+        private object Activate_49_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
+        private object Activate_51_NavigationViewItem() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewItem(); }
+        private object Activate_54_NavigationHelper() { return new global::LTgarlic.Helpers.NavigationHelper(); }
+        private object Activate_55_NavigationViewHeaderBehavior() { return new global::LTgarlic.Behaviors.NavigationViewHeaderBehavior(); }
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
@@ -402,13 +405,13 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
             var newItem = (global::System.Object)item;
             collection.Add(newKey, newItem);
         }
-        private void VectorAdd_34_IList(object instance, object item)
+        private void VectorAdd_35_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::System.Object>)instance;
             var newItem = (global::System.Object)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_48_BehaviorCollection(object instance, object item)
+        private void VectorAdd_49_BehaviorCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Microsoft.UI.Xaml.DependencyObject>)instance;
             var newItem = (global::Microsoft.UI.Xaml.DependencyObject)item;
@@ -618,31 +621,38 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 28:   //  LTgarlic.Helpers.EnumToBooleanConverter
-                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_28_EnumToBooleanConverter;
+            case 28:   //  LTgarlic.Views.File2
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_28_File2;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 29:   //  LTgarlic.Views.SettingsPage
+            case 29:   //  LTgarlic.Helpers.EnumToBooleanConverter
+                userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_29_EnumToBooleanConverter;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 30:   //  LTgarlic.Views.SettingsPage
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_29_SettingsPage;
+                userType.Activator = Activate_30_SettingsPage;
                 userType.AddMemberName("ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 30:   //  LTgarlic.ViewModels.SettingsViewModel
+            case 31:   //  LTgarlic.ViewModels.SettingsViewModel
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 31:   //  Microsoft.UI.Xaml.Controls.NavigationView
+            case 32:   //  Microsoft.UI.Xaml.Controls.NavigationView
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.ContentControl"));
-                userType.Activator = Activate_31_NavigationView;
+                userType.Activator = Activate_32_NavigationView;
                 userType.AddMemberName("IsBackButtonVisible");
                 userType.AddMemberName("IsBackEnabled");
                 userType.AddMemberName("SelectedItem");
@@ -683,11 +693,11 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 32:   //  Microsoft.UI.Xaml.Controls.ContentControl
+            case 33:   //  Microsoft.UI.Xaml.Controls.ContentControl
                 xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 33:   //  Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible
+            case 34:   //  Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("Collapsed", global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Collapsed);
                 userType.AddEnumValue("Visible", global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Visible);
@@ -695,22 +705,22 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 34:   //  System.Collections.Generic.IList`1<Object>
+            case 35:   //  System.Collections.Generic.IList`1<Object>
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.CollectionAdd = VectorAdd_34_IList;
+                userType.CollectionAdd = VectorAdd_35_IList;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 35:   //  Microsoft.UI.Xaml.DataTemplate
+            case 36:   //  Microsoft.UI.Xaml.DataTemplate
                 xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 36:   //  Microsoft.UI.Xaml.Controls.AutoSuggestBox
+            case 37:   //  Microsoft.UI.Xaml.Controls.AutoSuggestBox
                 xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 37:   //  Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode
+            case 38:   //  Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("Minimal", global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal);
                 userType.AddEnumValue("Compact", global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact);
@@ -718,26 +728,26 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 38:   //  Microsoft.UI.Xaml.Style
+            case 39:   //  Microsoft.UI.Xaml.Style
                 xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 39:   //  Microsoft.UI.Xaml.Controls.StyleSelector
+            case 40:   //  Microsoft.UI.Xaml.Controls.StyleSelector
                 xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 40:   //  Microsoft.UI.Xaml.Controls.DataTemplateSelector
+            case 41:   //  Microsoft.UI.Xaml.Controls.DataTemplateSelector
                 xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 41:   //  Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode
+            case 42:   //  Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("MoreLabel", global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode.MoreLabel);
                 userType.AddEnumValue("NoLabel", global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode.NoLabel);
                 xamlType = userType;
                 break;
 
-            case 42:   //  Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode
+            case 43:   //  Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("Auto", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto);
                 userType.AddEnumValue("Left", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left);
@@ -747,14 +757,14 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 43:   //  Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus
+            case 44:   //  Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("Disabled", global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus.Disabled);
                 userType.AddEnumValue("Enabled", global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus.Enabled);
                 xamlType = userType;
                 break;
 
-            case 44:   //  Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled
+            case 45:   //  Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("WhenSelectionFollowsFocus", global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled.WhenSelectionFollowsFocus);
                 userType.AddEnumValue("Always", global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled.Always);
@@ -762,36 +772,36 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 45:   //  Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings
+            case 46:   //  Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 46:   //  Microsoft.UI.Xaml.DependencyObject
+            case 47:   //  Microsoft.UI.Xaml.DependencyObject
                 xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 47:   //  Microsoft.Xaml.Interactivity.Interaction
+            case 48:   //  Microsoft.Xaml.Interactivity.Interaction
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.AddMemberName("Behaviors");
                 xamlType = userType;
                 break;
 
-            case 48:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
+            case 49:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObjectCollection"));
-                userType.CollectionAdd = VectorAdd_48_BehaviorCollection;
+                userType.CollectionAdd = VectorAdd_49_BehaviorCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 49:   //  Microsoft.UI.Xaml.DependencyObjectCollection
+            case 50:   //  Microsoft.UI.Xaml.DependencyObjectCollection
                 xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 50:   //  Microsoft.UI.Xaml.Controls.NavigationViewItem
+            case 51:   //  Microsoft.UI.Xaml.Controls.NavigationViewItem
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItemBase"));
-                userType.Activator = Activate_50_NavigationViewItem;
+                userType.Activator = Activate_51_NavigationViewItem;
                 userType.AddMemberName("Icon");
                 userType.AddMemberName("CompactPaneLength");
                 userType.AddMemberName("HasUnrealizedChildren");
@@ -803,27 +813,27 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 51:   //  Microsoft.UI.Xaml.Controls.NavigationViewItemBase
+            case 52:   //  Microsoft.UI.Xaml.Controls.NavigationViewItemBase
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.ContentControl"));
                 userType.AddMemberName("IsSelected");
                 xamlType = userType;
                 break;
 
-            case 52:   //  Microsoft.UI.Xaml.Controls.IconElement
+            case 53:   //  Microsoft.UI.Xaml.Controls.IconElement
                 xamlType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 53:   //  LTgarlic.Helpers.NavigationHelper
+            case 54:   //  LTgarlic.Helpers.NavigationHelper
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_53_NavigationHelper;
+                userType.Activator = Activate_54_NavigationHelper;
                 userType.AddMemberName("NavigateTo");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 54:   //  LTgarlic.Behaviors.NavigationViewHeaderBehavior
+            case 55:   //  LTgarlic.Behaviors.NavigationViewHeaderBehavior
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.Xaml.Interactivity.Behavior`1<Microsoft.UI.Xaml.Controls.NavigationView>"));
-                userType.Activator = Activate_54_NavigationViewHeaderBehavior;
+                userType.Activator = Activate_55_NavigationViewHeaderBehavior;
                 userType.AddMemberName("DefaultHeader");
                 userType.AddMemberName("DefaultHeaderTemplate");
                 userType.AddMemberName("HeaderMode");
@@ -833,18 +843,18 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 55:   //  Microsoft.Xaml.Interactivity.Behavior`1<Microsoft.UI.Xaml.Controls.NavigationView>
+            case 56:   //  Microsoft.Xaml.Interactivity.Behavior`1<Microsoft.UI.Xaml.Controls.NavigationView>
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.Xaml.Interactivity.Behavior"));
                 userType.AddMemberName("AssociatedObject");
                 xamlType = userType;
                 break;
 
-            case 56:   //  Microsoft.Xaml.Interactivity.Behavior
+            case 57:   //  Microsoft.Xaml.Interactivity.Behavior
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
                 xamlType = userType;
                 break;
 
-            case 57:   //  LTgarlic.Behaviors.NavigationViewHeaderMode
+            case 58:   //  LTgarlic.Behaviors.NavigationViewHeaderMode
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("Always", global::LTgarlic.Behaviors.NavigationViewHeaderMode.Always);
                 userType.AddEnumValue("Never", global::LTgarlic.Behaviors.NavigationViewHeaderMode.Never);
@@ -853,14 +863,14 @@ namespace LTgarlic.LTgarlic_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 58:   //  LTgarlic.Views.ShellPage
+            case 59:   //  LTgarlic.Views.ShellPage
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
                 userType.AddMemberName("ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 59:   //  LTgarlic.ViewModels.ShellViewModel
+            case 60:   //  LTgarlic.ViewModels.ShellViewModel
                 userType = new global::LTgarlic.LTgarlic_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();

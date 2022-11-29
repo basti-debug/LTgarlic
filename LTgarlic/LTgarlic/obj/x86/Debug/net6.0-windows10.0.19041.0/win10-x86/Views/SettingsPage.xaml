@@ -18,7 +18,7 @@
                 <TextBlock x:Uid="Settings_Theme" />
 
                 <StackPanel Margin="{StaticResource XSmallTopMargin}">
-                    <RadioButton x:ConnectionId='4'
+                    <RadioButton x:ConnectionId='6'
                         x:Uid="Settings_Theme_Light"
                                                                        
                                                                                                                                                              
@@ -28,7 +28,7 @@
                             <xaml:ElementTheme>Light</xaml:ElementTheme>
                         </RadioButton.CommandParameter>
                     </RadioButton>
-                    <RadioButton x:ConnectionId='5'
+                    <RadioButton x:ConnectionId='7'
                         x:Uid="Settings_Theme_Dark"
                                                                        
                                                                                                                                                             
@@ -38,7 +38,7 @@
                             <xaml:ElementTheme>Dark</xaml:ElementTheme>
                         </RadioButton.CommandParameter>
                     </RadioButton>
-                    <RadioButton x:ConnectionId='6'
+                    <RadioButton x:ConnectionId='8'
                         x:Uid="Settings_Theme_Default"
                                                                        
                                                                                                                                                                
@@ -51,7 +51,17 @@
                 </StackPanel>
             </StackPanel>
 
-            <TextBlock x:Uid="Settings_About" Style="{ThemeResource SubtitleTextBlockStyle}" />
+            <TextBlock x:Uid="Settings_Savinglocation" Style="{ThemeResource SubtitleTextBlockStyle}" Text="Change default saving location"/>
+
+
+            <StackPanel>
+                <TextBox x:ConnectionId='4' x:Uid="currentlocation" x:Name="currentlocation" Style="{ThemeResource DefaultTextBoxStyle}" PlaceholderText="C:\Users\basti\Documents" Margin="{StaticResource XSmallTopMargin}" />
+                <Button x:ConnectionId='5' x:Uid="changelocation" Style="{ThemeResource AccentButtonStyle}" Content="Change Location" Margin="{StaticResource XSmallTopMargin}"                              />
+            </StackPanel>
+                
+           
+            
+            <TextBlock x:Uid="Settings_About" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="{StaticResource MediumTopMargin}"/>
 
             <StackPanel Margin="{StaticResource XSmallTopMargin}">
                 <TextBlock x:ConnectionId='3'                                                           Style="{ThemeResource BodyTextBlockStyle}" />
