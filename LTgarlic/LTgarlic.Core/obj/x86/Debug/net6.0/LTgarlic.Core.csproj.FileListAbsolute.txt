@@ -1,0 +1,12 @@
+C:\Users\basti\source\repos\LTgarlic\LTgarlic\LTgarlic.Core\bin\x86\Debug\net6.0\LTgarlic.Core.deps.json
+C:\Users\basti\source\repos\LTgarlic\LTgarlic\LTgarlic.Core\bin\x86\Debug\net6.0\LTgarlic.Core.dll
+C:\Users\basti\source\repos\LTgarlic\LTgarlic\LTgarlic.Core\bin\x86\Debug\net6.0\LTgarlic.Core.pdb
+C:\Users\basti\source\repos\LTgarlic\LTgarlic\LTgarlic.Core\obj\x86\Debug\net6.0\LTgarlic.Core.csproj.AssemblyReference.cache
+C:\Users\basti\source\repos\LTgarlic\LTgarlic\LTgarlic.Core\obj\x86\Debug\net6.0\LTgarlic.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\basti\source\repos\LTgarlic\LTgarlic\LTgarlic.Core\obj\x86\Debug\net6.0\LTgarlic.Core.AssemblyInfoInputs.cache
+C:\Users\basti\source\repos\LTgarlic\LTgarlic\LTgarlic.Core\obj\x86\Debug\net6.0\LTgarlic.Core.AssemblyInfo.cs
+C:\Users\basti\source\repos\LTgarlic\LTgarlic\LTgarlic.Core\obj\x86\Debug\net6.0\LTgarlic.Core.csproj.CoreCompileInputs.cache
+C:\Users\basti\source\repos\LTgarlic\LTgarlic\LTgarlic.Core\obj\x86\Debug\net6.0\LTgarlic.Core.dll
+C:\Users\basti\source\repos\LTgarlic\LTgarlic\LTgarlic.Core\obj\x86\Debug\net6.0\refint\LTgarlic.Core.dll
+C:\Users\basti\source\repos\LTgarlic\LTgarlic\LTgarlic.Core\obj\x86\Debug\net6.0\LTgarlic.Core.pdb
+C:\Users\basti\source\repos\LTgarlic\LTgarlic\LTgarlic.Core\obj\x86\Debug\net6.0\ref\LTgarlic.Core.dll
