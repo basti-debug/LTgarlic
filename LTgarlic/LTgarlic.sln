@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LTgarlic.Core", "LTgarlic.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LTgarlic.Tests.MSTest", "LTgarlic.Tests.MSTest\LTgarlic.Tests.MSTest.csproj", "{A1833B2F-CA37-4C0E-AA23-77D1A59447E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "components", "components\components.csproj", "{F177B156-E701-455A-A30E-C8DB66E62A58}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,16 +21,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-<<<<<<< HEAD
-		{D16E64E2-F189-48B9-B48C-685ADB66DCD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D16E64E2-F189-48B9-B48C-685ADB66DCD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D16E64E2-F189-48B9-B48C-685ADB66DCD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D16E64E2-F189-48B9-B48C-685ADB66DCD2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F177B156-E701-455A-A30E-C8DB66E62A58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F177B156-E701-455A-A30E-C8DB66E62A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F177B156-E701-455A-A30E-C8DB66E62A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F177B156-E701-455A-A30E-C8DB66E62A58}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
 		{7D218FF4-5C50-48EC-BC08-F110F46A5F1A}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{7D218FF4-5C50-48EC-BC08-F110F46A5F1A}.Debug|Any CPU.Build.0 = Debug|x64
 		{7D218FF4-5C50-48EC-BC08-F110F46A5F1A}.Debug|Any CPU.Deploy.0 = Debug|x64
@@ -89,7 +77,6 @@ Global
 		{A1833B2F-CA37-4C0E-AA23-77D1A59447E3}.Release|x64.Build.0 = Release|x64
 		{A1833B2F-CA37-4C0E-AA23-77D1A59447E3}.Release|x86.ActiveCfg = Release|x86
 		{A1833B2F-CA37-4C0E-AA23-77D1A59447E3}.Release|x86.Build.0 = Release|x86
->>>>>>> uibasic
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
