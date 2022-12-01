@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\components\components.csproj" />
     <ProjectReference Include="..\LTgarlic.Core\LTgarlic.Core.csproj" />
   </ItemGroup>
   <ItemGroup>

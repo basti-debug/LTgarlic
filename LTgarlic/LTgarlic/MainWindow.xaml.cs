@@ -1,4 +1,5 @@
 ﻿using LTgarlic.Helpers;
+using components;
 
 namespace LTgarlic;
 
@@ -11,5 +12,6 @@ public sealed partial class MainWindow : WindowEx
         AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/WindowIcon.ico"));
         Content = null;
         Title = "AppDisplayName".GetLocalized();
+
     }
 }
