@@ -1340,6 +1340,10 @@
       "components/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
+          "Microsoft.WindowsAppSDK": "1.2.220902.1-preview1"
+        },
         "compile": {
           "bin/placeholder/components.dll": {}
         },
@@ -2822,6 +2826,10 @@
       "components/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
+          "Microsoft.WindowsAppSDK": "1.2.220902.1-preview1"
+        },
         "compile": {
           "bin/placeholder/components.dll": {}
         },
@@ -4305,6 +4313,10 @@
       "components/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
+          "Microsoft.WindowsAppSDK": "1.2.220902.1-preview1"
+        },
         "compile": {
           "bin/placeholder/components.dll": {}
         },
@@ -5791,6 +5803,10 @@
       "components/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
+          "Microsoft.WindowsAppSDK": "1.2.220902.1-preview1"
+        },
         "compile": {
           "bin/placeholder/components.dll": {}
         },
@@ -7276,6 +7292,10 @@
       "components/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
+          "Microsoft.WindowsAppSDK": "1.2.220902.1-preview1"
+        },
         "compile": {
           "bin/placeholder/components.dll": {}
         },
@@ -8762,6 +8782,10 @@
       "components/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
+          "Microsoft.WindowsAppSDK": "1.2.220902.1-preview1"
+        },
         "compile": {
           "bin/placeholder/components.dll": {}
         },
@@ -10247,6 +10271,10 @@
       "components/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
+          "Microsoft.WindowsAppSDK": "1.2.220902.1-preview1"
+        },
         "compile": {
           "bin/placeholder/components.dll": {}
         },
@@ -11733,6 +11761,10 @@
       "components/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
+          "Microsoft.WindowsAppSDK": "1.2.220902.1-preview1"
+        },
         "compile": {
           "bin/placeholder/components.dll": {}
         },
@@ -16077,5 +16109,23 @@
         "#import": []
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Ein Downgrade des Pakets \"Microsoft.WindowsAppSDK\" von 1.2.220902.1-preview1 auf 1.1.3 wurde festgestellt. Verweisen Sie direkt aus dem Projekt auf das Paket, um eine andere Version auszuwählen. \r\n LTgarlic.Tests.MSTest -> LTgarlic -> components -> Microsoft.WindowsAppSDK (>= 1.2.220902.1-preview1) \r\n LTgarlic.Tests.MSTest -> LTgarlic -> Microsoft.WindowsAppSDK (>= 1.1.3)",
+      "libraryId": "Microsoft.WindowsAppSDK",
+      "targetGraphs": [
+        "net6.0-windows10.0.19041",
+        "net6.0-windows10.0.19041/win10-arm",
+        "net6.0-windows10.0.19041/win10-arm-aot",
+        "net6.0-windows10.0.19041/win10-arm64-aot",
+        "net6.0-windows10.0.19041/win10-x64",
+        "net6.0-windows10.0.19041/win10-x64-aot",
+        "net6.0-windows10.0.19041/win10-x86",
+        "net6.0-windows10.0.19041/win10-x86-aot"
+      ]
+    }
+  ]
 }

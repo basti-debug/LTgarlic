@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Media3D;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Microsoft.UI;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Shapes;
+using Windows.Foundation;
 
 namespace components
 {
@@ -37,7 +37,7 @@ namespace components
             Point pin2 = new Point(location.X + width / 2 / sizeDiv, location.Y + height / sizeDiv + pinlength / sizeDiv);
 
             Path myPath = new Path();
-            myPath.Stroke = Brushes.Black;
+            myPath.Stroke = new SolidColorBrush(Colors.Black);
             myPath.StrokeThickness = 3;
             myPath.StrokeEndLineCap = PenLineCap.Round;
             myPath.StrokeStartLineCap = PenLineCap.Round;
@@ -64,7 +64,8 @@ namespace components
 
             myPath.Data = resistor;
 
-            RotateTransform center = new RotateTransform(rotation);
+            RotateTransform center = new RotateTransform();
+            center.Angle = rotation;
             center.CenterX = location.X + width / 2 / sizeDiv;
             center.CenterY = location.Y + height / 2 / sizeDiv;
 

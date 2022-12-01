@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
+using Microsoft.UI;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Shapes;
+using Windows.Foundation;
 
 namespace components
 {
@@ -32,7 +34,7 @@ namespace components
         public override List<Point> drawComponent()
         {
             Path myPath = new Path();
-            myPath.Stroke = Brushes.Black;
+            myPath.Stroke = new SolidColorBrush(Colors.Black);
             myPath.StrokeThickness = 3;
             myPath.StrokeEndLineCap = PenLineCap.Round;
             myPath.StrokeStartLineCap= PenLineCap.Round;
@@ -81,7 +83,8 @@ namespace components
 
             myPath.Data = diode;
 
-            RotateTransform center = new RotateTransform(rotation);
+            RotateTransform center = new RotateTransform();
+            center.Angle = rotation;
             center.CenterX = location.X + width / 2 / sizeDiv;
             center.CenterY = location.Y + height / 2 / sizeDiv;
 
