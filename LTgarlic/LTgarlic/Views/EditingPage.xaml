@@ -6,11 +6,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea">
+    <Canvas x:Name="ContentArea">
+        <Canvas>
+            
+        </Canvas>
         <Grid Name="hotbar"  Width="500" Height="50" Background="{StaticResource AccentAAFillColorTertiaryBrush}" CornerRadius="5">
-            <RadioButton Padding="20,5,100,5">simulate</RadioButton>
-            <RadioButton Padding="100,5,100,5">edit</RadioButton>
-            <RadioButton Padding="150,5,100,5">components</RadioButton>
+            <RadioButton>simulate</RadioButton>
+            <RadioButton>edit</RadioButton>
+            <RadioButton>components</RadioButton>
         </Grid>
-    </Grid>
+    </Canvas>
 </Page>

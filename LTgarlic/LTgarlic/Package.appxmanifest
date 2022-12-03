@@ -12,11 +12,11 @@
   <Identity
     Name="1D0EC8D0-6284-4DBE-B40E-AFD0AD7F472C"
     Publisher="CN=basti"
-    Version="1.0.0.0" />
+    Version="0.0.12.0" />
 
   <Properties>
     <DisplayName>LTgarlic</DisplayName>
-    <PublisherDisplayName>basti</PublisherDisplayName>
+    <PublisherDisplayName>basti.debug</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
