@@ -14,6 +14,61 @@
     <StackPanel>
         <TextBlock Text="Welcome to LTgarlic" Style="{StaticResource PageTitleStyle}"/>
         <TextBlock Text="v0.1" Style="{StaticResource CaptionTextBlockStyle}"/>
+
+        <TextBlock Text="recent Projects: " Style="{StaticResource BaseTextBlockStyle}" Margin="0,50,0,0"/>
+
+        <TextBlock Text="looks like you haven't open a project in a wile..." Style="{StaticResource CaptionTextBlockStyle}" Margin="0,10,0,0"/>
+        <RelativePanel Margin="0,30,0,0">
+            <Button x:Name="createbutton" Style="{StaticResource AccentButtonStyle}" Content="Create a new File" Margin="0,0,0,0"/>
+            <Button x:Name="openbutton" Style="{StaticResource ButtonRevealStyle}" Content="Open a File" Margin="20,0,0,0" RelativePanel.RightOf="createbutton"/>
+            <Button x:Name="importlbrbutton" Style="{StaticResource AccentButtonStyle}" Content="Open a Libary" Margin="20,0,0,0" RelativePanel.RightOf="openbutton"/>
+        </RelativePanel>
+
+        <Canvas>
+            <Line 
+                X1="2000" Y1="150"
+                X2="1200" Y2="800"
+                Stroke="{ThemeResource AccentTextFillColorTertiaryBrush }"
+                StrokeThickness="5"
+                />
+            <Ellipse
+                Width="100"
+                Height="100"
+                Stroke="{ThemeResource AccentTextFillColorTertiaryBrush}"
+                StrokeThickness="5"
+                Canvas.Left="1500"
+                Canvas.Top="465"
+                />
+
+            <Line
+                X1="2000" Y1="0"
+                X2="1500" Y2="400"
+                Stroke="{ThemeResource AccentTextFillColorTertiaryBrush }"
+                StrokeThickness="5"
+                />
+            <Line
+                X1="1480" Y1="380"
+                X2="1515" Y2="420"
+                Stroke="{ThemeResource AccentTextFillColorTertiaryBrush }"
+                StrokeThickness="5"
+                />
+
+            <Line
+                X1="1470" Y1="390"
+                X2="1505" Y2="430"
+                Stroke="{ThemeResource AccentTextFillColorTertiaryBrush }"
+                StrokeThickness="5"
+                />
+
+            <Line
+                X1="1490" Y1="410"
+                X2="1000" Y2="800"
+                Stroke="{ThemeResource AccentTextFillColorTertiaryBrush }"
+                StrokeThickness="5"
+                />
+
+        </Canvas>
+   
         
     </StackPanel>
 </Page>

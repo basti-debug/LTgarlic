@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using LTgarlic.ViewModels;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -21,8 +22,13 @@ namespace LTgarlic.Views;
 /// </summary>
 public sealed partial class MainHomePage : Page
 {
+    public MainViewModel ViewModel
+    {
+        get;
+    }
     public MainHomePage()
     {
-        this.InitializeComponent();
+        ViewModel = App.GetService<MainViewModel>();
+        InitializeComponent();
     }
 }
