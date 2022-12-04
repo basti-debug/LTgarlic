@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -13,8 +14,8 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-
-
+using Windows.Storage;
+using Windows.Storage.Pickers;
 
 namespace LTgarlic.Views;
 /// <summary>
@@ -30,5 +31,35 @@ public sealed partial class MainHomePage : Page
     {
         ViewModel = App.GetService<MainViewModel>();
         InitializeComponent();
+    }
+
+    public async void createbutton_Click(object sender, RoutedEventArgs e)
+    {
+        FolderPicker openPicker= new FolderPicker();
+        openPicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+        openPicker.FileTypeFilter.Add(".asc");
+
+        var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+
+        WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hwnd);
+
+        var file = await openPicker.PickSingleFolderAsync();
+
+        if(file != null )
+        {
+            // FILE PICKED
+            Debug.WriteLine("haspicked a file");
+        }
+        
+    }
+
+    private void openbutton_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void importlbrbutton_Click(object sender, RoutedEventArgs e)
+    {
+
     }
 }
