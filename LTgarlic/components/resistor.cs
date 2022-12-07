@@ -14,24 +14,28 @@ namespace components
 {
     public class resistor : component
     {
-        private int height = 200;
-        private int width = 100;
-        int sizeDiv = 2;
+        private readonly int height = 200;
+        private readonly int width = 100;
+        private readonly int pinlength = 100;
+        private readonly int sizeDiv = 2;
 
-        string name = "res";
-        Point location;
-        int rotation;
-        Canvas drawingTable;
-        int pinlength = 100;
+        public readonly string name = "res";
+        private readonly Canvas drawingTable;
 
-        public resistor(Point location, int rotation, Canvas drawingTable)
+        private static List<int> indexes;
+        private int index;
+        private static int count;
+        
+
+        public resistor(int rotation, Canvas drawingTable)
         {
-            this.location = location;
-            this.rotation = rotation;
             this.drawingTable = drawingTable;
+
+            index = count++;
+            indexes.Add(index);
         }
 
-        public override List<Point> drawComponent()
+        public override List<Point> drawComponent(Point location, int rotation)
         {
             Point pin1 = new Point(location.X + width / 2 / sizeDiv, location.Y - pinlength / sizeDiv);
             Point pin2 = new Point(location.X + width / 2 / sizeDiv, location.Y + height / sizeDiv + pinlength / sizeDiv);
@@ -72,8 +76,23 @@ namespace components
             drawingTable.Children.Add(myPath);
 
             List<Point> Pins = new List<Point> { pin1, pin2 };
-
+            
             return Pins;
+        }
+
+        public override void deleteComponent()
+        {
+            count--;
+            drawingTable.Children.RemoveAt(indexes.IndexOf(index));
+            indexes.RemoveAt(index);
+        }
+
+        public override List<Point> moveComponent(Point location, int rotation)
+        {
+            deleteComponent();
+            List<Point> pins = new List<Point>();
+            pins = drawComponent(location, rotation);
+            return pins;
         }
     }
 }
