@@ -14,25 +14,28 @@ namespace components
 {
     public class capacitor : component
     {
-        string name = "cap";
-        Point location;
-        int rotation;
-        Canvas drawingTable;
-        int sizeDiv = 2;
-        int pinlength = 100;
+        private readonly int width = 150;
+        private readonly int height = 50;
+        private readonly int conHeight = 15;
+        private readonly int pinlength = 100;
+        private readonly int sizeDiv = 2;
 
-        int width = 150;
-        int height = 50;
-        int conHeight = 15;
+        public string name = "cap";
+        private Canvas drawingTable;
 
-        public capacitor(Point location, int rotation, Canvas drawingTable) 
+        private static List<int> indexes;
+        private int index;
+        private static int count;
+
+        public capacitor(Canvas drawingTable) 
         {
-            this.location = location;
-            this.rotation = rotation;
             this.drawingTable = drawingTable;
+
+            index = count++;
+            indexes.Add(index);
         }
 
-        public override List<Point> drawComponent()
+        public override List<Point> drawComponent(Point location, int rotation)
         {
             Point pin1 = new Point(location.X + width / 2 / sizeDiv,location.Y - pinlength / sizeDiv);
             Point pin2 = new Point(location.X + width / 2 / sizeDiv, location.Y + height / sizeDiv + pinlength / sizeDiv);
@@ -81,6 +84,21 @@ namespace components
             List<Point> Pins = new List<Point>() { pin1, pin2 };
 
             return Pins;
+        }
+
+        public override void deleteComponent()
+        {
+            count--;
+            drawingTable.Children.RemoveAt(indexes.IndexOf(index));
+            indexes.RemoveAt(index);
+        }
+
+        public override List<Point> moveComponent(Point location, int rotation)
+        {
+            deleteComponent();
+            List<Point> pins = new();
+            pins = drawComponent(location, rotation);
+            return pins;
         }
     }
 }

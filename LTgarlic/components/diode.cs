@@ -14,24 +14,27 @@ namespace components
 {
     public class diode : component
     {
-        string name = "diode";
-        Point location;
-        int rotation;
-        Canvas drawingTable;
-        int sizeDiv = 2;
-        int pinlength = 100;
+        private readonly int width = 100;
+        private readonly int height = 100;
+        private readonly int pinlength = 100;
+        private readonly int sizeDiv = 2;
 
-        int width = 100;
-        int height = 100;
+        private Canvas drawingTable;
+        public readonly string name = "diode";
 
-        public diode(Point location, int rotation, Canvas drawingTable)
+        private static List<int> indexes;
+        private int index;
+        private static int count;
+
+        public diode(int rotation, Canvas drawingTable)
         {
-            this.location = location;
-            this.rotation = rotation;
             this.drawingTable = drawingTable;
+
+            index = count++;
+            indexes.Add(index);
         }
 
-        public override List<Point> drawComponent()
+        public override List<Point> drawComponent(Point location, int rotation)
         {
             Path myPath = new Path();
             myPath.Stroke = new SolidColorBrush(Colors.Black);
@@ -95,6 +98,21 @@ namespace components
             List<Point> Pins = new List<Point> {pin1,pin2};
 
             return Pins;
+        }
+
+        public override void deleteComponent()
+        {
+            count--;
+            drawingTable.Children.RemoveAt(indexes.IndexOf(index));
+            indexes.RemoveAt(index);
+        }
+
+        public override List<Point> moveComponent(Point location, int rotation)
+        {
+            deleteComponent();
+            List<Point> pins = new();
+            pins = drawComponent(location, rotation);
+            return pins;
         }
     }
 }
