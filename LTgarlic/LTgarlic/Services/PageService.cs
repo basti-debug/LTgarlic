@@ -14,8 +14,12 @@ public class PageService : IPageService
 
     public PageService()
     {
+        //ADD PAGES
+
+        Configure<MainViewModel, MainHomePage>();
         Configure<EditingViewModel, EditingPage>();
         Configure<SettingsViewModel, SettingsPage>();
+        
     }
 
     public Type GetPageType(string key)

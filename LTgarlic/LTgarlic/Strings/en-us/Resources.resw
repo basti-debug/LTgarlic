@@ -67,6 +67,9 @@
   <data name="Shell_Editing.Content" xml:space="preserve">
     <value>Editing</value>
   </data>
+    <data name="Main.Content" xml:space="preserve">
+    <value>Home Page</value>
+  </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
   </data>
@@ -86,12 +89,12 @@
     <value>About this application</value>
   </data>
   <data name="Settings_AboutDescription.Text" xml:space="preserve">
-    <value>TODO: Replace with your app description.</value>
+    <value>LTgarlic is a spice software made by basti.debug and Bismarck420</value>
   </data>
   <data name="SettingsPage_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>Privacy Statement</value>
+    <value>Repository</value>
   </data>
   <data name="SettingsPage_PrivacyTermsLink.NavigateUri" xml:space="preserve">
-    <value>https://YourPrivacyUrlGoesHere/</value>
+    <value>https://gitlab.com/basti-debug/LTgarlic</value>
   </data>
 </root>
