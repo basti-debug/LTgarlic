@@ -25,14 +25,8 @@
             <Button x:Name="importlbrbutton" Style="{StaticResource AccentButtonStyle}" Content="Open a Libary" Margin="20,0,0,0" RelativePanel.RightOf="openbutton" Click="importlbrbutton_Click"/>
         </RelativePanel>
 
-        <Canvas Height="{Binding ElementName=pagemain, Path=ActualHeight, UpdateSourceTrigger=PropertyChanged}" Width="{Binding ElementName=pagemain, Path=ActualWidth, UpdateSourceTrigger=PropertyChanged}">
-            <Line 
-                X1="0" Y1="{Binding ElementName=pagemain, Path=ActualHeight, UpdateSourceTrigger=PropertyChanged}"
-                X2="700" Y2="300"
-                Stroke="{ThemeResource AccentTextFillColorTertiaryBrush }"
-                StrokeThickness="5"
-                />        
-        </Canvas>
+
+       
    
         
     </StackPanel>

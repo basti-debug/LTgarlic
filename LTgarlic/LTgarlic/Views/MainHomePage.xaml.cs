@@ -16,6 +16,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.Storage.Pickers;
+using WinRT.Interop;
 
 namespace LTgarlic.Views;
 /// <summary>
@@ -31,35 +32,40 @@ public sealed partial class MainHomePage : Page
     {
         ViewModel = App.GetService<MainViewModel>();
         InitializeComponent();
-    }
+    }  
 
     public async void createbutton_Click(object sender, RoutedEventArgs e)
     {
-        FolderPicker openPicker= new FolderPicker();
-        openPicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-        openPicker.FileTypeFilter.Add(".asc");
+        var hwnd = App.MainWindow.GetWindowHandle();
 
-        var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-
-        WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hwnd);
-
-        var file = await openPicker.PickSingleFolderAsync();
-
-        if(file != null )
-        {
-            // FILE PICKED
-            Debug.WriteLine("haspicked a file");
-        }
-        
-    }
-
-    private void openbutton_Click(object sender, RoutedEventArgs e)
-    {
+        var picker = new FileSavePicker();
+        WinRT.Interop.InitializeWithWindow.Initialize(picker, hwnd);
+        picker.FileTypeChoices.Add("Spice Circuit", new List<string>() { ".asc" });
+        picker.SuggestedFileName = "cicuit";
+        var file = await picker.PickSaveFileAsync();
 
     }
 
-    private void importlbrbutton_Click(object sender, RoutedEventArgs e)
+    private async void openbutton_Click(object sender, RoutedEventArgs e)
     {
+        var hwnd = App.MainWindow.GetWindowHandle();
 
+        var picker = new FileOpenPicker();
+        WinRT.Interop.InitializeWithWindow.Initialize(picker, hwnd);
+        picker.FileTypeFilter.Add(".asc");
+        var file = await picker.PickSingleFileAsync();
+    }
+
+    private async void importlbrbutton_Click(object sender, RoutedEventArgs e)
+    {
+        var hwnd = App.MainWindow.GetWindowHandle();
+
+        var picker = new FileOpenPicker();
+        WinRT.Interop.InitializeWithWindow.Initialize(picker, hwnd);
+        picker.SuggestedStartLocation = PickerLocationId.Downloads;
+        picker.FileTypeFilter.Add(".asy");
+        picker.FileTypeFilter.Add(".lib");
+        picker.FileTypeFilter.Add(".sub");
+        var file = await picker.PickSingleFileAsync();
     }
 }
