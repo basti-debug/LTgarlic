@@ -1,19 +1,35 @@
 ﻿<Page
     x:Class="LTgarlic.Views.EditingPage"
+    Name="page"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <Canvas x:Name="ContentArea">
+    <Grid>
         <Canvas>
-            
+           <!-- Working canvas --> 
         </Canvas>
-        <Grid Name="hotbar"  Width="500" Height="50" Background="{StaticResource AccentAAFillColorTertiaryBrush}" CornerRadius="5">
-            <RadioButton>simulate</RadioButton>
-            <RadioButton>edit</RadioButton>
-            <RadioButton>components</RadioButton>
-        </Grid>
-    </Canvas>
+
+        
+
+        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,50" CornerRadius="10">
+            <AppBarToggleButton Icon="Edit" Label="construction mode" Click="EditButton_Click"/>
+            <AppBarToggleButton Icon="Calculator" Label="simulation mode" Click="SimuButton_Click"/>
+            <AppBarButton Icon="Add" Label="add Parts" Click="AddButton_Click"/>
+            <AppBarButton Icon="Rotate" Label="rotate Part" Click="RotateButton_Click"/>
+            <AppBarButton Icon="AlignCenter" Label="mirror Part" Click="mirrorButton_Click"/>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Setting" Label="Change Layout">
+                    <AppBarButton.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="I"/>
+                    </AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Grid>
+    
+    
+    
+    
 </Page>
