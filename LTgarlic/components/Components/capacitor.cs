@@ -1,0 +1,103 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using components.Miscellaneous;
+using Microsoft.UI;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Shapes;
+using Windows.Foundation;
+
+namespace components.Components;
+
+public class capacitor : component
+{
+    private readonly int width = 150;
+    private readonly int height = 50;
+    private readonly int conHeight = 15;
+    private readonly int pinlength = 100;
+    private readonly int sizeDiv = 2;
+
+    public string name = "cap";
+    private Canvas drawingTable;
+
+    private static List<int> indexes;
+    private int index;
+    private static int count;
+
+    public capacitor(Canvas drawingTable)
+    {
+        this.drawingTable = drawingTable;
+
+        index = count++;
+        indexes.Add(index);
+    }
+
+    public override List<Point> drawComponent(Point location, int rotation)
+    {
+        pins capPins = new pins(location, sizeDiv, width, height, pinlength);
+        var pinGroup = capPins.drawPins();
+
+        var myPath = new Path();
+        myPath.Stroke = new SolidColorBrush(Colors.Black);
+        myPath.StrokeThickness = 3;
+        myPath.Fill = new SolidColorBrush(Colors.Black);
+        myPath.StrokeEndLineCap = PenLineCap.Round;
+        myPath.StrokeStartLineCap = PenLineCap.Round;
+
+        List<Ellipse> pads = new List<Ellipse>();
+        pads = capPins.getPads();
+
+        var con1 = new RectangleGeometry()
+        {
+            Rect = new Rect(location.X, location.Y, width / sizeDiv, conHeight / sizeDiv)
+        };
+        var con2 = new RectangleGeometry()
+        {
+            Rect = new Rect(location.X, location.Y + height / sizeDiv - conHeight / sizeDiv, width / sizeDiv, conHeight / sizeDiv)
+        };
+
+        var capGroup = new GeometryGroup();
+        capGroup.Children.Add(con1);
+        capGroup.Children.Add(con2);
+        capGroup.Children.Add(pinGroup[0]);
+        capGroup.Children.Add(pinGroup[1]);
+
+        myPath.Data = capGroup;
+
+        var center = new RotateTransform();
+        center.Angle = rotation;
+        center.CenterX = location.X + width / 2 / sizeDiv;
+        center.CenterY = location.Y + height / 2 / sizeDiv;
+
+        myPath.RenderTransform = center;
+        pads[0].RenderTransform = center;
+        pads[1].RenderTransform = center;
+
+        drawingTable.Children.Add(myPath);
+        drawingTable.Children.Add(pads[0]);
+        drawingTable.Children.Add(pads[1]);
+
+        var Pins = new List<Point>() { capPins.pin1, capPins.pin2 };
+
+        return Pins;
+    }
+
+    public override void deleteComponent()
+    {
+        count--;
+        drawingTable.Children.RemoveAt(indexes.IndexOf(index));
+        indexes.RemoveAt(index);
+    }
+
+    public override List<Point> moveComponent(Point location, int rotation)
+    {
+        deleteComponent();
+        List<Point> pins = new();
+        pins = drawComponent(location, rotation);
+        return pins;
+    }
+}
