@@ -6,8 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.UI.Xaml.Controls;
+using components.Miscellaneous;
 
-namespace components;
+namespace components.Components;
 
 public abstract class component
 {
