@@ -95,13 +95,34 @@ public sealed partial class EditingPage : Page
             components.Add(new diode(drawingTable));
         }
 
+        rotation = 0;
         placeComponentSelected = true;
         firstTimeMoveAccess = true;
     }
 
+    private int rotation;
+    private int clickCounter = 0;
     private void RotateButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
+        clickCounter++;
+        switch (clickCounter)
+        {
+            case 1:
+                rotation = 90;
+                break;
+            case 2:
+                rotation = 180;
+                break;
+            case 3:
+                rotation = 270;
+                break;
+            case 4:
+                rotation = 0;
+                clickCounter = 0;
+                break;
+        }
 
+        components[components.Count - 1].moveComponent(mousePos, rotation);
     }
 
     private void mirrorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
@@ -119,21 +140,24 @@ public sealed partial class EditingPage : Page
         {
             if (firstTimeMoveAccess)
             {
-                components[components.Count - 1].drawComponent(mousePos, 0);
+                components[components.Count - 1].drawComponent(mousePos, rotation);
                 firstTimeMoveAccess = false;
             }
             else
             {
-                components[components.Count - 1].moveComponent(mousePos, 0);
+                components[components.Count - 1].moveComponent(mousePos, rotation);
             }
         }
     }
 
     private void drawingTable_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
     {
-        if (placeComponentSelected)
+        if (e.GetCurrentPoint(this).Properties.IsLeftButtonPressed)
         {
-            placeComponentSelected = false;
+            if (placeComponentSelected)
+            {
+                placeComponentSelected = false;
+            }
         }
     }
 }

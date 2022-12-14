@@ -9,7 +9,8 @@
     <Grid>
         <Canvas Width="600" Height="500" Background="Transparent"  Name="drawingTable"
                 PointerMoved="drawingTable_PointerMoved"
-                PointerPressed="drawingTable_PointerPressed">
+                PointerPressed="drawingTable_PointerPressed"
+                RightTapped="RotateButton_Click">
             
         </Canvas>
 

@@ -89,10 +89,10 @@ public class capacitor : component
         drawingTable.Children.Remove(pads[1]);
     }
 
+    List<Point> pins = new();
     public override List<Point> moveComponent(Point location, int rotation)
     {
         deleteComponent();
-        List<Point> pins = new();
         pins = drawComponent(location, rotation);
         return pins;
     }
