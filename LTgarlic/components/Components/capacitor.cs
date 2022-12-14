@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using components.Miscellaneous;
 using Microsoft.UI;
+using Microsoft.UI.Input;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
@@ -22,33 +23,26 @@ public class capacitor : component
     private readonly int sizeDiv = 2;
 
     public string name = "cap";
-    private Canvas drawingTable;
-
-    private static List<int> indexes;
-    private int index;
-    private static int count;
+    private readonly Canvas drawingTable;
 
     public capacitor(Canvas drawingTable)
     {
         this.drawingTable = drawingTable;
-
-        index = count++;
-        indexes.Add(index);
     }
 
+    private readonly Path myPath = new();
+    private List<Ellipse> pads = new();
     public override List<Point> drawComponent(Point location, int rotation)
     {
         pins capPins = new pins(location, sizeDiv, width, height, pinlength);
         var pinGroup = capPins.drawPins();
 
-        var myPath = new Path();
         myPath.Stroke = new SolidColorBrush(Colors.Black);
         myPath.StrokeThickness = 3;
         myPath.Fill = new SolidColorBrush(Colors.Black);
         myPath.StrokeEndLineCap = PenLineCap.Round;
         myPath.StrokeStartLineCap = PenLineCap.Round;
 
-        List<Ellipse> pads = new List<Ellipse>();
         pads = capPins.getPads();
 
         var con1 = new RectangleGeometry()
@@ -89,8 +83,10 @@ public class capacitor : component
     public override void deleteComponent()
     {
         count--;
-        drawingTable.Children.RemoveAt(indexes.IndexOf(index));
-        indexes.RemoveAt(index);
+
+        drawingTable.Children.Remove(myPath);
+        drawingTable.Children.Remove(pads[0]);
+        drawingTable.Children.Remove(pads[1]);
     }
 
     public override List<Point> moveComponent(Point location, int rotation)
@@ -100,4 +96,5 @@ public class capacitor : component
         pins = drawComponent(location, rotation);
         return pins;
     }
+
 }

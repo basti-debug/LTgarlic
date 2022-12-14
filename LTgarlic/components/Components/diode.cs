@@ -23,30 +23,23 @@ public class diode : component
     public readonly string name = "diode";
     private Canvas drawingTable;
 
-    private static List<int> indexes;
-    private int index;
-    private static int count;
-
-    public diode(int rotation, Canvas drawingTable)
+    public diode(Canvas drawingTable)
     {
         this.drawingTable = drawingTable;
-
-        index = count++;
-        indexes.Add(index);
     }
 
+    private readonly Path myPath = new();
+    private List<Ellipse> pads = new();
     public override List<Point> drawComponent(Point location, int rotation)
     {
         pins diodePins = new pins(location, sizeDiv, width, height, pinlength);
         var pinGroup = diodePins.drawPins();
 
-        var myPath = new Path();
         myPath.Stroke = new SolidColorBrush(Colors.Black);
         myPath.StrokeThickness = 3;
         myPath.StrokeEndLineCap = PenLineCap.Round;
         myPath.StrokeStartLineCap = PenLineCap.Round;
 
-        List<Ellipse> pads = new List<Ellipse>();
         pads = diodePins.getPads();
 
         var l1 = new LineGeometry()
@@ -101,8 +94,10 @@ public class diode : component
     public override void deleteComponent()
     {
         count--;
-        drawingTable.Children.RemoveAt(indexes.IndexOf(index));
-        indexes.RemoveAt(index);
+
+        drawingTable.Children.Remove(myPath);
+        drawingTable.Children.Remove(pads[0]);
+        drawingTable.Children.Remove(pads[1]);
     }
 
     public override List<Point> moveComponent(Point location, int rotation)
@@ -112,4 +107,5 @@ public class diode : component
         pins = drawComponent(location, rotation);
         return pins;
     }
+
 }

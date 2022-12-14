@@ -23,31 +23,23 @@ public class resistor : component
     public readonly string name = "res";
     private readonly Canvas drawingTable;
 
-    private static List<int> indexes;
-    private int index;
-    private static int count;
-
-
     public resistor(Canvas drawingTable)
     {
         this.drawingTable = drawingTable;
-
-        index = count++;
-        indexes.Add(index);
     }
 
+    private readonly Path myPath = new();
+    private List<Ellipse> pads = new();
     public override List<Point> drawComponent(Point location, int rotation)
     {
         pins resPins = new pins(location, sizeDiv, width, height, pinlength);
         var pinGroup = resPins.drawPins();
 
-        var myPath = new Path();
         myPath.Stroke = new SolidColorBrush(Colors.Black);
         myPath.StrokeThickness = 3;
         myPath.StrokeEndLineCap = PenLineCap.Round;
         myPath.StrokeStartLineCap = PenLineCap.Round;
 
-        List<Ellipse> pads = new List<Ellipse>();
         pads = resPins.getPads();   
 
         var rect = new RectangleGeometry
@@ -71,6 +63,8 @@ public class resistor : component
         pads[0].RenderTransform = center;
         pads[1].RenderTransform = center;
 
+        count++;
+
         drawingTable.Children.Add(myPath);
         drawingTable.Children.Add(pads[0]);
         drawingTable.Children.Add(pads[1]);
@@ -83,14 +77,16 @@ public class resistor : component
     public override void deleteComponent()
     {
         count--;
-        drawingTable.Children.RemoveAt(indexes.IndexOf(index));
-        indexes.RemoveAt(index);
+
+        drawingTable.Children.Remove(myPath);
+        drawingTable.Children.Remove(pads[0]);
+        drawingTable.Children.Remove(pads[1]);
     }
 
+    private List<Point> pins = new();
     public override List<Point> moveComponent(Point location, int rotation)
     {
         deleteComponent();
-        var pins = new List<Point>();
         pins = drawComponent(location, rotation);
         return pins;
     }

@@ -52,23 +52,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\basti\\.nuget\\packages\\": {},
+    "C:\\Users\\gabri\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj",
+      "projectUniqueName": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj",
       "projectName": "LTgarlic.Core",
-      "projectPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj",
-      "packagesPath": "C:\\Users\\basti\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\obj\\",
+      "projectPath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj",
+      "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\basti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -77,6 +77,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
