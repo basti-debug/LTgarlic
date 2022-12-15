@@ -4,8 +4,10 @@ using System.Runtime.InteropServices;
 using ABI.Windows.Foundation;
 using components.Components;
 using LTgarlic.ViewModels;
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 using Windows.Devices.Input;
 
@@ -122,7 +124,10 @@ public sealed partial class EditingPage : Page
                 break;
         }
 
-        components[components.Count - 1].moveComponent(mousePos, rotation);
+        if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
+            components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+        else if (Application.Current.RequestedTheme == ApplicationTheme.Light)
+            components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));
     }
 
     private void mirrorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
@@ -136,18 +141,38 @@ public sealed partial class EditingPage : Page
     {
         mousePos = e.GetCurrentPoint(drawingTable).Position;
 
-        if (placeComponentSelected)
+        if(Application.Current.RequestedTheme == ApplicationTheme.Dark)
         {
-            if (firstTimeMoveAccess)
+            if (placeComponentSelected)
             {
-                components[components.Count - 1].drawComponent(mousePos, rotation);
-                firstTimeMoveAccess = false;
-            }
-            else
-            {
-                components[components.Count - 1].moveComponent(mousePos, rotation);
+                if (firstTimeMoveAccess)
+                {
+                    components[components.Count - 1].drawComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+                    firstTimeMoveAccess = false;
+                }
+                else
+                {
+                    components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+                }
             }
         }
+        else if(Application.Current.RequestedTheme == ApplicationTheme.Light)
+        {
+            if (placeComponentSelected)
+            {
+                if (firstTimeMoveAccess)
+                {
+                    components[components.Count - 1].drawComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));
+                    firstTimeMoveAccess = false;
+                }
+                else
+                {
+                    components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));
+                }
+            }
+        }
+
+
     }
 
     private void drawingTable_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)

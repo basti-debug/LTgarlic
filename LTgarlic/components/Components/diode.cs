@@ -30,12 +30,12 @@ public class diode : component
 
     private readonly Path myPath = new();
     private List<Ellipse> pads = new();
-    public override List<Point> drawComponent(Point location, int rotation)
+    public override List<Point> drawComponent(Point location, int rotation, SolidColorBrush color)
     {
         pins diodePins = new pins(location, sizeDiv, width, height, pinlength);
         var pinGroup = diodePins.drawPins();
 
-        myPath.Stroke = new SolidColorBrush(Colors.Black);
+        myPath.Stroke = color;
         myPath.StrokeThickness = 3;
         myPath.StrokeEndLineCap = PenLineCap.Round;
         myPath.StrokeStartLineCap = PenLineCap.Round;
@@ -100,11 +100,11 @@ public class diode : component
         drawingTable.Children.Remove(pads[1]);
     }
 
-    public override List<Point> moveComponent(Point location, int rotation)
+    private List<Point> pins = new();
+    public override List<Point> moveComponent(Point location, int rotation, SolidColorBrush color)
     {
         deleteComponent();
-        List<Point> pins = new();
-        pins = drawComponent(location, rotation);
+        pins = drawComponent(location, rotation, color);
         return pins;
     }
 

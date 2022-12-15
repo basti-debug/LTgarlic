@@ -32,14 +32,14 @@ public class capacitor : component
 
     private readonly Path myPath = new();
     private List<Ellipse> pads = new();
-    public override List<Point> drawComponent(Point location, int rotation)
+    public override List<Point> drawComponent(Point location, int rotation, SolidColorBrush color)
     {
         pins capPins = new pins(location, sizeDiv, width, height, pinlength);
         var pinGroup = capPins.drawPins();
 
-        myPath.Stroke = new SolidColorBrush(Colors.Black);
+        myPath.Stroke = color;
         myPath.StrokeThickness = 3;
-        myPath.Fill = new SolidColorBrush(Colors.Black);
+        myPath.Fill = color;
         myPath.StrokeEndLineCap = PenLineCap.Round;
         myPath.StrokeStartLineCap = PenLineCap.Round;
 
@@ -90,10 +90,10 @@ public class capacitor : component
     }
 
     List<Point> pins = new();
-    public override List<Point> moveComponent(Point location, int rotation)
+    public override List<Point> moveComponent(Point location, int rotation, SolidColorBrush color)
     {
         deleteComponent();
-        pins = drawComponent(location, rotation);
+        pins = drawComponent(location, rotation, color);
         return pins;
     }
 
