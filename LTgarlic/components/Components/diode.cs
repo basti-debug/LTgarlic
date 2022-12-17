@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,7 +22,9 @@ public class diode : component
     private readonly int sizeDiv = 2;
 
     public readonly string name = "diode";
-    private Canvas drawingTable;
+    private readonly Canvas drawingTable;
+
+    public List<Point> pins { get; set; }
 
     public diode(Canvas drawingTable)
     {
@@ -32,8 +35,8 @@ public class diode : component
     private List<Ellipse> pads = new();
     public override List<Point> drawComponent(Point location, int rotation, SolidColorBrush color)
     {
-        pins diodePins = new pins(location, sizeDiv, width, height, pinlength);
-        var pinGroup = diodePins.drawPins();
+        pins diodePins = new pins();
+        var pinGroup = diodePins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
 
         myPath.Stroke = color;
         myPath.StrokeThickness = 3;
@@ -86,9 +89,10 @@ public class diode : component
         drawingTable.Children.Add(pads[0]);
         drawingTable.Children.Add(pads[1]);
 
-        var Pins = new List<Point> { diodePins.pin1, diodePins.pin2 };
+        var pins = new List<Point> { diodePins.pin1, diodePins.pin2 };
+        this.pins = pins;
 
-        return Pins;
+        return pins;
     }
 
     public override void deleteComponent()
@@ -100,7 +104,6 @@ public class diode : component
         drawingTable.Children.Remove(pads[1]);
     }
 
-    private List<Point> pins = new();
     public override List<Point> moveComponent(Point location, int rotation, SolidColorBrush color)
     {
         deleteComponent();

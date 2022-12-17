@@ -25,17 +25,19 @@ public class capacitor : component
     public string name = "cap";
     private readonly Canvas drawingTable;
 
+    public List<Point> pins { get; set; }
+    private readonly Path myPath = new();
+    public List<Ellipse> pads = new();
+
     public capacitor(Canvas drawingTable)
     {
         this.drawingTable = drawingTable;
     }
 
-    private readonly Path myPath = new();
-    private List<Ellipse> pads = new();
     public override List<Point> drawComponent(Point location, int rotation, SolidColorBrush color)
     {
-        pins capPins = new pins(location, sizeDiv, width, height, pinlength);
-        var pinGroup = capPins.drawPins();
+        pins capPins = new pins();
+        var pinGroup = capPins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
 
         myPath.Stroke = color;
         myPath.StrokeThickness = 3;
@@ -75,9 +77,10 @@ public class capacitor : component
         drawingTable.Children.Add(pads[0]);
         drawingTable.Children.Add(pads[1]);
 
-        var Pins = new List<Point>() { capPins.pin1, capPins.pin2 };
+        var pins = new List<Point>() { capPins.pin1, capPins.pin2 };
+        this.pins = pins;
 
-        return Pins;
+        return pins;
     }
 
     public override void deleteComponent()
@@ -89,7 +92,6 @@ public class capacitor : component
         drawingTable.Children.Remove(pads[1]);
     }
 
-    List<Point> pins = new();
     public override List<Point> moveComponent(Point location, int rotation, SolidColorBrush color)
     {
         deleteComponent();

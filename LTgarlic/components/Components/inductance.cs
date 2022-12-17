@@ -23,6 +23,8 @@ public class inductance : component
     public readonly string name = "ind";
     private readonly Canvas drawingTable;
 
+    public List<Point> pins { get; set; }
+
     public inductance(Canvas drawingTable)
     {
         this.drawingTable = drawingTable;
@@ -32,8 +34,8 @@ public class inductance : component
     private List<Ellipse> pads = new();
     public override List<Point> drawComponent(Point location, int rotation, SolidColorBrush color)
     {
-        pins indPins = new pins(location, sizeDiv, width, height, pinlength);
-        var pinGroup = indPins.drawPins();
+        pins indPins = new pins();
+        var pinGroup = indPins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
 
         myPath.Stroke = color;
         myPath.StrokeThickness = 3;
@@ -68,9 +70,10 @@ public class inductance : component
         drawingTable.Children.Add(pads[0]);
         drawingTable.Children.Add(pads[1]);
 
-        var Pins = new List<Point> { indPins.pin1, indPins.pin2 };
+        var pins = new List<Point> { indPins.pin1, indPins.pin2 };
+        this.pins = pins;
 
-        return Pins;
+        return pins;
     }
 
     public override void deleteComponent()
@@ -82,7 +85,6 @@ public class inductance : component
         drawingTable.Children.Remove(pads[1]);
     }
 
-    private List<Point> pins = new();
     public override List<Point> moveComponent(Point location, int rotation, SolidColorBrush color)
     {
         deleteComponent();

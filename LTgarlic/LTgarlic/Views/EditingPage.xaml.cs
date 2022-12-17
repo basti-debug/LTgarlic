@@ -106,28 +106,31 @@ public sealed partial class EditingPage : Page
     private int clickCounter = 0;
     private void RotateButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        clickCounter++;
-        switch (clickCounter)
+        if (placeComponentSelected)
         {
-            case 1:
-                rotation = 90;
-                break;
-            case 2:
-                rotation = 180;
-                break;
-            case 3:
-                rotation = 270;
-                break;
-            case 4:
-                rotation = 0;
-                clickCounter = 0;
-                break;
-        }
+            clickCounter++;
+            switch (clickCounter)
+            {
+                case 1:
+                    rotation = 90;
+                    break;
+                case 2:
+                    rotation = 180;
+                    break;
+                case 3:
+                    rotation = 270;
+                    break;
+                case 4:
+                    rotation = 0;
+                    clickCounter = 0;
+                    break;
+            }
 
-        if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
-            components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
-        else if (Application.Current.RequestedTheme == ApplicationTheme.Light)
-            components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));
+            if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
+                components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+            else if (Application.Current.RequestedTheme == ApplicationTheme.Light)
+                components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));
+        }
     }
 
     private void mirrorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
@@ -164,7 +167,7 @@ public sealed partial class EditingPage : Page
                 {
                     components[components.Count - 1].drawComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));
                     firstTimeMoveAccess = false;
-                }
+                }                   
                 else
                 {
                     components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));

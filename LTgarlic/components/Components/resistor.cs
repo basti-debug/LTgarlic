@@ -20,8 +20,10 @@ public class resistor : component
     private readonly int pinlength = 100;
     private readonly int sizeDiv = 2;
 
-    public readonly string name = "res";
+    private readonly string name = "res";
     private readonly Canvas drawingTable;
+
+    public List<Point> pins { get; set; }
 
     public resistor(Canvas drawingTable)
     {
@@ -32,8 +34,8 @@ public class resistor : component
     private List<Ellipse> pads = new();
     public override List<Point> drawComponent(Point location, int rotation, SolidColorBrush color)
     {
-        pins resPins = new pins(location, sizeDiv, width, height, pinlength);
-        var pinGroup = resPins.drawPins();
+        pins resPins = new pins();
+        var pinGroup = resPins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
 
         myPath.Stroke = color;
         myPath.StrokeThickness = 3;
@@ -60,8 +62,6 @@ public class resistor : component
         center.CenterY = location.Y + height / 2 / sizeDiv;
 
         myPath.RenderTransform = center;
-        pads[0].RenderTransform = center;
-        pads[1].RenderTransform = center;
 
         count++;
 
@@ -69,7 +69,8 @@ public class resistor : component
         drawingTable.Children.Add(pads[0]);
         drawingTable.Children.Add(pads[1]);
 
-        List<Point> pins = new List<Point> { resPins.pin1, resPins.pin2 };
+        var pins = new List<Point> { resPins.pin1, resPins.pin2 };
+        this.pins = pins;
 
         return pins;
     }
@@ -83,7 +84,6 @@ public class resistor : component
         drawingTable.Children.Remove(pads[1]);
     }
 
-    private List<Point> pins = new();
     public override List<Point> moveComponent(Point location, int rotation, SolidColorBrush color)
     {
         deleteComponent();
