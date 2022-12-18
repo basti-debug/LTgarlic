@@ -83,13 +83,18 @@ public class pins
         Canvas.SetTop(pad2, location.Y + height / sizeDiv + pinlength / sizeDiv - pad2.Height / 2);
         Canvas.SetLeft(pad2, location.X + width / 2 / sizeDiv - pad2.Width / 2);
 
-        var center = new RotateTransform();
-        center.Angle = rotation;
-        center.CenterX = location.X + width / 2 / sizeDiv;
-        center.CenterY = location.Y + height / 2 / sizeDiv;
+        var center1 = new RotateTransform();
+        center1.Angle = rotation;
+        center1.CenterX = pad1.Width / 2;
+        center1.CenterY = pinlength / sizeDiv + height / 2 / sizeDiv + pad1.Height / 2;
 
-        pad1.RenderTransform = center;
-        pad2.RenderTransform = center;
+        var center2 = new RotateTransform();
+        center2.Angle = rotation;
+        center2.CenterX = pad2.Width / 2;
+        center2.CenterY = -pinlength / sizeDiv - height / 2 / sizeDiv + pad2.Height / 2;
+
+        pad1.RenderTransform = center1;
+        pad2.RenderTransform = center2;
 
         List<Ellipse> padGroup = new List<Ellipse> { pad1, pad2 };
 

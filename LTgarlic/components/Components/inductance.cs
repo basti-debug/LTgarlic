@@ -63,8 +63,6 @@ public class inductance : component
         center.CenterY = location.Y + height / 2 / sizeDiv;
 
         myPath.RenderTransform = center;
-        pads[0].RenderTransform = center;
-        pads[1].RenderTransform = center;
 
         drawingTable.Children.Add(myPath);
         drawingTable.Children.Add(pads[0]);
