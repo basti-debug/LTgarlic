@@ -21,33 +21,28 @@ public class inductance : component
     private readonly int sizeDiv = 2;
 
     public readonly string name = "ind";
-    private Canvas drawingTable;
+    private readonly Canvas drawingTable;
 
-    private static List<int> indexes;
-    private int index;
-    private static int count;
+    public List<Point> pins { get; set; }
 
-    public inductance(Point location, int rotation, Canvas drawingTable)
+    public inductance(Canvas drawingTable)
     {
         this.drawingTable = drawingTable;
-
-        index = count++;
-        indexes.Add(index);
     }
 
-    public override List<Point> drawComponent(Point location, int rotation)
+    private readonly Path myPath = new();
+    private List<Ellipse> pads = new();
+    public override List<Point> drawComponent(Point location, int rotation, SolidColorBrush color)
     {
-        pins indPins = new pins(location, sizeDiv, width, height, pinlength);
-        var pinGroup = indPins.drawPins();
+        pins indPins = new pins();
+        var pinGroup = indPins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
 
-        var myPath = new Path();
-        myPath.Stroke = new SolidColorBrush(Colors.Black);
+        myPath.Stroke = color;
         myPath.StrokeThickness = 3;
         myPath.StrokeEndLineCap = PenLineCap.Round;
         myPath.StrokeStartLineCap = PenLineCap.Round;
-        myPath.Fill = new SolidColorBrush(Colors.Black);
+        myPath.Fill = color;
 
-        List<Ellipse> pads = new List<Ellipse>();
         pads = indPins.getPads();
 
         var rect = new RectangleGeometry
@@ -75,23 +70,26 @@ public class inductance : component
         drawingTable.Children.Add(pads[0]);
         drawingTable.Children.Add(pads[1]);
 
-        var Pins = new List<Point> { indPins.pin1, indPins.pin2 };
+        var pins = new List<Point> { indPins.pin1, indPins.pin2 };
+        this.pins = pins;
 
-        return Pins;
+        return pins;
     }
 
     public override void deleteComponent()
     {
         count--;
-        drawingTable.Children.RemoveAt(indexes.IndexOf(index));
-        indexes.RemoveAt(index);
+
+        drawingTable.Children.Remove(myPath);
+        drawingTable.Children.Remove(pads[0]);
+        drawingTable.Children.Remove(pads[1]);
     }
 
-    public override List<Point> moveComponent(Point location, int rotation)
+    public override List<Point> moveComponent(Point location, int rotation, SolidColorBrush color)
     {
         deleteComponent();
-        List<Point> pins = new();
-        pins = drawComponent(location, rotation);
+        pins = drawComponent(location, rotation, color);
         return pins;
     }
+
 }

@@ -20,34 +20,28 @@ public class resistor : component
     private readonly int pinlength = 100;
     private readonly int sizeDiv = 2;
 
-    public readonly string name = "res";
+    private readonly string name = "res";
     private readonly Canvas drawingTable;
 
-    private static List<int> indexes;
-    private int index;
-    private static int count;
-
+    public List<Point> pins { get; set; }
 
     public resistor(Canvas drawingTable)
     {
         this.drawingTable = drawingTable;
-
-        index = count++;
-        indexes.Add(index);
     }
 
-    public override List<Point> drawComponent(Point location, int rotation)
+    private readonly Path myPath = new();
+    private List<Ellipse> pads = new();
+    public override List<Point> drawComponent(Point location, int rotation, SolidColorBrush color)
     {
-        pins resPins = new pins(location, sizeDiv, width, height, pinlength);
-        var pinGroup = resPins.drawPins();
+        pins resPins = new pins();
+        var pinGroup = resPins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
 
-        var myPath = new Path();
-        myPath.Stroke = new SolidColorBrush(Colors.Black);
+        myPath.Stroke = color;
         myPath.StrokeThickness = 3;
         myPath.StrokeEndLineCap = PenLineCap.Round;
         myPath.StrokeStartLineCap = PenLineCap.Round;
 
-        List<Ellipse> pads = new List<Ellipse>();
         pads = resPins.getPads();   
 
         var rect = new RectangleGeometry
@@ -68,14 +62,15 @@ public class resistor : component
         center.CenterY = location.Y + height / 2 / sizeDiv;
 
         myPath.RenderTransform = center;
-        pads[0].RenderTransform = center;
-        pads[1].RenderTransform = center;
+
+        count++;
 
         drawingTable.Children.Add(myPath);
         drawingTable.Children.Add(pads[0]);
         drawingTable.Children.Add(pads[1]);
 
-        List<Point> pins = new List<Point> { resPins.pin1, resPins.pin2 };
+        var pins = new List<Point> { resPins.pin1, resPins.pin2 };
+        this.pins = pins;
 
         return pins;
     }
@@ -83,15 +78,16 @@ public class resistor : component
     public override void deleteComponent()
     {
         count--;
-        drawingTable.Children.RemoveAt(indexes.IndexOf(index));
-        indexes.RemoveAt(index);
+
+        drawingTable.Children.Remove(myPath);
+        drawingTable.Children.Remove(pads[0]);
+        drawingTable.Children.Remove(pads[1]);
     }
 
-    public override List<Point> moveComponent(Point location, int rotation)
+    public override List<Point> moveComponent(Point location, int rotation, SolidColorBrush color)
     {
         deleteComponent();
-        var pins = new List<Point>();
-        pins = drawComponent(location, rotation);
+        pins = drawComponent(location, rotation, color);
         return pins;
     }
 }

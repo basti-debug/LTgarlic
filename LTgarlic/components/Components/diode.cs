@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,32 +22,27 @@ public class diode : component
     private readonly int sizeDiv = 2;
 
     public readonly string name = "diode";
-    private Canvas drawingTable;
+    private readonly Canvas drawingTable;
 
-    private static List<int> indexes;
-    private int index;
-    private static int count;
+    public List<Point> pins { get; set; }
 
-    public diode(int rotation, Canvas drawingTable)
+    public diode(Canvas drawingTable)
     {
         this.drawingTable = drawingTable;
-
-        index = count++;
-        indexes.Add(index);
     }
 
-    public override List<Point> drawComponent(Point location, int rotation)
+    private readonly Path myPath = new();
+    private List<Ellipse> pads = new();
+    public override List<Point> drawComponent(Point location, int rotation, SolidColorBrush color)
     {
-        pins diodePins = new pins(location, sizeDiv, width, height, pinlength);
-        var pinGroup = diodePins.drawPins();
+        pins diodePins = new pins();
+        var pinGroup = diodePins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
 
-        var myPath = new Path();
-        myPath.Stroke = new SolidColorBrush(Colors.Black);
+        myPath.Stroke = color;
         myPath.StrokeThickness = 3;
         myPath.StrokeEndLineCap = PenLineCap.Round;
         myPath.StrokeStartLineCap = PenLineCap.Round;
 
-        List<Ellipse> pads = new List<Ellipse>();
         pads = diodePins.getPads();
 
         var l1 = new LineGeometry()
@@ -93,23 +89,26 @@ public class diode : component
         drawingTable.Children.Add(pads[0]);
         drawingTable.Children.Add(pads[1]);
 
-        var Pins = new List<Point> { diodePins.pin1, diodePins.pin2 };
+        var pins = new List<Point> { diodePins.pin1, diodePins.pin2 };
+        this.pins = pins;
 
-        return Pins;
+        return pins;
     }
 
     public override void deleteComponent()
     {
         count--;
-        drawingTable.Children.RemoveAt(indexes.IndexOf(index));
-        indexes.RemoveAt(index);
+
+        drawingTable.Children.Remove(myPath);
+        drawingTable.Children.Remove(pads[0]);
+        drawingTable.Children.Remove(pads[1]);
     }
 
-    public override List<Point> moveComponent(Point location, int rotation)
+    public override List<Point> moveComponent(Point location, int rotation, SolidColorBrush color)
     {
         deleteComponent();
-        List<Point> pins = new();
-        pins = drawComponent(location, rotation);
+        pins = drawComponent(location, rotation, color);
         return pins;
     }
+
 }

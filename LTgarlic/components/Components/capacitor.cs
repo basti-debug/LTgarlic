@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using components.Miscellaneous;
 using Microsoft.UI;
+using Microsoft.UI.Input;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
@@ -22,33 +23,28 @@ public class capacitor : component
     private readonly int sizeDiv = 2;
 
     public string name = "cap";
-    private Canvas drawingTable;
+    private readonly Canvas drawingTable;
 
-    private static List<int> indexes;
-    private int index;
-    private static int count;
+    public List<Point> pins { get; set; }
+    private readonly Path myPath = new();
+    public List<Ellipse> pads = new();
 
     public capacitor(Canvas drawingTable)
     {
         this.drawingTable = drawingTable;
-
-        index = count++;
-        indexes.Add(index);
     }
 
-    public override List<Point> drawComponent(Point location, int rotation)
+    public override List<Point> drawComponent(Point location, int rotation, SolidColorBrush color)
     {
-        pins capPins = new pins(location, sizeDiv, width, height, pinlength);
-        var pinGroup = capPins.drawPins();
+        pins capPins = new pins();
+        var pinGroup = capPins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
 
-        var myPath = new Path();
-        myPath.Stroke = new SolidColorBrush(Colors.Black);
+        myPath.Stroke = color;
         myPath.StrokeThickness = 3;
-        myPath.Fill = new SolidColorBrush(Colors.Black);
+        myPath.Fill = color;
         myPath.StrokeEndLineCap = PenLineCap.Round;
         myPath.StrokeStartLineCap = PenLineCap.Round;
 
-        List<Ellipse> pads = new List<Ellipse>();
         pads = capPins.getPads();
 
         var con1 = new RectangleGeometry()
@@ -81,23 +77,26 @@ public class capacitor : component
         drawingTable.Children.Add(pads[0]);
         drawingTable.Children.Add(pads[1]);
 
-        var Pins = new List<Point>() { capPins.pin1, capPins.pin2 };
+        var pins = new List<Point>() { capPins.pin1, capPins.pin2 };
+        this.pins = pins;
 
-        return Pins;
+        return pins;
     }
 
     public override void deleteComponent()
     {
         count--;
-        drawingTable.Children.RemoveAt(indexes.IndexOf(index));
-        indexes.RemoveAt(index);
+
+        drawingTable.Children.Remove(myPath);
+        drawingTable.Children.Remove(pads[0]);
+        drawingTable.Children.Remove(pads[1]);
     }
 
-    public override List<Point> moveComponent(Point location, int rotation)
+    public override List<Point> moveComponent(Point location, int rotation, SolidColorBrush color)
     {
         deleteComponent();
-        List<Point> pins = new();
-        pins = drawComponent(location, rotation);
+        pins = drawComponent(location, rotation, color);
         return pins;
     }
+
 }
