@@ -1,19 +1,25 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
-using ABI.Windows.Foundation;
+using System.Text;
 using components.Components;
+using components.Miscellaneous;
 using LTgarlic.ViewModels;
+using Microsoft.Extensions.Logging;
 using Microsoft.UI;
+using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 using Newtonsoft.Json.Linq;
 using Windows.Devices.Input;
+using Windows.Foundation;
 using Windows.Management.Deployment;
 using Windows.Storage;
+using Windows.System;
 using Windows.UI;
+using Windows.UI.Core;
 using WinRT;
 
 namespace LTgarlic.Views;
@@ -21,6 +27,7 @@ namespace LTgarlic.Views;
 public sealed partial class EditingPage : Page
 {
     public List<List<Ellipse>> pads = new();
+
     public EditingViewModel ViewModel
     {
         get;
@@ -78,7 +85,6 @@ public sealed partial class EditingPage : Page
 
             var result = await dialog.ShowAsync();
         }
-
     }
 
     private readonly List<component> components = new();
@@ -131,21 +137,19 @@ public sealed partial class EditingPage : Page
                     break;
             }
 
-            if (SettingsPage.theme == "Dark")
+            switch(SettingsPage.theme)
             {
-                components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
-                pads.Add(components[components.Count - 1].pads);
+                case "Dark":
+                    components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+                    break;
+                case "Light":
+                    components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));
+                    break;
+                case "Default":
+                    components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+                    break;
             }
-            else if (SettingsPage.theme == "Light")
-            {
-                components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));
-                pads.Add(components[components.Count - 1].pads);
-            }
-            else if (SettingsPage.theme == "Default")
-            {
-                components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
-                pads.Add(components[components.Count - 1].pads);
-            }
+            pads.Add(components[components.Count - 1].pads);
         }
     }
 
@@ -214,13 +218,44 @@ public sealed partial class EditingPage : Page
         }
     }
 
+    public static int wireClickCnt = 0;
+    private Point startPoint = new();
+    private Point endPoint = new();
     private void drawingTable_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
     {
         if (e.GetCurrentPoint(this).Properties.IsLeftButtonPressed)
         {
             if (placeComponentSelected)
-            {
                 placeComponentSelected = false;
+
+            else if (ShellPage.wireMode)
+            {
+                wire wire = new wire(drawingTable);
+                wireClickCnt++;
+
+                if (wireClickCnt == 1)
+                {
+                    startPoint = mousePos;
+                }
+                if (wireClickCnt > 1)
+                {
+                    endPoint = mousePos;
+
+                    switch (SettingsPage.theme)
+                    {
+                        case "Dark":
+                            wire.drawWire(startPoint, endPoint, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
+                            break;
+                        case "Light":
+                            wire.drawWire(startPoint, endPoint, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
+                            break;
+                        case "Default":
+                            wire.drawWire(startPoint, endPoint, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
+                            break;
+                    }
+
+                    startPoint = mousePos;
+                }
             }
         }
     }

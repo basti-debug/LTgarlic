@@ -18,7 +18,7 @@ public class wire
     public Point startPoint { get; set; }
     public Point endPoint { get; set; }
 
-    public List<wire> wires = new();
+    public static List<wire> wires = new();
 
     public wire(Canvas drawingTable)
     {
@@ -41,7 +41,8 @@ public class wire
                 X2 = endPoint.X,
                 Y2 = startPoint.Y,
                 Stroke = color,
-                StrokeThickness = 3
+                StrokeThickness = 3,
+                StrokeStartLineCap = PenLineCap.Round
             };
             Line vertical = new Line()
             {
@@ -50,7 +51,8 @@ public class wire
                 X2 = endPoint.X,
                 Y2 = endPoint.Y,
                 Stroke = color,
-                StrokeThickness = 3
+                StrokeThickness = 3,
+                StrokeStartLineCap = PenLineCap.Round
             };
             drawingTable.Children.Add(horizontal);
             drawingTable.Children.Add(vertical);
@@ -71,7 +73,8 @@ public class wire
                 X2 = startPoint.X,
                 Y2 = endPoint.Y,
                 Stroke = color,
-                StrokeThickness = 3
+                StrokeThickness = 3,
+                StrokeStartLineCap = PenLineCap.Round
             };
 
             Line horizontal = new Line()
@@ -81,7 +84,8 @@ public class wire
                 X2 = endPoint.X,
                 Y2 = endPoint.Y,
                 Stroke = color,
-                StrokeThickness = 3
+                StrokeThickness = 3,
+                StrokeStartLineCap = PenLineCap.Round
             };
 
             drawingTable.Children.Add(vertical);

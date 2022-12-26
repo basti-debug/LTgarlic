@@ -1,4 +1,5 @@
-﻿using LTgarlic.Contracts.Services;
+﻿using components.Components;
+using LTgarlic.Contracts.Services;
 using LTgarlic.Helpers;
 using LTgarlic.ViewModels;
 
@@ -14,6 +15,8 @@ namespace LTgarlic.Views;
 // TODO: Update NavigationViewItem titles and icons in ShellPage.xaml.
 public sealed partial class ShellPage : Page
 {
+    public static bool wireMode = false;
+
     public ShellViewModel ViewModel
     {
         get;
@@ -83,5 +86,24 @@ public sealed partial class ShellPage : Page
         var result = navigationService.GoBack();
 
         args.Handled = result;
+    }
+
+    private bool firstAccess = true;
+    private void Page_KeyDown(object sender, KeyRoutedEventArgs e)
+    {
+        if (e.Key == (VirtualKey)0x57)
+        {
+            if (firstAccess)
+            {
+                wireMode = true;
+                firstAccess = false;
+            }
+            else
+            {
+                wireMode = false;
+                firstAccess = true;
+                EditingPage.wireClickCnt = 0;
+            }
+        }
     }
 }
