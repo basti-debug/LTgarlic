@@ -18,6 +18,8 @@ public class wire
     public Point startPoint { get; set; }
     public Point endPoint { get; set; }
 
+    public List<wire> wires = new();
+
     public wire(Canvas drawingTable)
     {
         this.drawingTable = drawingTable;

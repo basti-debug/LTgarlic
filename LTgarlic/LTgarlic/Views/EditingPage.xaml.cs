@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
-using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Security.AccessControl;
 using ABI.Windows.Foundation;
 using components.Components;
 using LTgarlic.ViewModels;
@@ -9,12 +9,18 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
+using Newtonsoft.Json.Linq;
 using Windows.Devices.Input;
+using Windows.Management.Deployment;
+using Windows.Storage;
+using Windows.UI;
+using WinRT;
 
 namespace LTgarlic.Views;
 
 public sealed partial class EditingPage : Page
 {
+    public List<List<Ellipse>> pads = new();
     public EditingViewModel ViewModel
     {
         get;
@@ -38,7 +44,6 @@ public sealed partial class EditingPage : Page
     private bool firstAccessCheck = true;
     private readonly ComboBox libary = new();
     private readonly ContentDialog dialog = new();
-
     private async void AddButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         if (firstAccessCheck)
@@ -126,10 +131,21 @@ public sealed partial class EditingPage : Page
                     break;
             }
 
-            if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
+            if (SettingsPage.theme == "Dark")
+            {
                 components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
-            else if (Application.Current.RequestedTheme == ApplicationTheme.Light)
+                pads.Add(components[components.Count - 1].pads);
+            }
+            else if (SettingsPage.theme == "Light")
+            {
                 components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));
+                pads.Add(components[components.Count - 1].pads);
+            }
+            else if (SettingsPage.theme == "Default")
+            {
+                components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+                pads.Add(components[components.Count - 1].pads);
+            }
         }
     }
 
@@ -144,7 +160,7 @@ public sealed partial class EditingPage : Page
     {
         mousePos = e.GetCurrentPoint(drawingTable).Position;
 
-        if(Application.Current.RequestedTheme == ApplicationTheme.Dark)
+        if (SettingsPage.theme == "Dark")
         {
             if (placeComponentSelected)
             {
@@ -152,14 +168,17 @@ public sealed partial class EditingPage : Page
                 {
                     components[components.Count - 1].drawComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
                     firstTimeMoveAccess = false;
+                    pads.Add(components[components.Count - 1].pads);
                 }
                 else
                 {
                     components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+                    pads.Add(components[components.Count - 1].pads);
                 }
             }
         }
-        else if(Application.Current.RequestedTheme == ApplicationTheme.Light)
+
+        else if (SettingsPage.theme == "Light")
         {
             if (placeComponentSelected)
             {
@@ -167,15 +186,32 @@ public sealed partial class EditingPage : Page
                 {
                     components[components.Count - 1].drawComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));
                     firstTimeMoveAccess = false;
-                }                   
+                    pads.Add(components[components.Count - 1].pads);
+                }
                 else
                 {
                     components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));
+                    pads.Add(components[components.Count - 1].pads);
                 }
             }
         }
-
-
+        else if (SettingsPage.theme == "Default")
+        {
+            if (placeComponentSelected)
+            {
+                if (firstTimeMoveAccess)
+                {
+                    components[components.Count - 1].drawComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+                    firstTimeMoveAccess = false;
+                    pads.Add(components[components.Count - 1].pads);
+                }
+                else
+                {
+                    components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+                    pads.Add(components[components.Count - 1].pads);
+                }
+            }
+        }
     }
 
     private void drawingTable_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)

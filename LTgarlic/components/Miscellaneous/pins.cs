@@ -4,17 +4,22 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using ABI.Windows.UI;
 using components.Components;
 using Microsoft.UI;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
+using Windows.ApplicationModel.Store;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
+using Windows.UI;
 
 namespace components.Miscellaneous;
 public class pins
 {
+    #region properties
     public Point location { get; set; }
     public int sizeDiv { get; set; }
     public int width { get; set; }
@@ -25,12 +30,16 @@ public class pins
     public Point pin1 { get; set; }
     public Point pin2 { get; set; }
 
+    #endregion
 
+    #region constructor
     public pins()
     {
 
     }
+    #endregion
 
+    #region drawPins
     public List<LineGeometry> drawPins(Point location, int sizeDiv, int width, int height, int pinlength, int rotation)
     {
         this.location = location;
@@ -56,27 +65,25 @@ public class pins
 
         return new List<LineGeometry> { pinline1, pinline2 };
     }
+    #endregion
 
+    #region getPads
+    public Ellipse pad1 = new();
+    public Ellipse pad2 = new();
     public List<Ellipse> getPads()
     {
-        Ellipse pad1 = new Ellipse()
-        {
-            Width = 20 / sizeDiv,
-            Height = 20 / sizeDiv,
-            Stroke = new SolidColorBrush(Colors.LightBlue),
-            StrokeThickness = 1,
-            Fill = new SolidColorBrush(Colors.LightBlue),
-        };
+        pad1.Width = 30 / sizeDiv;
+        pad1.Height = 30 / sizeDiv;
+        pad1.Stroke = new SolidColorBrush(Colors.Transparent);
+        pad1.StrokeThickness = 1;
+        pad1.Fill = new SolidColorBrush(Colors.Transparent);
 
-        Ellipse pad2 = new Ellipse()
-        {
-            Width = 20 / sizeDiv,
-            Height = 20 / sizeDiv,
-            Stroke = new SolidColorBrush(Colors.LightBlue),
-            StrokeThickness = 1,
-            Fill = new SolidColorBrush(Colors.LightBlue)
-        };
-
+        pad2.Width = 30 / sizeDiv;
+        pad2.Height = 30 / sizeDiv;
+        pad2.Stroke = new SolidColorBrush(Colors.Transparent);
+        pad2.StrokeThickness = 1;
+        pad2.Fill = new SolidColorBrush(Colors.Transparent);
+        
         Canvas.SetTop(pad1, location.Y - pinlength / sizeDiv - pad1.Height / 2);
         Canvas.SetLeft(pad1, location.X + width / 2 / sizeDiv - pad1.Width / 2);
 
@@ -85,7 +92,7 @@ public class pins
 
         var center1 = new RotateTransform();
         center1.Angle = rotation;
-        center1.CenterX = pad1.Width / 2;
+        center1.CenterX = pad1.Width / 2; 
         center1.CenterY = pinlength / sizeDiv + height / 2 / sizeDiv + pad1.Height / 2;
 
         var center2 = new RotateTransform();
@@ -100,4 +107,5 @@ public class pins
 
         return padGroup;
     }
+    #endregion
 }

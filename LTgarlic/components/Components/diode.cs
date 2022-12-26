@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 using System.Windows;
 using components.Miscellaneous;
 using Microsoft.UI;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 using Windows.Foundation;
+using Windows.UI;
 
 namespace components.Components;
 
@@ -24,7 +26,8 @@ public class diode : component
     public readonly string name = "diode";
     private readonly Canvas drawingTable;
 
-    public List<Point> pins { get; set; }
+    public override List<Point> pins { get; set; }
+    public override List<Ellipse> pads { get; set; }
 
     public diode(Canvas drawingTable)
     {
@@ -32,7 +35,6 @@ public class diode : component
     }
 
     private readonly Path myPath = new();
-    private List<Ellipse> pads = new();
     public override List<Point> drawComponent(Point location, int rotation, SolidColorBrush color)
     {
         pins diodePins = new pins();
@@ -87,10 +89,34 @@ public class diode : component
         drawingTable.Children.Add(pads[0]);
         drawingTable.Children.Add(pads[1]);
 
+        foreach (Ellipse pad in pads)
+        {
+            pad.PointerEntered += Pad_PointerEntered;
+            pad.PointerExited += Pad_PointerExited;
+            pad.PointerPressed += Pad_PointerPressed;
+        }
+
         var pins = new List<Point> { diodePins.pin1, diodePins.pin2 };
         this.pins = pins;
 
         return pins;
+    }
+
+    private void Pad_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+    {
+
+    }
+
+    private void Pad_PointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+    {
+        ((Ellipse)drawingTable.Children[drawingTable.Children.IndexOf((Ellipse)sender)]).Fill = new SolidColorBrush(Colors.Transparent);
+        ((Ellipse)drawingTable.Children[drawingTable.Children.IndexOf((Ellipse)sender)]).Stroke = new SolidColorBrush(Colors.Transparent);
+    }
+
+    private void Pad_PointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+    {
+        ((Ellipse)drawingTable.Children[drawingTable.Children.IndexOf((Ellipse)sender)]).Fill = new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]);
+        ((Ellipse)drawingTable.Children[drawingTable.Children.IndexOf((Ellipse)sender)]).Stroke = new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]);
     }
 
     public override void deleteComponent()
