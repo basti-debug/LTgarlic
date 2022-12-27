@@ -11,14 +11,13 @@
                 PointerMoved="drawingTable_PointerMoved"
                 PointerPressed="drawingTable_PointerPressed"
                 RightTapped="RotateButton_Click">
-            
         </Canvas>
 
         
 
         <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,50" CornerRadius="10">
             <AppBarToggleButton Icon="Edit" Label="construction mode" Click="EditButton_Click"/>
-            <AppBarToggleButton Icon="Calculator" Label="simulation mode" Click="SimuButton_Click"/>
+            <AppBarButton Icon="Calculator" Label="simulation mode" Click="SimuButton_Click"/>
             <AppBarButton Icon="Add" Label="add Parts" Click="AddButton_Click"/>
             <AppBarButton Icon="Rotate" Label="rotate Part" Click="RotateButton_Click"/>
             <AppBarButton Icon="AlignCenter" Label="mirror Part" Click="mirrorButton_Click"/>

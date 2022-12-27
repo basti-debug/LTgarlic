@@ -10,8 +10,13 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 using Windows.Devices.Input;
+using System;
+using VisioForge.MediaFramework;
+using VisioForge.MediaFramework.Helpers;
 
 namespace LTgarlic.Views;
+
+
 
 public sealed partial class EditingPage : Page
 {
@@ -30,10 +35,19 @@ public sealed partial class EditingPage : Page
     {
 
     }
+
+
     private void SimuButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-
+        Window simwindow = new Window();
+        {
+            simwindow.ExtendsContentIntoTitleBar = true;
+            simwindow.Title = "simulation"; 
+        };
+        simwindow.Show();
     }
+
+    
 
     private bool firstAccessCheck = true;
     private readonly ComboBox libary = new();
@@ -132,7 +146,7 @@ public sealed partial class EditingPage : Page
                 components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));
         }
     }
-
+    
     private void mirrorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
 

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Tests.MSTest\\LTgarlic.Tests.MSTest.csproj": {}
+    "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Tests.MSTest\\LTgarlic.Tests.MSTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\components\\components.csproj": {
+    "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\components\\components.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\components\\components.csproj",
+        "projectUniqueName": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\components\\components.csproj",
         "projectName": "components",
-        "projectPath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\components\\components.csproj",
-        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\components\\obj\\",
+        "projectPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\components\\components.csproj",
+        "packagesPath": "C:\\Users\\basti\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\components\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\basti\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -130,20 +129,20 @@
         }
       }
     },
-    "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj": {
+    "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj",
+        "projectUniqueName": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj",
         "projectName": "LTgarlic.Core",
-        "projectPath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj",
-        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\obj\\",
+        "projectPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj",
+        "packagesPath": "C:\\Users\\basti\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\basti\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -152,7 +151,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -196,20 +194,20 @@
         }
       }
     },
-    "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Tests.MSTest\\LTgarlic.Tests.MSTest.csproj": {
+    "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Tests.MSTest\\LTgarlic.Tests.MSTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Tests.MSTest\\LTgarlic.Tests.MSTest.csproj",
+        "projectUniqueName": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Tests.MSTest\\LTgarlic.Tests.MSTest.csproj",
         "projectName": "LTgarlic.Tests.MSTest",
-        "projectPath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Tests.MSTest\\LTgarlic.Tests.MSTest.csproj",
-        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Tests.MSTest\\obj\\",
+        "projectPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Tests.MSTest\\LTgarlic.Tests.MSTest.csproj",
+        "packagesPath": "C:\\Users\\basti\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Tests.MSTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\basti\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -218,15 +216,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0-windows10.0.19041": {
             "targetAlias": "net6.0-windows10.0.19041.0",
             "projectReferences": {
-              "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic\\LTgarlic.csproj": {
-                "projectPath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic\\LTgarlic.csproj"
+              "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic\\LTgarlic.csproj": {
+                "projectPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic\\LTgarlic.csproj"
               }
             }
           }
@@ -287,20 +284,20 @@
         }
       }
     },
-    "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic\\LTgarlic.csproj": {
+    "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic\\LTgarlic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic\\LTgarlic.csproj",
+        "projectUniqueName": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic\\LTgarlic.csproj",
         "projectName": "LTgarlic",
-        "projectPath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic\\LTgarlic.csproj",
-        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic\\obj\\",
+        "projectPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic\\LTgarlic.csproj",
+        "packagesPath": "C:\\Users\\basti\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\basti\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -309,18 +306,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0-windows10.0.19041": {
             "targetAlias": "net6.0-windows10.0.19041.0",
             "projectReferences": {
-              "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\components\\components.csproj": {
-                "projectPath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\components\\components.csproj"
+              "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\components\\components.csproj": {
+                "projectPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\components\\components.csproj"
               },
-              "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj": {
-                "projectPath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj"
+              "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj": {
+                "projectPath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj"
               }
             }
           }
@@ -351,6 +347,10 @@
             "Microsoft.Xaml.Behaviors.WinUI.Managed": {
               "target": "Package",
               "version": "[2.0.8, )"
+            },
+            "VisioForge.DotNet.Core.TRIAL": {
+              "target": "Package",
+              "version": "[15.1.12, )"
             },
             "WinUIEx": {
               "target": "Package",
