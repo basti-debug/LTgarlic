@@ -106,4 +106,9 @@ public sealed partial class ShellPage : Page
             }
         }
     }
+
+    private void Page_ActualThemeChanged(FrameworkElement sender, object args) //for later improvement of active theme changing
+    {
+
+    }
 }

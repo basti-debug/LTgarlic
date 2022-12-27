@@ -8,7 +8,8 @@
     xmlns:behaviors="using:LTgarlic.Behaviors"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     Loaded="OnLoaded"
-    KeyDown="Page_KeyDown">
+    KeyDown="Page_KeyDown"
+    ActualThemeChanged="Page_ActualThemeChanged">
 
     <Grid>
         <Grid x:Name="AppTitleBar"

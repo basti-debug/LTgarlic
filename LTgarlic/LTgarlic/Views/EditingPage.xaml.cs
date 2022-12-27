@@ -26,7 +26,9 @@ namespace LTgarlic.Views;
 
 public sealed partial class EditingPage : Page
 {
-    public List<List<Ellipse>> pads = new();
+    private List<List<Ellipse>> pads = new();
+    private List<wire> allWires = new();
+    private double gridSize = 20;
 
     public EditingViewModel ViewModel
     {
@@ -140,13 +142,13 @@ public sealed partial class EditingPage : Page
             switch(SettingsPage.theme)
             {
                 case "Dark":
-                    components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+                    components[components.Count - 1].moveComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
                     break;
                 case "Light":
-                    components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));
+                    components[components.Count - 1].moveComponent(gridMousePos, rotation, new SolidColorBrush(Colors.Black));
                     break;
                 case "Default":
-                    components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+                    components[components.Count - 1].moveComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
                     break;
             }
             pads.Add(components[components.Count - 1].pads);
@@ -158,11 +160,20 @@ public sealed partial class EditingPage : Page
 
     }
 
-    private Windows.Foundation.Point mousePos = new();
+    private Point actualMousePos = new();
+    private Point gridMousePos = new();
     private bool firstTimeMoveAccess = true;
     private void drawingTable_PointerMoved(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
     {
-        mousePos = e.GetCurrentPoint(drawingTable).Position;
+        actualMousePos = e.GetCurrentPoint(drawingTable).Position;
+
+        #region grid Size
+        if (gridSize / 2 > actualMousePos.X % gridSize)
+            gridMousePos.X = actualMousePos.X + (gridSize - (actualMousePos.X % gridSize));
+
+        if (gridSize / 2 > actualMousePos.Y % gridSize)
+            gridMousePos.Y = actualMousePos.Y + (gridSize - (actualMousePos.Y % gridSize));
+        #endregion
 
         if (SettingsPage.theme == "Dark")
         {
@@ -170,13 +181,13 @@ public sealed partial class EditingPage : Page
             {
                 if (firstTimeMoveAccess)
                 {
-                    components[components.Count - 1].drawComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+                    components[components.Count - 1].drawComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
                     firstTimeMoveAccess = false;
                     pads.Add(components[components.Count - 1].pads);
                 }
                 else
                 {
-                    components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+                    components[components.Count - 1].moveComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
                     pads.Add(components[components.Count - 1].pads);
                 }
             }
@@ -188,13 +199,13 @@ public sealed partial class EditingPage : Page
             {
                 if (firstTimeMoveAccess)
                 {
-                    components[components.Count - 1].drawComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));
+                    components[components.Count - 1].drawComponent(gridMousePos, rotation, new SolidColorBrush(Colors.Black));
                     firstTimeMoveAccess = false;
                     pads.Add(components[components.Count - 1].pads);
                 }
                 else
                 {
-                    components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.Black));
+                    components[components.Count - 1].moveComponent(gridMousePos, rotation, new SolidColorBrush(Colors.Black));
                     pads.Add(components[components.Count - 1].pads);
                 }
             }
@@ -205,58 +216,71 @@ public sealed partial class EditingPage : Page
             {
                 if (firstTimeMoveAccess)
                 {
-                    components[components.Count - 1].drawComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+                    components[components.Count - 1].drawComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
                     firstTimeMoveAccess = false;
                     pads.Add(components[components.Count - 1].pads);
                 }
                 else
                 {
-                    components[components.Count - 1].moveComponent(mousePos, rotation, new SolidColorBrush(Colors.White));
+                    components[components.Count - 1].moveComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
                     pads.Add(components[components.Count - 1].pads);
                 }
             }
         }
+
+        if (ShellPage.wireMode && wireStart)
+        {
+            allWires[allWires.Count - 1].deleteWire();
+            allWires[allWires.Count - 1].drawWire(startPoint, gridMousePos, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
+        }
     }
 
     public static int wireClickCnt = 0;
+    private bool wireStart = false;
     private Point startPoint = new();
     private Point endPoint = new();
     private void drawingTable_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
     {
         if (e.GetCurrentPoint(this).Properties.IsLeftButtonPressed)
         {
+            #region placeComponent
             if (placeComponentSelected)
                 placeComponentSelected = false;
+            #endregion
 
+            #region wireMode
             else if (ShellPage.wireMode)
             {
-                wire wire = new wire(drawingTable);
+                wireStart = true;
+
+                allWires.Add(new wire(drawingTable));
                 wireClickCnt++;
 
                 if (wireClickCnt == 1)
                 {
-                    startPoint = mousePos;
+                    startPoint = gridMousePos;
                 }
                 if (wireClickCnt > 1)
                 {
-                    endPoint = mousePos;
+                    endPoint = gridMousePos;
 
                     switch (SettingsPage.theme)
                     {
                         case "Dark":
-                            wire.drawWire(startPoint, endPoint, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
+                            allWires[allWires.Count - 1].drawWire(startPoint, endPoint, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
                             break;
                         case "Light":
-                            wire.drawWire(startPoint, endPoint, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
+                            allWires[allWires.Count - 1].drawWire(startPoint, endPoint, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
                             break;
                         case "Default":
-                            wire.drawWire(startPoint, endPoint, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
+                            allWires[allWires.Count - 1].drawWire(startPoint, endPoint, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
                             break;
                     }
 
-                    startPoint = mousePos;
+                    startPoint = gridMousePos;
                 }
             }
+            #endregion
         }
     }
 }
