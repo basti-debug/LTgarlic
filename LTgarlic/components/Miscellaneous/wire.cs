@@ -17,6 +17,9 @@ public class wire
 
     public Point startPoint { get; set; }
     public Point endPoint { get; set; }
+    public SolidColorBrush color { get; set; }
+
+    public static bool wiringType = true;
 
     public static List<wire> wires = new();
 
@@ -31,8 +34,9 @@ public class wire
     {
         this.startPoint = startPoint;
         this.endPoint = endPoint;
+        this.color = color;
 
-        if (endPoint.X - startPoint.X > endPoint.Y - startPoint.Y)
+        if (wiringType)
         {
             Line horizontal = new Line()
             {
@@ -64,7 +68,7 @@ public class wire
             this.vertical = vertical;
         }
 
-        if (endPoint.Y - startPoint.Y > endPoint.X - startPoint.X)
+        else
         {
             Line vertical = new Line()
             {
@@ -113,8 +117,19 @@ public class wire
         connectedTo.Add(wire);
     }
 
-    public List<wire> getConnections()
+    public List<wire> getConnections(wire wire)
     {
         return connectedTo;
+    }
+
+    public void redrawWire(wire wire)
+    {
+        wire.deleteWire();
+        wire.drawWire(wire.startPoint, wire.endPoint, wire.color);
+    }
+
+    public static void changeWiringType()
+    {
+        wiringType = !wiringType;
     }
 }

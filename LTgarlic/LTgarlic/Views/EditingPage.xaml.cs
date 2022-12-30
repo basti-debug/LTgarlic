@@ -27,7 +27,7 @@ namespace LTgarlic.Views;
 public sealed partial class EditingPage : Page
 {
     private List<List<Ellipse>> pads = new();
-    private List<wire> allWires = new();
+    public static List<wire> allWires = new();
     private double gridSize = 20;
 
     public EditingViewModel ViewModel
@@ -236,7 +236,7 @@ public sealed partial class EditingPage : Page
     }
 
     public static int wireClickCnt = 0;
-    private bool wireStart = false;
+    public static bool wireStart = false;
     private Point startPoint = new();
     private Point endPoint = new();
     private void drawingTable_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
@@ -251,7 +251,6 @@ public sealed partial class EditingPage : Page
             #region wireMode
             else if (ShellPage.wireMode)
             {
-                wireStart = true;
 
                 allWires.Add(new wire(drawingTable));
                 wireClickCnt++;
@@ -259,28 +258,28 @@ public sealed partial class EditingPage : Page
                 if (wireClickCnt == 1)
                 {
                     startPoint = gridMousePos;
+                    wireStart = true;
                 }
                 if (wireClickCnt > 1)
                 {
-                    endPoint = gridMousePos;
-
-                    switch (SettingsPage.theme)
-                    {
-                        case "Dark":
-                            allWires[allWires.Count - 1].drawWire(startPoint, endPoint, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
-                            break;
-                        case "Light":
-                            allWires[allWires.Count - 1].drawWire(startPoint, endPoint, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
-                            break;
-                        case "Default":
-                            allWires[allWires.Count - 1].drawWire(startPoint, endPoint, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
-                            break;
-                    }
-
                     startPoint = gridMousePos;
                 }
             }
             #endregion
         }
+
+        if (e.GetCurrentPoint(this).Properties.IsRightButtonPressed && ShellPage.wireMode)
+        {
+            wire.changeWiringType();
+            allWires[allWires.Count - 1].redrawWire(allWires[allWires.Count - 1]);
+        }
+    }
+
+    private void drawingTable_DoubleTapped(object sender, Microsoft.UI.Xaml.Input.DoubleTappedRoutedEventArgs e)
+    {
+        ShellPage.wireMode = false;
+        wireStart = false;
+        wireClickCnt = 0;
+        allWires[allWires.Count - 1].deleteWire();
     }
 }

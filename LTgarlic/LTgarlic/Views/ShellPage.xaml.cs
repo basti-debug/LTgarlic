@@ -15,8 +15,6 @@ namespace LTgarlic.Views;
 // TODO: Update NavigationViewItem titles and icons in ShellPage.xaml.
 public sealed partial class ShellPage : Page
 {
-    public static bool wireMode = false;
-
     public ShellViewModel ViewModel
     {
         get;
@@ -88,21 +86,17 @@ public sealed partial class ShellPage : Page
         args.Handled = result;
     }
 
-    private bool firstAccess = true;
+    public static bool wireMode = false;
     private void Page_KeyDown(object sender, KeyRoutedEventArgs e)
     {
         if (e.Key == (VirtualKey)0x57)
         {
-            if (firstAccess)
+            wireMode = !wireMode;
+            if (wireMode == false)
             {
-                wireMode = true;
-                firstAccess = false;
-            }
-            else
-            {
-                wireMode = false;
-                firstAccess = true;
+                EditingPage.wireStart = false;
                 EditingPage.wireClickCnt = 0;
+                EditingPage.allWires[EditingPage.allWires.Count - 1].deleteWire();
             }
         }
     }
