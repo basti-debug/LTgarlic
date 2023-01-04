@@ -1,6 +1,6 @@
 This is LTGarlic...
 
-![[pic.png]]
+![](source/topbanner.png)
 
 LTGarlic is a alternative Spice Simulator themed around Windows's SDK for Windows 11. 
 
@@ -20,7 +20,7 @@ Our first idea was to use **W**indows**P**resentation**F**oundation (*short WPF*
 
 ### Concept drawings
 
-![[Pasted image 20230104022219.png]]
+![](source/conceptdrawing.png)
 Here you can see the first concept for the drawing area of the Programm
 
 ### WinUI3 
@@ -67,34 +67,44 @@ Currently it is possible to draw a variety of custom circuits, with the planned 
 
 **When you create a WinUI3 Project, some underprojects will be created:**
 
-![[Pasted image 20230104015347.png]]
+![](source/corefolder.png)
+
 The .Core Project is needed for all the **Helpers** of the WinUI SDK
 
-![[Pasted image 20230104015944.png]]
+![](source/testfolder.png)
+
 The .Tests.MSTest is just needed for **debugging** 
 
-![[Pasted image 20230104020603.png]] 
+![](source/mainfolder.png)
+
 Here the main Programming for the **UI** happens. 
 
-![[Pasted image 20230104021825.png]]
+![](source/compontensfolder.png)
 
 For the **drawing of circuits** we created a Project with files for every form of Component and the Pins and Wires.
 
 ### Functions 
 This particular Programm is set up in "Pages". So there is a "Home Page" a "Editing Page" and a "Settings Page". All the UI that stays up everytime, so on every Page is in the ShellPage.xaml
 
-![[Pasted image 20230104021208.png]]
+![](source/layoutpic.png)
 
 So the left Hamburger Menu and the Titlebar is managed in this file. The Behaviour of the Menu is handled by the ShellPage.xaml.cs with the help of the .CORE Project. (unfolding and opening)
 
-![[Pasted image 20230104021531.png]]
-![[Pasted image 20230104021555.png]]
+![](source/hammenu.png)
+
+*opend Hamburger menu*
+
+![](source/foldedhammenu.png)
+
+*closed Hamburger menu*
+
 
 
 ## Layout 
 
 The Layout of the Programm is build up like this: you have a main "HomePage" where you can create Projects, open Projects or certain libaries. If you open or create a Project it will be added to the Menu on the left, currently represented by a Project called "Editing". There will be the possibility to change between different Projects in this Menu on the left side. If you are in a Project it should be possible to add Components and draw Wires. 
-![[Pasted image 20230104022656.png]]
+
+![](source/hotbarmenu.png)
 *the hotbar at the bottom of the Program, with construction mode you can draw wires. Simulation Mode will open a new Window showing a empty plot, with the coursor you will be able to probe.*
 
 In the Future we could make the hotbar customisable with the helpof the three button menu on the right, where you could add more tools etc.
