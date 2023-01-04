@@ -12,7 +12,7 @@ LTGarlic is a alternative Spice Simulator themed around Windows's SDK for Window
 
 ## Idea 
 
-The Idea of LTGarlic was to update, renew and optimize the broadly used LTSpice, hints the Name LTGarlic.
+The Idea of LTGarlic was to update, renew and optimize the broadly used LTSpice, hence the Name LTGarlic.
 
 ## Concept
 
