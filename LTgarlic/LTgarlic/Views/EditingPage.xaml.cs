@@ -176,7 +176,7 @@ public sealed partial class EditingPage : Page
     private Point gridMousePos = new();
     private bool firstAccessComponent = true;
     public static bool oneLineUsed;
-    private bool firstWireAccess = true;
+    public static bool firstWireAccess = true;
     private void drawingTable_PointerMoved(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
     {
         actualMousePos = e.GetCurrentPoint(drawingTable).Position;
@@ -561,8 +561,6 @@ public sealed partial class EditingPage : Page
             ShellPage.wireMode = false;
             wireStart = false;
             wireClickCnt = 0;
-            allWires[allWires.Count - 1].deleteWire();
-            allWires[allWires.Count - 2].deleteWire();
         }
         #endregion
     }

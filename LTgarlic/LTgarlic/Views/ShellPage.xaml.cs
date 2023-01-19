@@ -109,6 +109,7 @@ public sealed partial class ShellPage : Page
                     EditingPage.allWires.Remove(EditingPage.allWires[EditingPage.allWires.Count - 1]);
                 }
 
+                EditingPage.firstWireAccess = true;
             }
         }
     }
