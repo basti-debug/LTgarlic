@@ -4,26 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using components.Miscellaneous;
 using Microsoft.UI;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 using Windows.Foundation;
+using Windows.UI;
+using LTgarlic.Components.Miscellaneous;
+using Path = Microsoft.UI.Xaml.Shapes.Path;
+using LTgarlic.Views;
 
 namespace components.Components;
 
 public class inductance : component
 {
-    private readonly int height = 200;
-    private readonly int width = 100;
-    private readonly int pinlength = 100;
-    private readonly int sizeDiv = 2;
+    private readonly int height = 2400;
+    private readonly int width = 1200;
+    private readonly int pinlength = 600;
+    private int sizeDiv = 20;
 
     public readonly string name = "ind";
     private readonly Canvas drawingTable;
 
-    public List<Point> pins { get; set; }
+    public override List<Point> pins { get; set; }
+    public override List<Ellipse> pads { get; set; }
+
 
     public inductance(Canvas drawingTable)
     {
@@ -31,8 +37,7 @@ public class inductance : component
     }
 
     private readonly Path myPath = new();
-    private List<Ellipse> pads = new();
-    public override List<Point> drawComponent(Point location, int rotation, SolidColorBrush color)
+    public override void drawComponent(Point location, int rotation, SolidColorBrush color)
     {
         pins indPins = new pins();
         var pinGroup = indPins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
@@ -63,17 +68,40 @@ public class inductance : component
         center.CenterY = location.Y + height / 2 / sizeDiv;
 
         myPath.RenderTransform = center;
-        pads[0].RenderTransform = center;
-        pads[1].RenderTransform = center;
 
         drawingTable.Children.Add(myPath);
         drawingTable.Children.Add(pads[0]);
         drawingTable.Children.Add(pads[1]);
 
+        foreach (Ellipse pad in pads)
+        {
+            pad.PointerEntered += Pad_PointerEntered;
+            pad.PointerExited += Pad_PointerExited;
+            pad.PointerPressed += Pad_PointerPressed;
+        }
+
         var pins = new List<Point> { indPins.pin1, indPins.pin2 };
         this.pins = pins;
+    }
 
-        return pins;
+    private void Pad_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+    {
+        if (ShellPage.wireMode)
+        {
+            EditingPage.startPoint = new Point(Canvas.GetLeft((Ellipse)sender), Canvas.GetTop((Ellipse)sender));
+        }
+    }
+
+    private void Pad_PointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+    {
+        ((Ellipse)drawingTable.Children[drawingTable.Children.IndexOf((Ellipse)sender)]).Fill = new SolidColorBrush(Colors.Transparent);
+        ((Ellipse)drawingTable.Children[drawingTable.Children.IndexOf((Ellipse)sender)]).Stroke = new SolidColorBrush(Colors.Transparent);
+    }
+
+    private void Pad_PointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+    {
+        ((Ellipse)drawingTable.Children[drawingTable.Children.IndexOf((Ellipse)sender)]).Fill = new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]);
+        ((Ellipse)drawingTable.Children[drawingTable.Children.IndexOf((Ellipse)sender)]).Stroke = new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]);
     }
 
     public override void deleteComponent()
@@ -85,11 +113,10 @@ public class inductance : component
         drawingTable.Children.Remove(pads[1]);
     }
 
-    public override List<Point> moveComponent(Point location, int rotation, SolidColorBrush color)
+    public override void moveComponent(Point location, int rotation, SolidColorBrush color)
     {
         deleteComponent();
-        pins = drawComponent(location, rotation, color);
-        return pins;
+        drawComponent(location, rotation, color);
     }
 
 }

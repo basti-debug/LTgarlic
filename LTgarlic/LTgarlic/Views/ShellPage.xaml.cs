@@ -1,7 +1,7 @@
-﻿using LTgarlic.Contracts.Services;
+﻿using components.Components;
+using LTgarlic.Contracts.Services;
 using LTgarlic.Helpers;
 using LTgarlic.ViewModels;
-
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
@@ -83,5 +83,38 @@ public sealed partial class ShellPage : Page
         var result = navigationService.GoBack();
 
         args.Handled = result;
+    }
+
+    public static bool wireMode = false;
+    private void Page_KeyDown(object sender, KeyRoutedEventArgs e)
+    {
+        if (e.Key == (VirtualKey)0x57)
+        {
+            wireMode = !wireMode;
+            if (wireMode == false)
+            {
+                EditingPage.wireStart = false;
+                EditingPage.wireClickCnt = 0;
+
+                if (EditingPage.oneLineUsed)
+                {
+                    EditingPage.allWires[EditingPage.allWires.Count - 1].deleteWire();
+                    EditingPage.allWires.Remove(EditingPage.allWires[EditingPage.allWires.Count - 1]);
+                }
+                else
+                {
+                    EditingPage.allWires[EditingPage.allWires.Count - 1].deleteWire();
+                    EditingPage.allWires[EditingPage.allWires.Count - 2].deleteWire();
+                    EditingPage.allWires.Remove(EditingPage.allWires[EditingPage.allWires.Count - 1]);
+                    EditingPage.allWires.Remove(EditingPage.allWires[EditingPage.allWires.Count - 1]);
+                }
+
+            }
+        }
+    }
+
+    private void Page_ActualThemeChanged(FrameworkElement sender, object args) //for later improvement of active theme changing
+    {
+
     }
 }

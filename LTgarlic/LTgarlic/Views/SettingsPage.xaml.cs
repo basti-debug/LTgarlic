@@ -6,6 +6,8 @@ namespace LTgarlic.Views;
 
 public sealed partial class SettingsPage : Page
 {
+    public static string theme = "Default";
+
     public SettingsViewModel ViewModel
     {
         get;
@@ -22,5 +24,18 @@ public sealed partial class SettingsPage : Page
         
     }
 
- 
+    private void Light_Theme_Checked(object sender, RoutedEventArgs e)
+    {
+        theme = "Light";
+    }
+
+    private void Dark_Theme_Checked(object sender, RoutedEventArgs e)
+    {
+        theme = "Dark";
+    }
+
+    private void Default_Theme_Checked(object sender, RoutedEventArgs e)
+    {
+        theme = "Default";
+    }
 }

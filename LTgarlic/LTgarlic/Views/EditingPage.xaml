@@ -7,10 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Grid>
-        <Canvas Width="600" Height="500" Background="Transparent"  Name="drawingTable"
+        <Canvas Width="{Binding ElementName=page, Path=ActualWidth}" Height="{Binding ElementName=page, Path=ActualHeight}" Background="Transparent" Name="drawingTable"
                 PointerMoved="drawingTable_PointerMoved"
                 PointerPressed="drawingTable_PointerPressed"
-                RightTapped="RotateButton_Click">
+                RightTapped="RotateButton_Click"
+                DoubleTapped="drawingTable_DoubleTapped">
             
         </Canvas>
 

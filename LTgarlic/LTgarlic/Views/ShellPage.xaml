@@ -7,7 +7,9 @@
     xmlns:helpers="using:LTgarlic.Helpers"
     xmlns:behaviors="using:LTgarlic.Behaviors"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
-    Loaded="OnLoaded">
+    Loaded="OnLoaded"
+    KeyDown="Page_KeyDown"
+    ActualThemeChanged="Page_ActualThemeChanged">
 
     <Grid>
         <Grid x:Name="AppTitleBar"
@@ -52,7 +54,7 @@
                     <Grid>
                         <TextBlock
                             Text="{Binding}"
-                            Style="{ThemeResource TitleTextBlockStyle}" />
+                            Style="{ThemeResource TitleTextBlockStyle}"/>
                     </Grid>
                 </DataTemplate>
             </NavigationView.HeaderTemplate>
