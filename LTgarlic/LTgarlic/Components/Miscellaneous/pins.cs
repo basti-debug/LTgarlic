@@ -14,21 +14,46 @@ using Microsoft.UI.Xaml.Shapes;
 using Windows.ApplicationModel.Store;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
+using Windows.Security.Cryptography.Core;
 using Windows.UI;
 
-namespace components.Miscellaneous;
+namespace LTgarlic.Components.Miscellaneous;
 public class pins
 {
     #region properties
-    public Point location { get; set; }
-    public int sizeDiv { get; set; }
-    public int width { get; set; }
-    public int height { get; set; }
-    public int pinlength { get; set; }
-    public int rotation { get; set; }
+    public Point location
+    {
+        get; set;
+    }
+    public int sizeDiv
+    {
+        get; set;
+    }
+    public int width
+    {
+        get; set;
+    }
+    public int height
+    {
+        get; set;
+    }
+    public int pinlength
+    {
+        get; set;
+    }
+    public int rotation
+    {
+        get; set;
+    }
 
-    public Point pin1 { get; set; }
-    public Point pin2 { get; set; }
+    public Point pin1
+    {
+        get; set;
+    }
+    public Point pin2
+    {
+        get; set;
+    }
 
     #endregion
 
@@ -72,18 +97,18 @@ public class pins
     public Ellipse pad2 = new();
     public List<Ellipse> getPads()
     {
-        pad1.Width = 30 / sizeDiv;
-        pad1.Height = 30 / sizeDiv;
+        pad1.Width = 300 / sizeDiv;
+        pad1.Height = 300 / sizeDiv;
         pad1.Stroke = new SolidColorBrush(Colors.Transparent);
         pad1.StrokeThickness = 1;
         pad1.Fill = new SolidColorBrush(Colors.Transparent);
 
-        pad2.Width = 30 / sizeDiv;
-        pad2.Height = 30 / sizeDiv;
+        pad2.Width = 300 / sizeDiv;
+        pad2.Height = 300 / sizeDiv;
         pad2.Stroke = new SolidColorBrush(Colors.Transparent);
         pad2.StrokeThickness = 1;
         pad2.Fill = new SolidColorBrush(Colors.Transparent);
-        
+
         Canvas.SetTop(pad1, location.Y - pinlength / sizeDiv - pad1.Height / 2);
         Canvas.SetLeft(pad1, location.X + width / 2 / sizeDiv - pad1.Width / 2);
 
@@ -92,7 +117,7 @@ public class pins
 
         var center1 = new RotateTransform();
         center1.Angle = rotation;
-        center1.CenterX = pad1.Width / 2; 
+        center1.CenterX = pad1.Width / 2;
         center1.CenterY = pinlength / sizeDiv + height / 2 / sizeDiv + pad1.Height / 2;
 
         var center2 = new RotateTransform();
@@ -103,9 +128,10 @@ public class pins
         pad1.RenderTransform = center1;
         pad2.RenderTransform = center2;
 
-        List<Ellipse> padGroup = new List<Ellipse> { pad1, pad2 };
+        var padGroup = new List<Ellipse> { pad1, pad2 };
 
         return padGroup;
     }
     #endregion
+
 }

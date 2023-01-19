@@ -3,16 +3,18 @@ using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Text;
 using components.Components;
-using components.Miscellaneous;
+using LTgarlic.Components.Miscellaneous;
 using LTgarlic.ViewModels;
 using Microsoft.Extensions.Logging;
 using Microsoft.UI;
+using Microsoft.UI.Composition.Scenes;
 using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 using Newtonsoft.Json.Linq;
+using Windows.ApplicationModel.UserDataTasks;
 using Windows.Devices.Input;
 using Windows.Foundation;
 using Windows.Management.Deployment;
@@ -28,7 +30,15 @@ public sealed partial class EditingPage : Page
 {
     private List<List<Ellipse>> pads = new();
     public static List<wire> allWires = new();
-    private double gridSize = 20;
+    public List<Ellipse> connections = new();
+    private double gridSize = 30;
+
+    public static int wireClickCnt = 0;
+    public static bool wireStart = false;
+    public static Point startPoint = new();
+    public static Point endPoint = new();
+
+    private SolidColorBrush accent = new SolidColorBrush((Color) Application.Current.Resources["SystemAccentColor"]);
 
     public EditingViewModel ViewModel
     {
@@ -96,6 +106,7 @@ public sealed partial class EditingPage : Page
         if (Convert.ToString(libary.SelectedItem) == "Capacitor")
         {   
             components.Add(new capacitor(drawingTable));
+
         }
         if (Convert.ToString(libary.SelectedItem) == "Resistor")
         {
@@ -112,7 +123,7 @@ public sealed partial class EditingPage : Page
 
         rotation = 0;
         placeComponentSelected = true;
-        firstTimeMoveAccess = true;
+        firstAccessComponent = true;
     }
 
     private int rotation;
@@ -138,8 +149,8 @@ public sealed partial class EditingPage : Page
                     clickCounter = 0;
                     break;
             }
-
-            switch(SettingsPage.theme)
+            #region redraw Component
+            switch (SettingsPage.theme)
             {
                 case "Dark":
                     components[components.Count - 1].moveComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
@@ -152,6 +163,7 @@ public sealed partial class EditingPage : Page
                     break;
             }
             pads.Add(components[components.Count - 1].pads);
+            #endregion
         }
     }
 
@@ -162,27 +174,29 @@ public sealed partial class EditingPage : Page
 
     private Point actualMousePos = new();
     private Point gridMousePos = new();
-    private bool firstTimeMoveAccess = true;
+    private bool firstAccessComponent = true;
+    public static bool oneLineUsed;
+    private bool firstWireAccess = true;
     private void drawingTable_PointerMoved(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
     {
         actualMousePos = e.GetCurrentPoint(drawingTable).Position;
 
         #region grid Size
-        if (gridSize / 2 > actualMousePos.X % gridSize)
-            gridMousePos.X = actualMousePos.X + (gridSize - (actualMousePos.X % gridSize));
-
-        if (gridSize / 2 > actualMousePos.Y % gridSize)
-            gridMousePos.Y = actualMousePos.Y + (gridSize - (actualMousePos.Y % gridSize));
+        gridMousePos.X = actualMousePos.X + (gridSize - (actualMousePos.X % gridSize)) - gridSize / 2;
+        gridMousePos.Y = actualMousePos.Y + (gridSize - (actualMousePos.Y % gridSize)) - gridSize / 2;
         #endregion
 
+        #region move components
         if (SettingsPage.theme == "Dark")
         {
             if (placeComponentSelected)
             {
-                if (firstTimeMoveAccess)
+                //the first time the mouse moves the components needs to be drawn, because the moveComponent
+                //function works by deleting the component, then redrawing it
+                if (firstAccessComponent)
                 {
                     components[components.Count - 1].drawComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
-                    firstTimeMoveAccess = false;
+                    firstAccessComponent = false;
                     pads.Add(components[components.Count - 1].pads);
                 }
                 else
@@ -197,10 +211,10 @@ public sealed partial class EditingPage : Page
         {
             if (placeComponentSelected)
             {
-                if (firstTimeMoveAccess)
+                if (firstAccessComponent)
                 {
                     components[components.Count - 1].drawComponent(gridMousePos, rotation, new SolidColorBrush(Colors.Black));
-                    firstTimeMoveAccess = false;
+                    firstAccessComponent = false;
                     pads.Add(components[components.Count - 1].pads);
                 }
                 else
@@ -214,10 +228,10 @@ public sealed partial class EditingPage : Page
         {
             if (placeComponentSelected)
             {
-                if (firstTimeMoveAccess)
+                if (firstAccessComponent)
                 {
                     components[components.Count - 1].drawComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
-                    firstTimeMoveAccess = false;
+                    firstAccessComponent = false;
                     pads.Add(components[components.Count - 1].pads);
                 }
                 else
@@ -227,18 +241,110 @@ public sealed partial class EditingPage : Page
                 }
             }
         }
+        #endregion
 
+        #region draw wires while moving mouse
         if (ShellPage.wireMode && wireStart)
         {
-            allWires[allWires.Count - 1].deleteWire();
-            allWires[allWires.Count - 1].drawWire(startPoint, gridMousePos, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
+            if (startPoint != gridMousePos)
+            {
+                if (wire.wiringType)
+                {
+                    if (!firstWireAccess)
+                    {
+                        if (!wireContinues)
+                        {
+                            if (oneLineUsed)
+                            {
+                                allWires[allWires.Count - 1].deleteWire();
+                                allWires.Remove(allWires[allWires.Count - 1]);
+                            }
+                            else
+                            {
+                                allWires[allWires.Count - 1].deleteWire();
+                                allWires[allWires.Count - 2].deleteWire();
+                                allWires.Remove(allWires[allWires.Count - 1]);
+                                allWires.Remove(allWires[allWires.Count - 1]);
+                            }
+                        }
+                        if (wireContinues)
+                            wireContinues = false;
+                    }
+                    firstWireAccess = false;
+
+                    if (startPoint.Y == gridMousePos.Y)//horizontal
+                    {
+                        allWires.Add(new wire(drawingTable));
+                        allWires[allWires.Count - 1].drawWire(startPoint, gridMousePos, accent);
+                        oneLineUsed = true;
+                    }
+                    else if (startPoint.X == gridMousePos.X)//vertical
+                    {
+                        allWires.Add(new wire(drawingTable));
+                        allWires[allWires.Count - 1].drawWire(startPoint, gridMousePos, accent);
+                        oneLineUsed = true;
+                    }
+                    else
+                    {
+                        allWires.Add(new wire(drawingTable));
+                        allWires[allWires.Count - 1].drawWire(startPoint, new Point(gridMousePos.X, startPoint.Y), accent);
+                        allWires.Add(new wire(drawingTable));
+                        allWires[allWires.Count - 1].drawWire(new Point(gridMousePos.X, startPoint.Y), gridMousePos, accent);
+                        oneLineUsed = false;
+                    }
+                }
+                else
+                {
+                    if (!firstWireAccess)
+                    {
+                        if (!wireContinues)
+                        {
+                            if (oneLineUsed)
+                            {
+                                allWires[allWires.Count - 1].deleteWire();
+                                allWires.Remove(allWires[allWires.Count - 1]);
+                            }
+                            else
+                            {
+                                allWires[allWires.Count - 1].deleteWire();
+                                allWires[allWires.Count - 2].deleteWire();
+                                allWires.Remove(allWires[allWires.Count - 1]);
+                                allWires.Remove(allWires[allWires.Count - 1]);
+                            }
+                        }
+                        if (wireContinues)
+                            wireContinues = false;
+                    }
+                    firstWireAccess = false;
+
+                    if (startPoint.Y == gridMousePos.Y)//horizontal
+                    {
+                        allWires.Add(new wire(drawingTable));
+                        allWires[allWires.Count - 1].drawWire(startPoint, gridMousePos, accent);
+                        oneLineUsed = true;
+                    }
+                    else if (startPoint.X == gridMousePos.X)//vertical
+                    {
+                        allWires.Add(new wire(drawingTable));
+                        allWires[allWires.Count - 1].drawWire(startPoint, gridMousePos, accent);
+                        oneLineUsed = true;
+                    }
+                    else
+                    {
+                        allWires.Add(new wire(drawingTable));
+                        allWires.Add(new wire(drawingTable));
+                        allWires[allWires.Count - 1].drawWire(startPoint, new Point(startPoint.X, gridMousePos.Y), accent);
+                        allWires[allWires.Count - 2].drawWire(new Point(startPoint.X, gridMousePos.Y), gridMousePos, accent);
+                        oneLineUsed = false;
+                    }
+                }
+            }
+            
         }
+        #endregion
     }
 
-    public static int wireClickCnt = 0;
-    public static bool wireStart = false;
-    private Point startPoint = new();
-    private Point endPoint = new();
+    private bool wireContinues = false;
     private void drawingTable_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
     {
         if (e.GetCurrentPoint(this).Properties.IsLeftButtonPressed)
@@ -249,20 +355,177 @@ public sealed partial class EditingPage : Page
             #endregion
 
             #region wireMode
+
+            //wireMode is enabled, if w has been pressed. This means, by leftclicking, a wire can be drawn.
             else if (ShellPage.wireMode)
             {
-
-                allWires.Add(new wire(drawingTable));
                 wireClickCnt++;
 
-                if (wireClickCnt == 1)
+                if (wireClickCnt == 1)//the start point of the wire is set, as soon as the user leftclicks.
                 {
                     startPoint = gridMousePos;
                     wireStart = true;
+
+                    foreach (var wire in allWires)
+                    {
+                        if (wire != allWires[allWires.Count - 2] && wire != allWires[allWires.Count - 1])
+                        {
+                            if (wire.startPoint.Y == wire.endPoint.Y) //horizontal
+                            {
+                                if (allWires[allWires.Count - 2].startPoint.Y == wire.startPoint.Y) //if the line has the same y value
+                                {
+                                    if (wire.startPoint.X == wire.endPoint.X) //line has been drawn from left to right
+                                    {
+                                        if (allWires[allWires.Count - 1].startPoint.X > wire.startPoint.X && allWires[allWires.Count - 1].startPoint.X < wire.endPoint.X)
+                                        {
+                                            Ellipse connection = new Ellipse()
+                                            {
+                                                Width = 10,
+                                                Height = 10,
+                                                Fill = accent,
+                                                Stroke = accent,
+                                                StrokeThickness = 1
+                                            };
+
+                                            Canvas.SetLeft(connection, allWires[allWires.Count - 2].startPoint.X - connection.Width / 2);
+                                            Canvas.SetTop(connection, allWires[allWires.Count - 2].startPoint.Y - connection.Width / 2);
+
+                                            connections.Add(connection);
+                                            drawingTable.Children.Add(connection);
+                                        }
+                                    }
+                                    else if (wire.startPoint.X > wire.endPoint.X)
+                                    {
+
+                                        if (allWires[allWires.Count - 1].startPoint.X < wire.startPoint.X && allWires[allWires.Count - 1].startPoint.X > wire.endPoint.X)
+                                        {
+                                            Ellipse connection = new Ellipse()
+                                            {
+                                                Width = 10,
+                                                Height = 10,
+                                                Fill = accent,
+                                                Stroke = accent,
+                                                StrokeThickness = 1
+                                            };
+
+                                            Canvas.SetLeft(connection, allWires[allWires.Count - 2].startPoint.X - connection.Width / 2);
+                                            Canvas.SetTop(connection, allWires[allWires.Count - 2].startPoint.Y - connection.Width / 2);
+
+                                            connections.Add(connection);
+                                            drawingTable.Children.Add(connection);
+                                        }
+                                    }
+                                }
+                            }
+                            if (wire.startPoint.X == wire.endPoint.X) //vertical
+                            {
+                                if (allWires[allWires.Count - 2].startPoint.X == wire.startPoint.X) //if the line has the same x value
+                                {
+                                    if (wire.startPoint.Y < wire.endPoint.Y) //line has been drawn from top to bottom
+                                    {
+                                        if (allWires[allWires.Count - 2].startPoint.Y > wire.startPoint.Y && allWires[allWires.Count - 2].startPoint.Y < wire.endPoint.Y)
+                                        {
+                                            Ellipse connection = new Ellipse()
+                                            {
+                                                Width = 10,
+                                                Height = 10,
+                                                Fill = accent,
+                                                Stroke = accent,
+                                                StrokeThickness = 1
+                                            };
+
+                                            Canvas.SetLeft(connection, allWires[allWires.Count - 2].startPoint.X - connection.Width / 2);
+                                            Canvas.SetTop(connection, allWires[allWires.Count - 2].startPoint.Y - connection.Width / 2);
+
+                                            connections.Add(connection);
+                                            drawingTable.Children.Add(connection);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (allWires[allWires.Count - 2].startPoint.Y < wire.startPoint.Y && allWires[allWires.Count - 2].startPoint.Y > wire.endPoint.Y)
+                                        {
+                                            Ellipse connection = new Ellipse()
+                                            {
+                                                Width = 10,
+                                                Height = 10,
+                                                Fill = accent,
+                                                Stroke = accent,
+                                                StrokeThickness = 1
+                                            };
+
+                                            Canvas.SetLeft(connection, allWires[allWires.Count - 2].startPoint.X - connection.Width / 2);
+                                            Canvas.SetTop(connection, allWires[allWires.Count - 2].startPoint.Y - connection.Width / 2);
+
+                                            connections.Add(connection);
+                                            drawingTable.Children.Add(connection);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
+
+                //if the user clicks again, the wire is placed, and the new startPoint becomes the current mouse Position,
+                //making the wires connect.
                 if (wireClickCnt > 1)
                 {
                     startPoint = gridMousePos;
+                    wireContinues = true;
+
+                    foreach (var wire in allWires)
+                    {
+                        if (wire != allWires[allWires.Count - 1])
+                        {
+                            if (wire.startPoint.X == wire.endPoint.X) //vertical
+                            {
+                                if (allWires[allWires.Count - 1].endPoint.X == wire.startPoint.X) //if the line has the same x value
+                                {
+                                    if (wire.startPoint.Y < wire.endPoint.Y) //line has been drawn from top to bottom
+                                    {
+                                        if (allWires[allWires.Count - 1].endPoint.Y > wire.startPoint.Y && allWires[allWires.Count - 1].endPoint.Y < wire.endPoint.Y)
+                                        {
+                                            Ellipse connection = new Ellipse()
+                                            {
+                                                Width = 10,
+                                                Height = 10,
+                                                Fill = accent,
+                                                Stroke = accent,
+                                                StrokeThickness = 1
+                                            };
+
+                                            Canvas.SetLeft(connection, allWires[allWires.Count - 2].startPoint.X - connection.Width / 2);
+                                            Canvas.SetTop(connection, allWires[allWires.Count - 2].startPoint.Y - connection.Width / 2);
+
+                                            connections.Add(connection);
+                                            drawingTable.Children.Add(connection);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (allWires[allWires.Count - 1].endPoint.Y < wire.startPoint.Y && allWires[allWires.Count - 1].endPoint.Y > wire.endPoint.Y)
+                                        {
+                                            Ellipse connection = new Ellipse()
+                                            {
+                                                Width = 10,
+                                                Height = 10,
+                                                Fill = accent,
+                                                Stroke = accent,
+                                                StrokeThickness = 1
+                                            };
+
+                                            Canvas.SetLeft(connection, allWires[allWires.Count - 2].startPoint.X - connection.Width / 2);
+                                            Canvas.SetTop(connection, allWires[allWires.Count - 2].startPoint.Y - connection.Width / 2);
+
+                                            connections.Add(connection);
+                                            drawingTable.Children.Add(connection);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
             #endregion
@@ -270,16 +533,37 @@ public sealed partial class EditingPage : Page
 
         if (e.GetCurrentPoint(this).Properties.IsRightButtonPressed && ShellPage.wireMode)
         {
+            #region change wire type
             wire.changeWiringType();
-            allWires[allWires.Count - 1].redrawWire(allWires[allWires.Count - 1]);
+            if (wire.wiringType)
+            {
+                allWires[allWires.Count - 1].deleteWire();
+                allWires[allWires.Count - 2].deleteWire();
+                allWires[allWires.Count - 1].drawWire(startPoint, new Point(gridMousePos.X, startPoint.Y), new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
+                allWires[allWires.Count - 2].drawWire(new Point(gridMousePos.X, startPoint.Y), gridMousePos, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
+            }
+            else
+            {
+                allWires[allWires.Count - 1].deleteWire();
+                allWires[allWires.Count - 2].deleteWire();
+                allWires[allWires.Count - 1].drawWire(startPoint, new Point(startPoint.X, gridMousePos.Y), new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
+                allWires[allWires.Count - 2].drawWire(new Point(startPoint.X, gridMousePos.Y), gridMousePos, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
+            }
+            #endregion
         }
     }
 
     private void drawingTable_DoubleTapped(object sender, Microsoft.UI.Xaml.Input.DoubleTappedRoutedEventArgs e)
     {
-        ShellPage.wireMode = false;
-        wireStart = false;
-        wireClickCnt = 0;
-        allWires[allWires.Count - 1].deleteWire();
+        #region enable placing wires by doubleclicking
+        if (ShellPage.wireMode)
+        {
+            ShellPage.wireMode = false;
+            wireStart = false;
+            wireClickCnt = 0;
+            allWires[allWires.Count - 1].deleteWire();
+            allWires[allWires.Count - 2].deleteWire();
+        }
+        #endregion
     }
 }

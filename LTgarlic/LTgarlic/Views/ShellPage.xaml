@@ -54,7 +54,7 @@
                     <Grid>
                         <TextBlock
                             Text="{Binding}"
-                            Style="{ThemeResource TitleTextBlockStyle}" />
+                            Style="{ThemeResource TitleTextBlockStyle}"/>
                     </Grid>
                 </DataTemplate>
             </NavigationView.HeaderTemplate>

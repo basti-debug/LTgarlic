@@ -1,82 +1,67 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using components.Miscellaneous;
 using Microsoft.UI;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Shapes;
 using Windows.Foundation;
 using Windows.UI;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Shapes;
+using LTgarlic.Components.Miscellaneous;
+using Path = Microsoft.UI.Xaml.Shapes.Path;
+using LTgarlic.Views;
 
 namespace components.Components;
 
-public class diode : component
+public class resistor : component
 {
-    private readonly int width = 100;
-    private readonly int height = 100;
-    private readonly int pinlength = 100;
-    private readonly int sizeDiv = 2;
+    private readonly int height = 2400;
+    private readonly int width = 1200;
+    private readonly int pinlength = 600;
+    private int sizeDiv = 20;
 
-    public readonly string name = "diode";
+    private readonly string name = "res";
     private readonly Canvas drawingTable;
 
     public override List<Point> pins { get; set; }
-    public override List<Ellipse> pads { get; set; }
+    public override  List<Ellipse> pads { get; set; }
 
-    public diode(Canvas drawingTable)
+    public bool connected = false;
+    public bool padClicked = false;
+
+    public resistor(Canvas drawingTable)
     {
         this.drawingTable = drawingTable;
     }
 
     private readonly Path myPath = new();
-    public override List<Point> drawComponent(Point location, int rotation, SolidColorBrush color)
+    public override void drawComponent(Point location, int rotation, SolidColorBrush color)
     {
-        pins diodePins = new pins();
-        var pinGroup = diodePins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
+        pins resPins = new pins();
+        var pinGroup = resPins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
 
         myPath.Stroke = color;
         myPath.StrokeThickness = 3;
         myPath.StrokeEndLineCap = PenLineCap.Round;
         myPath.StrokeStartLineCap = PenLineCap.Round;
 
-        pads = diodePins.getPads();
+        pads = resPins.getPads();
 
-        var l1 = new LineGeometry()
+        var rect = new RectangleGeometry
         {
-            StartPoint = location,
-            EndPoint = new Point(location.X + width / sizeDiv, location.Y),
-        };
-        var l2 = new LineGeometry()
-        {
-            StartPoint = location,
-            EndPoint = new Point(location.X + width / 2 / sizeDiv, location.Y + height / sizeDiv),
-        };
-        var l3 = new LineGeometry()
-        {
-            StartPoint = new Point(location.X + width / sizeDiv, location.Y),
-            EndPoint = new Point(location.X + width / 2 / sizeDiv, location.Y + height / sizeDiv),
-        };
-        var l4 = new LineGeometry()
-        {
-            StartPoint = new Point(location.X, location.Y + height / sizeDiv),
-            EndPoint = new Point(location.X + width / sizeDiv, location.Y + height / sizeDiv)
+            Rect = new Rect(location.X, location.Y, width / sizeDiv, height / sizeDiv)
         };
 
-        var diodeGroup = new GeometryGroup();
-        diodeGroup.Children.Add(l1);
-        diodeGroup.Children.Add(l2);
-        diodeGroup.Children.Add(l3);
-        diodeGroup.Children.Add(l4);
-        diodeGroup.Children.Add(pinGroup[0]);
-        diodeGroup.Children.Add(pinGroup[1]);
+        var resGroup = new GeometryGroup();
+        resGroup.Children.Add(rect);
+        resGroup.Children.Add(pinGroup[0]);
+        resGroup.Children.Add(pinGroup[1]);
 
-        myPath.Data = diodeGroup;
+        myPath.Data = resGroup;
 
         var center = new RotateTransform();
         center.Angle = rotation;
@@ -85,26 +70,30 @@ public class diode : component
 
         myPath.RenderTransform = center;
 
+        count++;
+
         drawingTable.Children.Add(myPath);
         drawingTable.Children.Add(pads[0]);
         drawingTable.Children.Add(pads[1]);
 
-        foreach (Ellipse pad in pads)
+        foreach(var pad in pads)
         {
             pad.PointerEntered += Pad_PointerEntered;
             pad.PointerExited += Pad_PointerExited;
             pad.PointerPressed += Pad_PointerPressed;
         }
 
-        var pins = new List<Point> { diodePins.pin1, diodePins.pin2 };
+        var pins = new List<Point> { resPins.pin1, resPins.pin2 };
         this.pins = pins;
-
-        return pins;
     }
 
     private void Pad_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
     {
-
+        if (ShellPage.wireMode)
+        {
+            padClicked = true;
+            EditingPage.startPoint = new Point(Canvas.GetLeft((Ellipse)sender), Canvas.GetTop((Ellipse)sender));
+        }
     }
 
     private void Pad_PointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
@@ -128,11 +117,9 @@ public class diode : component
         drawingTable.Children.Remove(pads[1]);
     }
 
-    public override List<Point> moveComponent(Point location, int rotation, SolidColorBrush color)
+    public override void moveComponent(Point location, int rotation, SolidColorBrush color)
     {
         deleteComponent();
-        pins = drawComponent(location, rotation, color);
-        return pins;
+        drawComponent(location, rotation, color);
     }
-
 }

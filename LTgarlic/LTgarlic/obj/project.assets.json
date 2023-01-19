@@ -758,20 +758,6 @@
           }
         }
       },
-      "components/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
-          "Microsoft.WindowsAppSDK": "1.2.220902.1-preview1"
-        },
-        "compile": {
-          "bin/placeholder/components.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/components.dll": {}
-        }
-      },
       "LTgarlic.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1515,20 +1501,6 @@
           "lib/net5.0-windows10.0.18362/WinUIEx.dll": {
             "related": ".pdb;.pri;.xml"
           }
-        }
-      },
-      "components/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
-          "Microsoft.WindowsAppSDK": "1.2.220902.1-preview1"
-        },
-        "compile": {
-          "bin/placeholder/components.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/components.dll": {}
         }
       },
       "LTgarlic.Core/1.0.0": {
@@ -2276,20 +2248,6 @@
           }
         }
       },
-      "components/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
-          "Microsoft.WindowsAppSDK": "1.2.220902.1-preview1"
-        },
-        "compile": {
-          "bin/placeholder/components.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/components.dll": {}
-        }
-      },
       "LTgarlic.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -3033,20 +2991,6 @@
           "lib/net5.0-windows10.0.18362/WinUIEx.dll": {
             "related": ".pdb;.pri;.xml"
           }
-        }
-      },
-      "components/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
-          "Microsoft.WindowsAppSDK": "1.2.220902.1-preview1"
-        },
-        "compile": {
-          "bin/placeholder/components.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/components.dll": {}
         }
       },
       "LTgarlic.Core/1.0.0": {
@@ -4685,11 +4629,6 @@
         "winuiex.nuspec"
       ]
     },
-    "components/1.0.0": {
-      "type": "project",
-      "path": "../components/components.csproj",
-      "msbuildProject": "../components/components.csproj"
-    },
     "LTgarlic.Core/1.0.0": {
       "type": "project",
       "path": "../LTgarlic.Core/LTgarlic.Core.csproj",
@@ -4703,8 +4642,7 @@
       "Microsoft.Extensions.Hosting >= 6.0.1",
       "Microsoft.WindowsAppSDK >= 1.2.220902.1-preview1",
       "Microsoft.Xaml.Behaviors.WinUI.Managed >= 2.0.8",
-      "WinUIEx >= 1.8.0",
-      "components >= 1.0.0"
+      "WinUIEx >= 1.8.0"
     ]
   },
   "packageFolders": {
@@ -4740,9 +4678,6 @@
         "net6.0-windows10.0.19041": {
           "targetAlias": "net6.0-windows10.0.19041.0",
           "projectReferences": {
-            "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\components\\components.csproj": {
-              "projectPath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\components\\components.csproj"
-            },
             "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj": {
               "projectPath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj"
             }

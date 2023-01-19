@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.UI.Xaml.Controls;
-using components.Miscellaneous;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 
@@ -19,7 +18,7 @@ public abstract class component
     public abstract List<Ellipse> pads { get; set; }
     public static int count { get; set; }
 
-    public abstract List<Point> drawComponent(Point location, int rotation, SolidColorBrush color);
+    public abstract void drawComponent(Point location, int rotation, SolidColorBrush color);
     public abstract void deleteComponent();
-    public abstract List<Point> moveComponent(Point location, int rotation, SolidColorBrush color);
+    public abstract void moveComponent(Point location, int rotation, SolidColorBrush color);
 }

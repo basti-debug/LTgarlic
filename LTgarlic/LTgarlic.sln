@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LTgarlic.Core", "LTgarlic.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LTgarlic.Tests.MSTest", "LTgarlic.Tests.MSTest\LTgarlic.Tests.MSTest.csproj", "{A1833B2F-CA37-4C0E-AA23-77D1A59447E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "components", "components\components.csproj", "{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,22 +77,6 @@ Global
 		{A1833B2F-CA37-4C0E-AA23-77D1A59447E3}.Release|x64.Build.0 = Release|x64
 		{A1833B2F-CA37-4C0E-AA23-77D1A59447E3}.Release|x86.ActiveCfg = Release|x86
 		{A1833B2F-CA37-4C0E-AA23-77D1A59447E3}.Release|x86.Build.0 = Release|x86
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Debug|arm64.ActiveCfg = Debug|Any CPU
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Debug|arm64.Build.0 = Debug|Any CPU
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Debug|x64.Build.0 = Debug|Any CPU
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Debug|x86.Build.0 = Debug|Any CPU
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Release|arm64.ActiveCfg = Release|Any CPU
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Release|arm64.Build.0 = Release|Any CPU
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Release|x64.ActiveCfg = Release|Any CPU
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Release|x64.Build.0 = Release|Any CPU
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Release|x86.ActiveCfg = Release|Any CPU
-		{9C0FE0D7-6924-400D-BD0D-27A0DA3A8D88}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

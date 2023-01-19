@@ -2,7 +2,6 @@
 using LTgarlic.Contracts.Services;
 using LTgarlic.Helpers;
 using LTgarlic.ViewModels;
-
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
@@ -96,7 +95,20 @@ public sealed partial class ShellPage : Page
             {
                 EditingPage.wireStart = false;
                 EditingPage.wireClickCnt = 0;
-                EditingPage.allWires[EditingPage.allWires.Count - 1].deleteWire();
+
+                if (EditingPage.oneLineUsed)
+                {
+                    EditingPage.allWires[EditingPage.allWires.Count - 1].deleteWire();
+                    EditingPage.allWires.Remove(EditingPage.allWires[EditingPage.allWires.Count - 1]);
+                }
+                else
+                {
+                    EditingPage.allWires[EditingPage.allWires.Count - 1].deleteWire();
+                    EditingPage.allWires[EditingPage.allWires.Count - 2].deleteWire();
+                    EditingPage.allWires.Remove(EditingPage.allWires[EditingPage.allWires.Count - 1]);
+                    EditingPage.allWires.Remove(EditingPage.allWires[EditingPage.allWires.Count - 1]);
+                }
+
             }
         }
     }

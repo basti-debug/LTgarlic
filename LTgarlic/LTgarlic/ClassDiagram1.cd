@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="components.Components.capacitor" Collapsed="true">
+    <Position X="4.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAEAAAEAQEQIACAASAAABEEAgAQAAAAAACAAA=</HashCode>
+      <FileName>Components\Components\capacitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="components.Components.component">
+    <Position X="4.5" Y="4" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAEBAAAAAQAAABAAAAAQAAAAAAAAAI=</HashCode>
+      <FileName>Components\Components\component.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="components.Components.diode" Collapsed="true">
+    <Position X="11" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAEAAAAAQEQIACAASAAABEEAgAQAAAAAACAAA=</HashCode>
+      <FileName>Components\Components\diode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="components.Components.inductance" Collapsed="true">
+    <Position X="6.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAEAAAAAQEQIACAASAAABEEAgAQAAAAAACAAA=</HashCode>
+      <FileName>Components\Components\inductance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="components.Components.resistor" Collapsed="true">
+    <Position X="8.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAADAEAAAAAQEQIACAASAAABEEAgAQQAAAAACAAA=</HashCode>
+      <FileName>Components\Components\resistor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LTgarlic.Components.Miscellaneous.pins">
+    <Position X="10.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAQAQICAAAACAA0AAAgACQAAAAAAAAA=</HashCode>
+      <FileName>Components\Miscellaneous\pins.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LTgarlic.Components.Miscellaneous.wire">
+    <Position X="12.5" Y="4.5" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACEAAACAAgACACEAAAgCIAAIiQACAAAAAAAAAAAA=</HashCode>
+      <FileName>Components\Miscellaneous\wire.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
