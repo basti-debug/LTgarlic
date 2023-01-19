@@ -535,17 +535,34 @@ public sealed partial class EditingPage : Page
             wire.changeWiringType();
             if (wire.wiringType)
             {
-                allWires[allWires.Count - 1].deleteWire();
-                allWires[allWires.Count - 2].deleteWire();
-                allWires[allWires.Count - 1].drawWire(startPoint, new Point(gridMousePos.X, startPoint.Y), new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
-                allWires[allWires.Count - 2].drawWire(new Point(gridMousePos.X, startPoint.Y), gridMousePos, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
+                if (oneLineUsed)
+                {
+                    allWires[allWires.Count - 1].deleteWire();
+                    allWires[allWires.Count - 1].drawWire(startPoint, new Point(gridMousePos.X, startPoint.Y), accent);
+                }
+                else
+                {
+                    allWires[allWires.Count - 1].deleteWire();
+                    allWires[allWires.Count - 2].deleteWire();
+                    allWires[allWires.Count - 1].drawWire(startPoint, new Point(gridMousePos.X, startPoint.Y), accent);
+                    allWires[allWires.Count - 2].drawWire(new Point(gridMousePos.X, startPoint.Y), gridMousePos, accent);
+                }
+                
             }
             else
             {
-                allWires[allWires.Count - 1].deleteWire();
-                allWires[allWires.Count - 2].deleteWire();
-                allWires[allWires.Count - 1].drawWire(startPoint, new Point(startPoint.X, gridMousePos.Y), new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
-                allWires[allWires.Count - 2].drawWire(new Point(startPoint.X, gridMousePos.Y), gridMousePos, new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]));
+                if (oneLineUsed)
+                {
+                    allWires[allWires.Count - 1].deleteWire();
+                    allWires[allWires.Count - 1].drawWire(startPoint, new Point(startPoint.X, gridMousePos.Y), accent);
+                }
+                else
+                {
+                    allWires[allWires.Count - 1].deleteWire();
+                    allWires[allWires.Count - 2].deleteWire();
+                    allWires[allWires.Count - 1].drawWire(startPoint, new Point(startPoint.X, gridMousePos.Y), accent);
+                    allWires[allWires.Count - 2].drawWire(new Point(startPoint.X, gridMousePos.Y), gridMousePos, accent);
+                }
             }
             #endregion
         }
