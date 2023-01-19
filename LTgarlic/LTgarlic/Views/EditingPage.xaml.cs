@@ -368,98 +368,96 @@ public sealed partial class EditingPage : Page
 
                     foreach (var wire in allWires)
                     {
-                        if (wire != allWires[allWires.Count - 2] && wire != allWires[allWires.Count - 1])
+                        if (wire.startPoint.Y == wire.endPoint.Y) //horizontal
                         {
-                            if (wire.startPoint.Y == wire.endPoint.Y) //horizontal
+                            if (startPoint.Y == wire.startPoint.Y) //if the line has the same y value
                             {
-                                if (allWires[allWires.Count - 2].startPoint.Y == wire.startPoint.Y) //if the line has the same y value
+                                if (wire.startPoint.X < wire.endPoint.X) //line has been drawn from left to right
                                 {
-                                    if (wire.startPoint.X == wire.endPoint.X) //line has been drawn from left to right
+
+                                    if (startPoint.X > wire.startPoint.X && startPoint.X < wire.endPoint.X)
                                     {
-                                        if (allWires[allWires.Count - 1].startPoint.X > wire.startPoint.X && allWires[allWires.Count - 1].startPoint.X < wire.endPoint.X)
+                                        Ellipse connection = new Ellipse()
                                         {
-                                            Ellipse connection = new Ellipse()
-                                            {
-                                                Width = 10,
-                                                Height = 10,
-                                                Fill = accent,
-                                                Stroke = accent,
-                                                StrokeThickness = 1
-                                            };
+                                            Width = 10,
+                                            Height = 10,
+                                            Fill = accent,
+                                            Stroke = accent,
+                                            StrokeThickness = 1
+                                        };
 
-                                            Canvas.SetLeft(connection, allWires[allWires.Count - 2].startPoint.X - connection.Width / 2);
-                                            Canvas.SetTop(connection, allWires[allWires.Count - 2].startPoint.Y - connection.Width / 2);
+                                        Canvas.SetLeft(connection, startPoint.X - connection.Width / 2);
+                                        Canvas.SetTop(connection, startPoint.Y - connection.Width / 2);
 
-                                            connections.Add(connection);
-                                            drawingTable.Children.Add(connection);
-                                        }
+                                        connections.Add(connection);
+                                        drawingTable.Children.Add(connection);
                                     }
-                                    else if (wire.startPoint.X > wire.endPoint.X)
+                                }
+                                else if (wire.startPoint.X > wire.endPoint.X)
+                                {
+
+                                    if (startPoint.X < wire.startPoint.X && startPoint.X > wire.endPoint.X)
                                     {
-
-                                        if (allWires[allWires.Count - 1].startPoint.X < wire.startPoint.X && allWires[allWires.Count - 1].startPoint.X > wire.endPoint.X)
+                                        Ellipse connection = new Ellipse()
                                         {
-                                            Ellipse connection = new Ellipse()
-                                            {
-                                                Width = 10,
-                                                Height = 10,
-                                                Fill = accent,
-                                                Stroke = accent,
-                                                StrokeThickness = 1
-                                            };
+                                            Width = 10,
+                                            Height = 10,
+                                            Fill = accent,
+                                            Stroke = accent,
+                                            StrokeThickness = 1
+                                        };
 
-                                            Canvas.SetLeft(connection, allWires[allWires.Count - 2].startPoint.X - connection.Width / 2);
-                                            Canvas.SetTop(connection, allWires[allWires.Count - 2].startPoint.Y - connection.Width / 2);
+                                        Canvas.SetLeft(connection, startPoint.X - connection.Width / 2);
+                                        Canvas.SetTop(connection, startPoint.Y - connection.Width / 2);
 
-                                            connections.Add(connection);
-                                            drawingTable.Children.Add(connection);
-                                        }
+                                        connections.Add(connection);
+                                        drawingTable.Children.Add(connection);
                                     }
                                 }
                             }
-                            if (wire.startPoint.X == wire.endPoint.X) //vertical
+                        }
+                        if (wire.startPoint.X == wire.endPoint.X) //vertical
+                        {
+                            if (startPoint.X == wire.startPoint.X) //if the line has the same x value
                             {
-                                if (allWires[allWires.Count - 2].startPoint.X == wire.startPoint.X) //if the line has the same x value
+                                if (wire.startPoint.Y < wire.endPoint.Y) //line has been drawn from top to bottom
                                 {
-                                    if (wire.startPoint.Y < wire.endPoint.Y) //line has been drawn from top to bottom
+                                    if (startPoint.Y > wire.startPoint.Y && startPoint.Y < wire.endPoint.Y)
                                     {
-                                        if (allWires[allWires.Count - 2].startPoint.Y > wire.startPoint.Y && allWires[allWires.Count - 2].startPoint.Y < wire.endPoint.Y)
+                                        Ellipse connection = new Ellipse()
                                         {
-                                            Ellipse connection = new Ellipse()
-                                            {
-                                                Width = 10,
-                                                Height = 10,
-                                                Fill = accent,
-                                                Stroke = accent,
-                                                StrokeThickness = 1
-                                            };
+                                            Width = 10,
+                                            Height = 10,
+                                            Fill = accent,
+                                            Stroke = accent,
+                                            StrokeThickness = 1
+                                        };
 
-                                            Canvas.SetLeft(connection, allWires[allWires.Count - 2].startPoint.X - connection.Width / 2);
-                                            Canvas.SetTop(connection, allWires[allWires.Count - 2].startPoint.Y - connection.Width / 2);
+                                        Canvas.SetLeft(connection, startPoint.X - connection.Width / 2);
+                                        Canvas.SetTop(connection, startPoint.Y - connection.Width / 2);
 
-                                            connections.Add(connection);
-                                            drawingTable.Children.Add(connection);
-                                        }
+                                        connections.Add(connection);
+                                        drawingTable.Children.Add(connection);
                                     }
-                                    else
+                                }
+                                else
+                                {
+                                    if (startPoint.Y < wire.startPoint.Y && startPoint.Y > wire.endPoint.Y)
                                     {
-                                        if (allWires[allWires.Count - 2].startPoint.Y < wire.startPoint.Y && allWires[allWires.Count - 2].startPoint.Y > wire.endPoint.Y)
+                                        Ellipse connection = new Ellipse()
                                         {
-                                            Ellipse connection = new Ellipse()
-                                            {
-                                                Width = 10,
-                                                Height = 10,
-                                                Fill = accent,
-                                                Stroke = accent,
-                                                StrokeThickness = 1
-                                            };
+                                            Width = 10,
+                                            Height = 10,
+                                            Fill = accent,
+                                            Stroke = accent,
+                                            StrokeThickness = 1
+                                        };
 
-                                            Canvas.SetLeft(connection, allWires[allWires.Count - 2].startPoint.X - connection.Width / 2);
-                                            Canvas.SetTop(connection, allWires[allWires.Count - 2].startPoint.Y - connection.Width / 2);
+                                        Canvas.SetLeft(connection, startPoint.X - connection.Width / 2);
+                                        Canvas.SetTop(connection, startPoint.Y - connection.Width / 2);
 
-                                            connections.Add(connection);
-                                            drawingTable.Children.Add(connection);
-                                        }
+                                        connections.Add(connection);
+                                        drawingTable.Children.Add(connection);
                                     }
                                 }
                             }
