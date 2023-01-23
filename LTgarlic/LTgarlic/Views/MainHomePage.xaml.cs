@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Runtime.InteropServices.WindowsRuntime;
 using LTgarlic.ViewModels;
 using Microsoft.UI.Xaml;
@@ -17,8 +18,11 @@ using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using WinRT.Interop;
+using LTgarlic;
+
 
 namespace LTgarlic.Views;
+
 /// <summary>
 /// An empty page that can be used on its own or navigated to within a Frame.
 /// </summary>
@@ -28,6 +32,16 @@ public sealed partial class MainHomePage : Page
     {
         get;
     }
+
+
+    private void NavigateToPage(string pageName)
+    {
+        var navigationView = new NavigationView();
+        //.Navigate(typeof("pageName"));
+        
+    }
+
+
     public MainHomePage()
     {
         ViewModel = App.GetService<MainViewModel>();
@@ -44,7 +58,21 @@ public sealed partial class MainHomePage : Page
         picker.SuggestedFileName = "cicuit";
         var file = await picker.PickSaveFileAsync();
 
+        var a = typeof(neweditingpage);
+        
+        NavigationView navigationView= new NavigationView();
+        NavigationViewItem newItem = new NavigationViewItem();
+        newItem.Content = "Hello";
+        newItem.Tag = "newPage";
+        newItem.IsSelected = true;
+
+        this.NavigateToPage("neweditingpage");
+        //NavigateToPage("neweditingpage");
+
     }
+
+  
+
 
     private async void openbutton_Click(object sender, RoutedEventArgs e)
     {
