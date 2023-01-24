@@ -19,13 +19,11 @@ using Windows.Storage;
 using Windows.Storage.Pickers;
 using WinRT.Interop;
 using LTgarlic;
-
+using LTgarlic.Helpers;
 
 namespace LTgarlic.Views;
 
-/// <summary>
-/// An empty page that can be used on its own or navigated to within a Frame.
-/// </summary>
+
 public sealed partial class MainHomePage : Page
 {
     public MainViewModel ViewModel
@@ -34,12 +32,7 @@ public sealed partial class MainHomePage : Page
     }
 
 
-    private void NavigateToPage(string pageName)
-    {
-        var navigationView = new NavigationView();
-        //.Navigate(typeof("pageName"));
-        
-    }
+    
 
 
     public MainHomePage()
@@ -59,15 +52,14 @@ public sealed partial class MainHomePage : Page
         var file = await picker.PickSaveFileAsync();
 
         var a = typeof(neweditingpage);
-        
-        NavigationView navigationView= new NavigationView();
+
+        //NavigationView navigationView= new NavigationView();
         NavigationViewItem newItem = new NavigationViewItem();
         newItem.Content = "Hello";
         newItem.Tag = "newPage";
         newItem.IsSelected = true;
 
-        this.NavigateToPage("neweditingpage");
-        //NavigateToPage("neweditingpage");
+        
 
     }
 
