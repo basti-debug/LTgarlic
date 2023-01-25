@@ -35,5 +35,46 @@ namespace LTGarlicv2
             currentframe.Content = canvas;
 
         }
+
+        public Button displayMainPage(Frame currentframe)
+        {
+            Canvas mainCanva = new Canvas();
+            mainCanva.Height = 1000;
+            mainCanva.Width = 1000;
+
+            TextBlock Title = new TextBlock();
+            Title.Text = "Welcome to LTGarlic";
+            Title.FontSize = 30;
+
+            Button createbutton = new Button();
+            createbutton.Content = "Create a new File";
+            createbutton.Height = 30;
+            
+
+            Button openbutton = new Button();
+            openbutton.Content = "Open a File";
+
+            Button openlib = new Button();
+            openlib.Content = "Open a Libary";
+
+
+            // Moving Objects inside the Canvas
+            Canvas.SetLeft(Title, -200);
+            Canvas.SetTop(Title, 100);
+
+            Canvas.SetLeft(createbutton, -200);
+            Canvas.SetTop(createbutton, 200);
+
+            mainCanva.Children.Add(createbutton);
+            mainCanva.Children.Add(openbutton);
+            mainCanva.Children.Add(openlib);
+            mainCanva.Children.Add(Title);
+
+            currentframe.Content = mainCanva;
+
+            return createbutton;
+        }
     }
+
+    
 }

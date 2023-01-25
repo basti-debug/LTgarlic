@@ -11,7 +11,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <NavigationView x:Name="nvSample">
+    <NavigationView x:Name="nvHamburgerleft">
         <NavigationView.MenuItems>
             <NavigationViewItem Icon="Home" Content="Main Menu" Tag="MainItem" />
         </NavigationView.MenuItems>

@@ -17,6 +17,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage.Pickers;
+using System.Diagnostics;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -31,55 +32,39 @@ namespace LTGarlicv2
        
         public MainWindow()
         {
+
             this.InitializeComponent();
+            
+
             MainLTWindow.ExtendsContentIntoTitleBar = true;
             MainLTWindow.SetTitleBar(null);
 
-            Canvas mainCanva = new Canvas();
-            mainCanva.Height = 1000;
-            mainCanva.Width = 1000;
+            PageBuilder start = new PageBuilder();
 
-            TextBlock Title = new TextBlock();
-            Title.Text = "Welcome to LTGarlic";
-            Title.FontSize = 30;
-
-            Button createbutton = new Button();
-            createbutton.Content = "Create a new File";
-            createbutton.Height = 30;
-            createbutton.Click += creatButtononClick;
-
-            Button openbutton = new Button();
-            openbutton.Content = "Open a File";
-
-            Button openlib = new Button();
-            openlib.Content = "Open a Libary";
-
-
-            // Moving Objects inside the Canvas
-            Canvas.SetLeft(Title, -200);
-            Canvas.SetTop(Title,100);
-
-            Canvas.SetLeft(createbutton, -200);
-            Canvas.SetTop(createbutton, 200);
-
-            mainCanva.Children.Add(createbutton);
-            mainCanva.Children.Add(openbutton);
-            mainCanva.Children.Add(openlib);
-            mainCanva.Children.Add(Title);
-
-            
-            contentFrame.Content = mainCanva;
-
-            nvSample.SelectionChanged += NvSample_SelectionChanged();
-
-
+            start.displayMainPage(contentFrame).Click += creatButtononClick;
+            nvHamburgerleft.SelectionChanged += NvSample_SelectionChanged;
         }
 
-        async void NvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        void NvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            string selecteditem = nvSample.SelectedItem.ToString();
+            var item = args.SelectedItem as NavigationViewItem;
             PageBuilder newpage = new PageBuilder();
-            newpage.displayFilePage(contentFrame, TitleBlock, selecteditem);
+
+            var currentselected = item.Content; 
+            
+
+            if (item.Tag != null && item.Tag.Equals("MainItem"))
+            {
+                Debug.WriteLine("Here we are");
+                newpage.displayMainPage(contentFrame);
+            }
+            else
+            {
+                Debug.WriteLine("not correct" + currentselected+"..." + item.Content +"------"+ item.Tag);
+                newpage.displayFilePage(contentFrame, TitleBlock, "");
+            }
+            
+            
         }
 
         async void  creatButtononClick(object sender, RoutedEventArgs args)
@@ -136,7 +121,7 @@ namespace LTGarlicv2
 
             NavigationViewItem newproject = new NavigationViewItem();
             newproject.Content = "file.Name";
-            nvSample.MenuItems.Add(newproject);
+            nvHamburgerleft.MenuItems.Add(newproject);
 
         }
 
