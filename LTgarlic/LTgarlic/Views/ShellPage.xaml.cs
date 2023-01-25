@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Printing;
 using Windows.Devices.WiFiDirect;
 using Windows.System;
 
@@ -18,7 +19,16 @@ public sealed partial class ShellPage : Page
     {
         get;
     }
-
+    public void addpage(string name)
+    {
+        NavigationViewItem newItem = new NavigationViewItem();
+        newItem.Content = name;
+        newItem.Tag = "newPage";
+        NavigationViewControl.MenuItems.Add(newItem);
+    }
+   
+    private int _myProperty;
+    
     public ShellPage(ShellViewModel viewModel)
     {
         ViewModel = viewModel;
@@ -34,9 +44,10 @@ public sealed partial class ShellPage : Page
         App.MainWindow.SetTitleBar(AppTitleBar);
         App.MainWindow.Activated += MainWindow_Activated;
         AppTitleBarText.Text = "AppDisplayName".GetLocalized();
-//NavigationViewControl.MenuItems.a
+
     }
 
+    
     private void OnLoaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         TitleBarHelper.UpdateTitleBar(RequestedTheme);
@@ -87,6 +98,7 @@ public sealed partial class ShellPage : Page
     }
 
     public static bool wireMode = false;
+    
     private void Page_KeyDown(object sender, KeyRoutedEventArgs e)
     {
         if (e.Key == (VirtualKey)0x57)

@@ -20,6 +20,9 @@ using Windows.Storage.Pickers;
 using WinRT.Interop;
 using LTgarlic;
 using LTgarlic.Helpers;
+using Microsoft.UI.Xaml.Printing;
+using LTgarlic.Views;
+using System.Net;
 
 namespace LTgarlic.Views;
 
@@ -30,9 +33,6 @@ public sealed partial class MainHomePage : Page
     {
         get;
     }
-
-
-    
 
 
     public MainHomePage()
@@ -51,19 +51,53 @@ public sealed partial class MainHomePage : Page
         picker.SuggestedFileName = "cicuit";
         var file = await picker.PickSaveFileAsync();
 
-        var a = typeof(neweditingpage);
+        var drawcanvas = new Canvas();
+        var hotbar = new CommandBar();
 
-        //NavigationView navigationView= new NavigationView();
-        NavigationViewItem newItem = new NavigationViewItem();
-        newItem.Content = "Hello";
-        newItem.Tag = "newPage";
-        newItem.IsSelected = true;
+        var wirebutton = new AppBarButton
+        {
+            Icon = new SymbolIcon(Symbol.Edit),
+            Label = "wire mode"
+        };
+
+        var simbutton = new AppBarButton
+        {
+            Icon = new SymbolIcon(Symbol.Calculator),
+            Label = "simulate"
+        };
+
+        hotbar.PrimaryCommands.Add(wirebutton);
+        hotbar.SecondaryCommands.Add(simbutton);
 
         
 
+        //App.MainWindow.Content = hotbar;
+        //App.MainWindow.Close();
+
+
+        //NavigationViewItem newItem = new NavigationViewItem();
+        //newItem.Content = "New Item";
+        //newItem.Icon = new FontIcon() { FontFamily = new FontFamily("Segoe MDL2 Assets"), Glyph = "\xE74C" };
+        //newItem.AddHandler(NavigationViewItem.PointerPressedEvent, new PointerEventHandler(OnNewItemClicked), true);
+        //NavigationViewControl.MenuItems.Add(newItem);
+
+        //private void OnNewItemClicked(object sender, PointerRoutedEventArgs e)
+        //{
+        //    NavigationViewItem selectedItem = sender as NavigationViewItem;
+        //    if (selectedItem != null)
+        //    {
+        //        // Navigate to the corresponding view and view model for the new item
+        //    }
+        //}
+
+
+        //LTgarlic.Views.ShellPage.Navigation
+        //NavigationViewControl.Items.Add(newItem);
+
+        //NavigationHelper.SetNavigateTo(newItem, typeof(MainViewModel).FullName);
     }
 
-  
+
 
 
     private async void openbutton_Click(object sender, RoutedEventArgs e)
