@@ -23,6 +23,7 @@ using LTgarlic.Helpers;
 using Microsoft.UI.Xaml.Printing;
 using LTgarlic.Views;
 using System.Net;
+using LTgarlic.Services;
 
 namespace LTgarlic.Views;
 
@@ -43,13 +44,17 @@ public sealed partial class MainHomePage : Page
 
     public async void createbutton_Click(object sender, RoutedEventArgs e)
     {
-        var hwnd = App.MainWindow.GetWindowHandle();
+        ShellPage a = App.GetService<ShellPage>();
+        
+        Debug.WriteLine("shellpagecreated!");
+        //file picker 
+        //var hwnd = App.MainWindow.GetWindowHandle();
 
-        var picker = new FileSavePicker();
-        WinRT.Interop.InitializeWithWindow.Initialize(picker, hwnd);
-        picker.FileTypeChoices.Add("Spice Circuit", new List<string>() { ".asc" });
-        picker.SuggestedFileName = "cicuit";
-        var file = await picker.PickSaveFileAsync();
+        //var picker = new FileSavePicker();
+        //WinRT.Interop.InitializeWithWindow.Initialize(picker, hwnd);
+        //picker.FileTypeChoices.Add("Spice Circuit", new List<string>() { ".asc" });
+        //picker.SuggestedFileName = "cicuit";
+        //var file = await picker.PickSaveFileAsync();
 
         var drawcanvas = new Canvas();
         var hotbar = new CommandBar();
@@ -69,9 +74,10 @@ public sealed partial class MainHomePage : Page
         hotbar.PrimaryCommands.Add(wirebutton);
         hotbar.SecondaryCommands.Add(simbutton);
 
-        
+        a.hehe();
 
         //App.MainWindow.Content = hotbar;
+
         //App.MainWindow.Close();
 
 

@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 
 namespace LTgarlic;
-public class neweditingpage : Page
+public class editingpagecreator:Page
 {
-    public neweditingpage()
+
+    public editingpagecreator()
     {
-        var drawcanvas = new Canvas();
         var hotbar = new CommandBar();
 
         var wirebutton = new AppBarButton
@@ -30,7 +30,6 @@ public class neweditingpage : Page
 
         hotbar.PrimaryCommands.Add(wirebutton);
         hotbar.SecondaryCommands.Add(simbutton);
-
-        this.Content = drawcanvas;
+        
     }
 }

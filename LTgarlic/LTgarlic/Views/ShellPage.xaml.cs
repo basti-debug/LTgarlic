@@ -1,4 +1,5 @@
-﻿using components.Components;
+﻿using System.Diagnostics;
+using components.Components;
 using LTgarlic.Contracts.Services;
 using LTgarlic.Helpers;
 using LTgarlic.ViewModels;
@@ -19,20 +20,28 @@ public sealed partial class ShellPage : Page
     {
         get;
     }
+
+    public void hehe()
+    {
+        addpage("test");
+    }
     public void addpage(string name)
     {
         NavigationViewItem newItem = new NavigationViewItem();
         newItem.Content = name;
         newItem.Tag = "newPage";
+
         NavigationViewControl.MenuItems.Add(newItem);
+        Debug.WriteLine("addpage done");
     }
-   
+
     private int _myProperty;
     
     public ShellPage(ShellViewModel viewModel)
     {
         ViewModel = viewModel;
         InitializeComponent();
+        addpage("Gabriel");
 
         ViewModel.NavigationService.Frame = NavigationFrame;
         ViewModel.NavigationViewService.Initialize(NavigationViewControl);
@@ -59,7 +68,6 @@ public sealed partial class ShellPage : Page
     private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
     {
         var resource = args.WindowActivationState == WindowActivationState.Deactivated ? "WindowCaptionForegroundDisabled" : "WindowCaptionForeground";
-
         AppTitleBarText.Foreground = (SolidColorBrush)App.Current.Resources[resource];
     }
 
