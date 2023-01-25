@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "CaFF95fJNmm+P7hczof1tUjzUgtckZzfOCVksDkb+70LOoGxcnXwzeGzzSn3PVwIYJQijcdPxtN8QjQl4+SeXg==",
+  "dgSpecHash": "cYwRxynlUy2LcR50zFMfIPmT/1dB9tTgayi66ey2FAYzAL5DJqlrK9jvqgcfPWBOBgqIYLxQDL1n9upkmqYP+w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gabri\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj",
+  "projectFilePath": "C:\\Users\\basti\\source\\repos\\LTgarlic\\LTgarlic\\LTgarlic.Core\\LTgarlic.Core.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\gabri\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\basti\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }
