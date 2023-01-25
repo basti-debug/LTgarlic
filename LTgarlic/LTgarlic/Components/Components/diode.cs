@@ -28,6 +28,9 @@ public class diode : component
     public readonly string name = "diode";
     private readonly Canvas drawingTable;
 
+    public Point location = new();
+    public int rotation;
+
     public override List<Point> pins { get; set; }
     public override List<Ellipse> pads { get; set; }
 
@@ -39,6 +42,8 @@ public class diode : component
     private readonly Path myPath = new();
     public override void drawComponent(Point location, int rotation, SolidColorBrush color)
     {
+        this.location = location;
+        this.rotation = rotation;
         pins diodePins = new pins();
         var pinGroup = diodePins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
 

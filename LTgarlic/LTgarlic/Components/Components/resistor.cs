@@ -14,6 +14,7 @@ using Microsoft.UI.Xaml.Shapes;
 using LTgarlic.Components.Miscellaneous;
 using Path = Microsoft.UI.Xaml.Shapes.Path;
 using LTgarlic.Views;
+using Windows.Graphics.Imaging;
 
 namespace components.Components;
 
@@ -24,8 +25,11 @@ public class resistor : component
     private readonly int pinlength = 600;
     private int sizeDiv = 20;
 
-    private readonly string name = "res";
+    public readonly string name = "res";
     private readonly Canvas drawingTable;
+    
+    public Point location = new();
+    public int rotation;
 
     public override List<Point> pins { get; set; }
     public override  List<Ellipse> pads { get; set; }
@@ -41,6 +45,8 @@ public class resistor : component
     private readonly Path myPath = new();
     public override void drawComponent(Point location, int rotation, SolidColorBrush color)
     {
+        this.location = location;
+        this.rotation = rotation;
         pins resPins = new pins();
         var pinGroup = resPins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
 

@@ -29,6 +29,9 @@ public class capacitor : component
     public string name = "cap";
     private readonly Canvas drawingTable;
 
+    public Point location = new();
+    public int rotation;
+
     public override List<Point> pins { get; set; }
     public override List<Ellipse> pads { get; set; }
 
@@ -40,6 +43,8 @@ public class capacitor : component
     private readonly Path myPath = new();
     public override void drawComponent(Point location, int rotation, SolidColorBrush color)
     {
+        this.location = location;
+        this.rotation = rotation;
         pins capPins = new pins();
         var pinGroup = capPins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
 

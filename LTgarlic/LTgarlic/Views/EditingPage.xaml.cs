@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Text;
@@ -99,7 +100,7 @@ public sealed partial class EditingPage : Page
         }
     }
 
-    private readonly List<component> components = new();
+    private static readonly List<component> components = new();
     private bool placeComponentSelected = false;
     private void Dialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
     {
@@ -632,5 +633,213 @@ public sealed partial class EditingPage : Page
             wireClickCnt = 0;
         }
         #endregion
+    }
+
+    public static void encodeFile()
+    {
+        string spiceString = "";
+        string fileName = @"C:\Users\gabri\Downloads\firstCircuit.asc";
+
+        spiceString += "Version 4\n";
+        foreach (component component in components)
+        {
+            if (component is resistor)
+            {
+
+                spiceString += "SYMBOL " + ((resistor)component).name + " " + ((resistor)component).location.X + " " + ((resistor)component).location.Y + " R" + ((resistor)component).rotation + "\n";
+                spiceString += "SYMATTR InstName R" + components.IndexOf(component) + "\n";
+            }
+
+            if (component is inductance)
+            {
+                spiceString += "SYMBOL " + ((inductance)component).name + " " + ((inductance)component).location.X + " " + ((inductance)component).location.Y + " R" + ((inductance)component).rotation + "\n";
+                spiceString += "SYMATTR InstName L" + components.IndexOf(component) + "\n";
+            }
+
+            if (component is capacitor)
+            {
+                spiceString += "SYMBOL " + ((capacitor)component).name + " " + ((capacitor)component).location.X + " " + ((capacitor)component).location.Y + " R" + ((capacitor)component).rotation + "\n";
+                spiceString += "SYMATTR InstName C" + components.IndexOf(component) + "\n";
+            }
+
+            if (component is diode)
+            {
+                spiceString += "SYMBOL " + ((diode)component).name + " " + ((diode)component).location.X + " " + ((diode)component).location.Y + " R" + ((diode)component).rotation + "\n";
+                spiceString += "SYMATTR InstName D" + components.IndexOf(component) + "\n";
+            }
+        }
+
+        try
+        {
+            using (StreamWriter writer = new StreamWriter(fileName))
+            {
+                writer.Write(spiceString);
+            }
+        }
+        catch (Exception exp)
+        {
+            Console.Write(exp.Message);
+        }
+    }
+
+    private void decodeFile(Canvas canvas, string path)
+    {
+        string[] data = File.ReadAllLines(path);
+        bool containsSheet = false;
+        if (data[1].Contains("SHEET"))
+            containsSheet = true;
+
+        Point location = new Point();
+        int rotation;
+
+        if (containsSheet)
+        {
+            for (var i = 2; i < data.Length; i++)
+            {
+                if (data[i].Contains("res"))
+                {
+                    resistor res = new resistor(canvas);
+                    string[] substrings = data[i].Split(' ');
+                    location.X = Convert.ToDouble(substrings[2]);
+                    location.Y = Convert.ToDouble(substrings[3]);
+                    rotation = Convert.ToInt32(substrings[4].Substring(1));
+
+                    if (SettingsPage.theme == "Dark")
+                    {
+                        res.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
+                    }
+                    else if (SettingsPage.theme == "Light")
+                    {
+                        res.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
+                    }
+                }
+                if (data[i].Contains("cap"))
+                {
+                    capacitor cap = new capacitor(canvas);
+                    string[] substrings = data[i].Split(' ');
+                    location.X = Convert.ToDouble(substrings[2]);
+                    location.Y = Convert.ToDouble(substrings[3]);
+                    rotation = Convert.ToInt32(substrings[4].Substring(1));
+
+                    if (SettingsPage.theme == "Dark")
+                    {
+                        cap.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
+                    }
+                    else if (SettingsPage.theme == "Light")
+                    {
+                        cap.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
+                    }
+                }
+                if (data[i].Contains("diode"))
+                {
+                    diode dio = new diode(canvas);
+                    string[] substrings = data[i].Split(' ');
+                    location.X = Convert.ToDouble(substrings[2]);
+                    location.Y = Convert.ToDouble(substrings[3]);
+                    rotation = Convert.ToInt32(substrings[4].Substring(1));
+
+                    if (SettingsPage.theme == "Dark")
+                    {
+                        dio.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
+                    }
+                    else if (SettingsPage.theme == "Light")
+                    {
+                        dio.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
+                    }
+                }
+                if (data[i].Contains("ind"))
+                {
+                    inductance ind = new inductance(canvas);
+                    string[] substrings = data[i].Split(' ');
+                    location.X = Convert.ToDouble(substrings[2]);
+                    location.Y = Convert.ToDouble(substrings[3]);
+                    rotation = Convert.ToInt32(substrings[4].Substring(1));
+
+                    if (SettingsPage.theme == "Dark")
+                    {
+                        ind.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
+                    }
+                    else if (SettingsPage.theme == "Light")
+                    {
+                        ind.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (var i = 1; i < data.Length; i++)
+            {
+                if (data[i].Contains("res"))
+                {
+                    resistor res = new resistor(canvas);
+                    string[] substrings = data[i].Split(' ');
+                    location.X = Convert.ToDouble(substrings[2]);
+                    location.Y = Convert.ToDouble(substrings[3]);
+                    rotation = Convert.ToInt32(substrings[4].Substring(1));
+
+                    if (SettingsPage.theme == "Dark")
+                    {
+                        res.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
+                    }
+                    else if (SettingsPage.theme == "Light")
+                    {
+                        res.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
+                    }
+                }
+                if (data[i].Contains("cap"))
+                {
+                    capacitor cap = new capacitor(canvas);
+                    string[] substrings = data[i].Split(' ');
+                    location.X = Convert.ToDouble(substrings[2]);
+                    location.Y = Convert.ToDouble(substrings[3]);
+                    rotation = Convert.ToInt32(substrings[4].Substring(1));
+
+                    if (SettingsPage.theme == "Dark")
+                    {
+                        cap.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
+                    }
+                    else if (SettingsPage.theme == "Light")
+                    {
+                        cap.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
+                    }
+                }
+                if (data[i].Contains("diode"))
+                {
+                    diode dio = new diode(canvas);
+                    string[] substrings = data[i].Split(' ');
+                    location.X = Convert.ToDouble(substrings[2]);
+                    location.Y = Convert.ToDouble(substrings[3]);
+                    rotation = Convert.ToInt32(substrings[4].Substring(1));
+
+                    if (SettingsPage.theme == "Dark")
+                    {
+                        dio.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
+                    }
+                    else if (SettingsPage.theme == "Light")
+                    {
+                        dio.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
+                    }
+                }
+                if (data[i].Contains("ind"))
+                {
+                    inductance ind = new inductance(canvas);
+                    string[] substrings = data[i].Split(' ');
+                    location.X = Convert.ToDouble(substrings[2]);
+                    location.Y = Convert.ToDouble(substrings[3]);
+                    rotation = Convert.ToInt32(substrings[4].Substring(1));
+
+                    if (SettingsPage.theme == "Dark")
+                    {
+                        ind.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
+                    }
+                    else if (SettingsPage.theme == "Light")
+                    {
+                        ind.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
+                    }
+                }
+            }
+        }
+        
     }
 }
