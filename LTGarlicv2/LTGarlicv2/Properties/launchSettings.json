@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "LTGarlicv2 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "LTGarlicv2 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
