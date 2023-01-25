@@ -16,7 +16,6 @@
             <NavigationViewItem Icon="Home" Content="Main Menu" Tag="MainItem" />
         </NavigationView.MenuItems>
         <Frame x:Name="contentFrame">
-            <TextBlock Name="TitleBlock"/>
         </Frame>
     </NavigationView>
 </Window>

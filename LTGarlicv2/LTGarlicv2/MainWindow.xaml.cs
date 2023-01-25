@@ -55,13 +55,12 @@ namespace LTGarlicv2
 
             if (item.Tag != null && item.Tag.Equals("MainItem"))
             {
-                Debug.WriteLine("Here we are");
                 newpage.displayMainPage(contentFrame);
             }
             else
             {
-                Debug.WriteLine("not correct" + currentselected+"..." + item.Content +"------"+ item.Tag);
-                newpage.displayFilePage(contentFrame, TitleBlock, "");
+                string name = item.Content.ToString();
+                newpage.displayFilePage(contentFrame, name);
             }
             
             
@@ -120,7 +119,7 @@ namespace LTGarlicv2
 
 
             NavigationViewItem newproject = new NavigationViewItem();
-            newproject.Content = "file.Name";
+            newproject.Content = "file.Name";  // to be replaced with file name
             nvHamburgerleft.MenuItems.Add(newproject);
 
         }
