@@ -27,6 +27,8 @@ using components.Components;
 using Windows.System;
 using Windows.UI;
 using Microsoft.Win32;
+using System.Formats.Asn1;
+using System.Collections;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -42,6 +44,7 @@ namespace LTGarlicv2
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        PageBuilder newpage = new PageBuilder();
         public static bool wireMode = false;
         public MainWindow()
         {
@@ -52,23 +55,21 @@ namespace LTGarlicv2
             MainLTWindow.ExtendsContentIntoTitleBar = true;
             MainLTWindow.SetTitleBar(null);
 
-            PageBuilder start = new PageBuilder();
+            newpage.displayMainPage(contentFrame).Click += creatButtononClick;
 
-            start.displayMainPage(contentFrame).Click += creatButtononClick;
+
             nvHamburgerleft.SelectionChanged += NvSample_SelectionChanged;
         }
 
         void NvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             var item = args.SelectedItem as NavigationViewItem;
-            PageBuilder newpage = new PageBuilder();
-
-            var currentselected = item.Content; 
+            
             
 
             if (item.Tag != null && item.Tag.Equals("MainItem"))
-            {
-                newpage.displayMainPage(contentFrame);
+            { 
+                newpage.displayMainPage(contentFrame).Click += creatButtononClick;
             }
             else
             {
@@ -77,6 +78,20 @@ namespace LTGarlicv2
             }
             
             
+        }
+
+        async void addbutton_click(object sender, RoutedEventArgs args)
+        {
+
+        }
+
+        async void wirebutton_click(object sender, RoutedEventArgs args)
+        {
+
+        }
+        async void savebutton_lick(object sender, RoutedEventArgs args)
+        {
+
         }
 
         async void  creatButtononClick(object sender, RoutedEventArgs args)
@@ -91,7 +106,7 @@ namespace LTGarlicv2
             filenamedig.CloseButtonText = "Discard";
             filenamedig.DefaultButton = ContentDialogButton.Primary;
 
-            TextBox filnamebox = new TextBox();
+            TextBox filnamebox = new TextBox();          
 
             filenamedig.Content = filnamebox;
 

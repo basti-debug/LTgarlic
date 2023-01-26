@@ -114,7 +114,7 @@ namespace LTGarlicv2
             Button openbutton = new Button();
             openbutton.Content = "Open a File";
             //openbutton.Background = new SolidColorBrush(Windows.UI.Colors.Red);           !! To be replaced by accentcolor 
-
+            
             Button openlib = new Button();
             openlib.Content = "Open a Libary";
 
