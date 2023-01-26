@@ -22,7 +22,7 @@ public class resistor : component
 {
     private readonly int height = 2400;
     private readonly int width = 1200;
-    private readonly int pinlength = 600;
+    private readonly int pinlength = 300;
     private int sizeDiv = 20;
 
     public readonly string name = "res";

@@ -21,7 +21,7 @@ namespace components.Components;
 public class capacitor : component
 {
     private readonly int width = 1200;
-    private readonly int height = 600;
+    private readonly int height = 2400;
     private readonly int conHeight = 150;
     private readonly int pinlength = 600;
     private readonly int sizeDiv = 20;

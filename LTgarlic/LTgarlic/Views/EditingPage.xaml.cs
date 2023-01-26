@@ -633,6 +633,8 @@ public sealed partial class EditingPage : Page
             wireClickCnt = 0;
         }
         #endregion
+
+        encodeFile();
     }
 
     public static void encodeFile()
@@ -641,30 +643,36 @@ public sealed partial class EditingPage : Page
         string fileName = @"C:\Users\gabri\Downloads\firstCircuit.asc";
 
         spiceString += "Version 4\n";
+
+        foreach (wire wire in allWires)
+        {
+            spiceString += "WIRE " + (wire.startPoint.X/2) + " " + (wire.startPoint.Y/2) + " " + (wire.endPoint.X/2) + " " + (wire.endPoint.Y / 2) + "\n";
+        }
+
         foreach (component component in components)
         {
             if (component is resistor)
             {
 
-                spiceString += "SYMBOL " + ((resistor)component).name + " " + ((resistor)component).location.X + " " + ((resistor)component).location.Y + " R" + ((resistor)component).rotation + "\n";
+                spiceString += "SYMBOL " + ((resistor)component).name + " " + ((((resistor)component).location.X - 15)/30 * 16) + " " + ((((resistor)component).location.Y - 15) / 30 * 16) + " R" + ((resistor)component).rotation + "\n";
                 spiceString += "SYMATTR InstName R" + components.IndexOf(component) + "\n";
             }
 
             if (component is inductance)
             {
-                spiceString += "SYMBOL " + ((inductance)component).name + " " + ((inductance)component).location.X + " " + ((inductance)component).location.Y + " R" + ((inductance)component).rotation + "\n";
+                spiceString += "SYMBOL " + ((inductance)component).name + " " + ((((inductance)component).location.X - 15) / 30 * 16) + " " + ((((inductance)component).location.Y - 15) / 30 * 16) + " R" + ((inductance)component).rotation + "\n";
                 spiceString += "SYMATTR InstName L" + components.IndexOf(component) + "\n";
             }
 
             if (component is capacitor)
             {
-                spiceString += "SYMBOL " + ((capacitor)component).name + " " + ((capacitor)component).location.X + " " + ((capacitor)component).location.Y + " R" + ((capacitor)component).rotation + "\n";
+                spiceString += "SYMBOL " + ((capacitor)component).name + " " + ((((capacitor)component).location.X - 15) / 30 * 16) + " " + ((((capacitor)component).location.Y - 15) / 30 * 16) + " R" + ((capacitor)component).rotation + "\n";
                 spiceString += "SYMATTR InstName C" + components.IndexOf(component) + "\n";
             }
 
             if (component is diode)
             {
-                spiceString += "SYMBOL " + ((diode)component).name + " " + ((diode)component).location.X + " " + ((diode)component).location.Y + " R" + ((diode)component).rotation + "\n";
+                spiceString += "SYMBOL " + ((diode)component).name + " " + ((((diode)component).location.X - 15) / 30 * 16) + " " + ((((diode)component).location.Y - 15) / 30 * 16) + " R" + ((diode)component).rotation + "\n";
                 spiceString += "SYMATTR InstName D" + components.IndexOf(component) + "\n";
             }
         }
