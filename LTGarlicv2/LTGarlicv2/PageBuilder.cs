@@ -17,12 +17,16 @@ using Windows.Foundation;
 using Windows.UI.Core;
 using Microsoft.UI;
 using Windows.UI.ApplicationSettings;
+using System.Security.Cryptography;
+using Windows.UI.Text;
+using Microsoft.UI.Text;
 
 namespace LTGarlicv2
 {
     public class PageBuilder
     {
         Grid a = new Grid();
+
 
         // for componentcreation
 
@@ -53,10 +57,16 @@ namespace LTGarlicv2
 
         private SolidColorBrush accent = new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]);
 
+
+        // Theme
+
+        public static string theme = "Default";
+
         // for UI navigation
         private Frame usedcurrentframe = null;
         private Canvas usedcanvas = null;
         private Window usedwindow = null;
+
 
         #region Pages
 
@@ -210,12 +220,98 @@ namespace LTGarlicv2
         public void displaySettings(Frame currentframe)
         {
 
+
+            StackPanel stacksettings = new StackPanel();
+
+            TextBlock Title = new TextBlock();
+            Title.Text = "Settings";
+            Title.FontSize = 30;
+            Title.Padding = new Thickness(50,100,0,0);
+
+            #region Info1 - Theme
+
+            TextBlock info1 = new TextBlock();
+            info1.Text = "Change Theme";
+            info1.FontSize = 15;
+            info1.FontWeight = FontWeights.Bold;
+            info1.Padding = new Thickness(50,30,0,0);
+
+            StackPanel themepanel = new StackPanel();
+            themepanel.Padding = new Thickness(50,10,0,0);
+
+            RadioButton darkstate = new RadioButton();
+            darkstate.Content = "Dark Mode";
+            if (theme == "Dark")
+            {
+                darkstate.IsChecked = true;
+            }
+            else
+            {
+                darkstate.IsChecked = false;
+            }
+            darkstate.Click += Darkstate_Click;
+
+            RadioButton lightstate = new RadioButton();
+            lightstate.Content = "Light Mode";
+            if (theme == "Light")
+            {
+                lightstate.IsChecked = true;
+            }
+            else
+            {
+                lightstate.IsChecked = false;
+            }
+            lightstate.Click += Lightstate_Click;
+
+            RadioButton defaultstate = new RadioButton();    
+            defaultstate.Content = "Default";
+            if (theme == "Default")
+            {
+                defaultstate.IsChecked= true;
+            }
+            else
+            {
+                defaultstate.IsChecked= false;
+            }
+            defaultstate.Click += Defaultstate_Click;
+
+            themepanel.Children.Add(darkstate);
+            themepanel.Children.Add(lightstate);
+            themepanel.Children.Add(defaultstate);
+
+            #endregion
+
+
+            stacksettings.Children.Add(Title);
+            stacksettings.Children.Add(info1);
+            stacksettings.Children.Add(themepanel);
+
+            currentframe.Content = stacksettings;
         }
+
+
 
         #endregion
 
         #region Events
 
+        #region Settings Buttons Events 
+        private void Defaultstate_Click(object sender, RoutedEventArgs e)
+        {
+            theme = "Default";
+
+        }
+
+        private void Lightstate_Click(object sender, RoutedEventArgs e)
+        {
+            theme = "Light";
+        }
+
+        private void Darkstate_Click(object sender, RoutedEventArgs e)
+        {
+            theme = "Dark";
+        }
+        #endregion
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             UpdateCanvasSize(usedcanvas);
@@ -293,6 +389,8 @@ namespace LTGarlicv2
                 // Handle the exception here
             }
         }
+
+        #region Editing Pages Events
 
         private void Simbutton_Click(object sender, RoutedEventArgs e)
         {
@@ -737,6 +835,7 @@ namespace LTGarlicv2
         //    #endregion
         //}
 
+        #endregion
 
         #endregion
 
