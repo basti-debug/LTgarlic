@@ -75,13 +75,12 @@ namespace LTGarlicv2
         {
             usedwindow = window;
             usedcurrentframe = currentframe;
-            usedcurrentframe.SizeChanged += Window_SizeChanged;
 
             a = b;
             InfoBar infoBar= new InfoBar();
             infoBar.Severity = InfoBarSeverity.Success;
             infoBar.Title = "Opened successfull";
-            infoBar.Message = "Your File "+ filename + "was opened correctly ";
+            infoBar.Message = "Your File "+ filename + " was opened correctly ";
             infoBar.IsOpen= true;
 
             Canvas.SetLeft(infoBar, 450);
@@ -89,9 +88,7 @@ namespace LTGarlicv2
 
 
             Canvas canvas = new Canvas();
-            canvas.Background = new SolidColorBrush(Colors.Transparent);
-            canvas.Height = 2000;
-            canvas.Width = 2000;
+            canvas.Background = new SolidColorBrush(Colors.Red);
 
 
 
@@ -107,6 +104,7 @@ namespace LTGarlicv2
             // hotbar 
 
             var hotbar = new CommandBar();
+            
             Canvas.SetLeft(hotbar, 500);
             Canvas.SetTop(hotbar, 800);
 
@@ -312,10 +310,7 @@ namespace LTGarlicv2
             theme = "Dark";
         }
         #endregion
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            UpdateCanvasSize(usedcanvas);
-        }
+        
 
         private async void Placmentbutton_Click(object sender, RoutedEventArgs e)
         {
@@ -840,26 +835,6 @@ namespace LTGarlicv2
         #endregion
 
         #region Helpers
-
-        #region Resize Canvas
-
-        public void UpdateCanvasSize(Canvas canvas)
-        {
-            // Get the current window size
-
-            double windowWidth = usedwindow.Bounds.Width;
-            double windowHeight = usedwindow.Bounds.Height;
-
-            // Set the canvas width and height to match the window size
-
-            Debug.WriteLine(windowHeight + "-" +  windowWidth);
-            //canvas.Width = windowWidth;
-            //canvas.Height = windowHeight;
-        }
-
-        
-
-        #endregion
 
         #endregion
     }
