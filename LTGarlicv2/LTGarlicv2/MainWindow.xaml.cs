@@ -74,7 +74,7 @@ namespace LTGarlicv2
             else
             {
                 string name = item.Content.ToString();
-                newpage.displayFilePage(contentFrame, name);
+                newpage.displayFilePage(contentFrame, name,mainLtGrid);
             }
             
             
@@ -82,7 +82,7 @@ namespace LTGarlicv2
 
         async void addbutton_click(object sender, RoutedEventArgs args)
         {
-
+            
         }
 
         async void wirebutton_click(object sender, RoutedEventArgs args)

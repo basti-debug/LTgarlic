@@ -1,8 +1,10 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +14,10 @@ namespace LTGarlicv2
 {
     public class PageBuilder
     {
-        public void displayFilePage(Frame currentframe, string filename)
+        Grid a = new Grid();
+        public void displayFilePage(Frame currentframe, string filename, Grid b)
         {
+            a = b;
             InfoBar infoBar= new InfoBar();
             infoBar.Severity = InfoBarSeverity.Success;
             infoBar.Title = "Opened successfull";
@@ -50,30 +54,35 @@ namespace LTGarlicv2
                 Icon = new SymbolIcon(Symbol.Edit),
                 Label = "wire mode"
             };
+            wirebutton.Click += wiremode_Click;
 
             var simbutton = new AppBarButton
             {
                 Icon = new SymbolIcon(Symbol.Calculator),
                 Label = "simulate"
             };
+            simbutton.Click += Simbutton_Click;
 
             var placmentbutton = new AppBarButton
             {
                 Icon = new SymbolIcon(Symbol.Add),
                 Label = "add Parts"
             };
+            placmentbutton.Click += Placmentbutton_Click;
 
             var rotatebutton = new AppBarButton
             {
                 Icon = new SymbolIcon(Symbol.Rotate),
                 Label = "rotate Parts"
             };
+            rotatebutton.Click += rotate_Click;
 
             var savebutton = new AppBarButton
             {
                 Icon = new SymbolIcon(Symbol.Save),
                 Label = "save"
             };
+            savebutton.Click += save_Click;
 
             var changetotop = new AppBarButton
             {
@@ -95,6 +104,110 @@ namespace LTGarlicv2
 
             currentframe.Content = canvas;
 
+        }
+
+        private async void Placmentbutton_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDialog filenamedig = new ContentDialog();
+
+            filenamedig.XamlRoot = a.XamlRoot;
+            filenamedig.Title = "Add Parts";
+            filenamedig.PrimaryButtonText = "Place";
+            filenamedig.CloseButtonText = "Discard";
+            filenamedig.DefaultButton = ContentDialogButton.Primary;
+
+            StackPanel ff = new StackPanel();
+
+            TextBlock info = new TextBlock();
+            info.Text = "Select Parts:";
+            info.Margin = new Thickness(0, 10, 0, 10);
+            
+            ListView partsview = new ListView();
+            List<string> partslist = new List<string>();
+            partslist.Add("Resistor");
+            partslist.Add("Capacitor");
+            partslist.Add("Inductance");
+
+            partsview.ItemsSource = partslist;
+
+            ff.Children.Add(info);
+            ff.Children.Add(partsview);
+           
+
+
+            filenamedig.Content = ff;
+
+            try
+            {
+                ContentDialogResult result = await filenamedig.ShowAsync();
+                if (result == ContentDialogResult.Primary)
+                {
+                    // When user pressed the OK button 
+                }
+                else if (result == ContentDialogResult.Secondary)
+                {
+                    // The user pressed the Cancel button
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                // Handle the exception here
+            }
+        }
+
+        private void Simbutton_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        public void wiremode_Click(object sender, RoutedEventArgs args)
+        {
+
+        }
+        public void rotate_Click(object sender, RoutedEventArgs args)
+        {
+
+        }
+        public async void save_Click(object sender, RoutedEventArgs args)
+        {
+            Debug.WriteLine("saved");
+            Debug.WriteLine(a.XamlRoot);
+            ContentDialog filenamedig = new ContentDialog();
+
+            filenamedig.XamlRoot = a.XamlRoot;
+            filenamedig.Title = "Save File";
+            filenamedig.PrimaryButtonText = "Save";
+            filenamedig.CloseButtonText = "Discard";
+            filenamedig.DefaultButton = ContentDialogButton.Primary;
+
+            StackPanel ff = new StackPanel();
+            
+            TextBlock info = new TextBlock();
+            info.Text = "Saving Location";
+            info.Margin = new Thickness(0, 10, 0, 10);
+            TextBox fillocation = new TextBox();
+
+            ff.Children.Add(info);
+            ff.Children.Add(fillocation);
+
+            
+            filenamedig.Content = ff;
+
+            try
+            {
+                ContentDialogResult result = await filenamedig.ShowAsync();
+                if (result == ContentDialogResult.Primary)
+                {
+                    // The user pressed the OK button
+                }
+                else if (result == ContentDialogResult.Secondary)
+                {
+                    // The user pressed the Cancel button
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                // Handle the exception here
+            }
         }
 
         public Button displayMainPage(Frame currentframe)
@@ -141,6 +254,8 @@ namespace LTGarlicv2
 
             return createbutton;
         }
+
+        
     }
 
     
