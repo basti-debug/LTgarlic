@@ -21,13 +21,15 @@ namespace components.Components;
 public class capacitor : component
 {
     private readonly int width = 1200;
-    private readonly int height = 600;
-    private readonly int conHeight = 150;
-    private readonly int pinlength = 600;
+    private readonly int height = 1000;
+    private readonly int conHeight = 250;
+    private readonly int pinlength = 700;
     private readonly int sizeDiv = 20;
 
     public string name = "cap";
     private readonly Canvas drawingTable;
+    public Point location = new();
+    public int rotation;
 
     public override List<Point> pins { get; set; }
     public override List<Ellipse> pads { get; set; }
@@ -40,8 +42,13 @@ public class capacitor : component
     private readonly Path myPath = new();
     public override void drawComponent(Point location, int rotation, SolidColorBrush color)
     {
-        pins capPins = new pins();
-        var pinGroup = capPins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
+        this.location = location;
+        this.rotation = rotation;
+
+        Point pin1 = location; //overhaul needed (no rotation)
+        Point pin2 = new Point(location.X, location.Y + 2 * pinlength / sizeDiv + width / sizeDiv);
+
+        pins capPins = new pins(location, sizeDiv, width, height, pinlength, rotation, pin1, pin2);
 
         myPath.Stroke = color;
         myPath.StrokeThickness = 3;
@@ -51,20 +58,31 @@ public class capacitor : component
 
         pads = capPins.getPads();
 
+        LineGeometry pinLine1 = new LineGeometry
+        {
+            StartPoint = location,
+            EndPoint = new Point(location.X, location.Y + pinlength / sizeDiv)
+        };
+        LineGeometry pinLine2 = new LineGeometry
+        {
+            StartPoint = new Point(location.X, location.Y + 2 * pinlength / sizeDiv + height / sizeDiv),
+            EndPoint = new Point(location.X, location.Y + pinlength / sizeDiv + height / sizeDiv)
+        };
+
         var con1 = new RectangleGeometry()
         {
-            Rect = new Rect(location.X, location.Y, width / sizeDiv, conHeight / sizeDiv)
+            Rect = new Rect(location.X - width / sizeDiv / 2, location.Y + pinlength / sizeDiv, width / sizeDiv, conHeight / sizeDiv)
         };
         var con2 = new RectangleGeometry()
         {
-            Rect = new Rect(location.X, location.Y + height / sizeDiv - conHeight / sizeDiv, width / sizeDiv, conHeight / sizeDiv)
+            Rect = new Rect(location.X - width / sizeDiv / 2, location.Y + height / sizeDiv - conHeight / sizeDiv + pinlength / sizeDiv, width / sizeDiv, conHeight / sizeDiv)
         };
 
         var capGroup = new GeometryGroup();
         capGroup.Children.Add(con1);
         capGroup.Children.Add(con2);
-        capGroup.Children.Add(pinGroup[0]);
-        capGroup.Children.Add(pinGroup[1]);
+        capGroup.Children.Add(pinLine1);
+        capGroup.Children.Add(pinLine2);
 
         myPath.Data = capGroup;
 

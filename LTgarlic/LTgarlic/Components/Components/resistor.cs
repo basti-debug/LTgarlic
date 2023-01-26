@@ -21,11 +21,13 @@ public class resistor : component
 {
     private readonly int height = 2400;
     private readonly int width = 1200;
-    private readonly int pinlength = 600;
+    private readonly int pinlength = 300;
     private int sizeDiv = 20;
 
-    private readonly string name = "res";
+    public readonly string name = "res";
     private readonly Canvas drawingTable;
+    public Point location = new();
+    public int rotation;
 
     public override List<Point> pins { get; set; }
     public override  List<Ellipse> pads { get; set; }
@@ -41,8 +43,13 @@ public class resistor : component
     private readonly Path myPath = new();
     public override void drawComponent(Point location, int rotation, SolidColorBrush color)
     {
-        pins resPins = new pins();
-        var pinGroup = resPins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
+        this.location = location;
+        this.rotation = rotation;
+
+        Point pin1 = location; //overhaul needed (no rotation)
+        Point pin2 = new Point(location.X, location.Y + 2 * pinlength / sizeDiv + width / sizeDiv);
+
+        pins resPins = new pins(location, sizeDiv, width, height, pinlength, rotation, pin1, pin2);
 
         myPath.Stroke = color;
         myPath.StrokeThickness = 3;
@@ -51,15 +58,25 @@ public class resistor : component
 
         pads = resPins.getPads();
 
+        LineGeometry pinLine1 = new LineGeometry
+        {
+            StartPoint = location,
+            EndPoint = new Point(location.X, location.Y + pinlength / sizeDiv)
+        };
+        LineGeometry pinLine2 = new LineGeometry
+        {
+            StartPoint = new Point(location.X, location.Y + 2 * pinlength / sizeDiv + height / sizeDiv),
+            EndPoint = new Point(location.X, location.Y + pinlength / sizeDiv + height / sizeDiv)
+        };
         var rect = new RectangleGeometry
         {
-            Rect = new Rect(location.X, location.Y, width / sizeDiv, height / sizeDiv)
+            Rect = new Rect(location.X - width / sizeDiv / 2, location.Y + pinlength / sizeDiv, width / sizeDiv, height / sizeDiv)
         };
 
         var resGroup = new GeometryGroup();
         resGroup.Children.Add(rect);
-        resGroup.Children.Add(pinGroup[0]);
-        resGroup.Children.Add(pinGroup[1]);
+        resGroup.Children.Add(pinLine1);
+        resGroup.Children.Add(pinLine2);
 
         myPath.Data = resGroup;
 

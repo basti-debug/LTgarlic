@@ -58,14 +58,7 @@ public class pins
     #endregion
 
     #region constructor
-    public pins()
-    {
-
-    }
-    #endregion
-
-    #region drawPins
-    public List<LineGeometry> drawPins(Point location, int sizeDiv, int width, int height, int pinlength, int rotation)
+    public pins(Point location, int sizeDiv, int width, int height, int pinlength, int rotation, Point pin1, Point pin2)
     {
         this.location = location;
         this.sizeDiv = sizeDiv;
@@ -73,22 +66,8 @@ public class pins
         this.height = height;
         this.pinlength = pinlength;
         this.rotation = rotation;
-
-        pin1 = new Point(location.X + width / 2 / sizeDiv, location.Y - pinlength / sizeDiv);
-        pin2 = new Point(location.X + width / 2 / sizeDiv, location.Y + height / sizeDiv + pinlength / sizeDiv);
-
-        var pinline1 = new LineGeometry()
-        {
-            StartPoint = pin1,
-            EndPoint = new Point(location.X + width / 2 / sizeDiv, location.Y)
-        };
-        var pinline2 = new LineGeometry()
-        {
-            StartPoint = pin2,
-            EndPoint = new Point(location.X + width / 2 / sizeDiv, location.Y + height / sizeDiv)
-        };
-
-        return new List<LineGeometry> { pinline1, pinline2 };
+        this.pin1 = pin1;
+        this.pin2 = pin2;
     }
     #endregion
 
