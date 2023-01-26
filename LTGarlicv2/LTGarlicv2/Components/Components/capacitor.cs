@@ -15,6 +15,7 @@ using Windows.UI;
 using LTgarlic.Components.Miscellaneous;
 using Path = Microsoft.UI.Xaml.Shapes.Path;
 using LTGarlicv2;
+using System.Diagnostics;
 
 namespace components.Components;
 
@@ -74,7 +75,7 @@ public class capacitor : component
         center.CenterY = location.Y + height / 2 / sizeDiv;
 
         myPath.RenderTransform = center;
-
+        Debug.WriteLine(drawingTable.Name);
         drawingTable.Children.Add(myPath);
         drawingTable.Children.Add(pads[0]);
         drawingTable.Children.Add(pads[1]);

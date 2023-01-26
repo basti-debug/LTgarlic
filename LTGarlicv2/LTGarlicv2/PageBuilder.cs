@@ -75,6 +75,7 @@ namespace LTGarlicv2
         {
             usedwindow = window;
             usedcurrentframe = currentframe;
+            
 
             a = b;
             InfoBar infoBar= new InfoBar();
@@ -88,8 +89,12 @@ namespace LTGarlicv2
 
 
             Canvas canvas = new Canvas();
-            canvas.Background = new SolidColorBrush(Colors.Red);
+            canvas.Background = new SolidColorBrush(Colors.Transparent);
+            canvas.PointerMoved += drawingTable_PointerMoved;
+            canvas.PointerPressed += drawingTable_PointerPressed;
+            canvas.DoubleTapped += drawingTable_DoubleTapped;
 
+            usedcanvas = canvas;
 
 
             // Heading 
@@ -663,172 +668,172 @@ namespace LTGarlicv2
             #endregion
         }
 
-        //private void drawingTable_PointerMoved(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
-        //{
-        //    actualMousePos = e.GetCurrentPoint(usedcanvas).Position;
+        private void drawingTable_PointerMoved(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            actualMousePos = e.GetCurrentPoint(usedcanvas).Position;
 
-        //    #region grid Size
-        //    gridMousePos.X = actualMousePos.X + (gridSize - (actualMousePos.X % gridSize)) - gridSize / 2;
-        //    gridMousePos.Y = actualMousePos.Y + (gridSize - (actualMousePos.Y % gridSize)) - gridSize / 2;
-        //    #endregion
+            #region grid Size
+            gridMousePos.X = actualMousePos.X + (gridSize - (actualMousePos.X % gridSize)) - gridSize / 2;
+            gridMousePos.Y = actualMousePos.Y + (gridSize - (actualMousePos.Y % gridSize)) - gridSize / 2;
+            #endregion
 
-        //    #region move components
-        //    if (SettingsPage.theme == "Dark")
-        //    {
-        //        if (placeComponentSelected)
-        //        {
-        //            //the first time the mouse moves the components needs to be drawn, because the moveComponent
-        //            //function works by deleting the component, then redrawing it
-        //            if (firstAccessComponent)
-        //            {
-        //                components[components.Count - 1].drawComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
-        //                firstAccessComponent = false;
-        //                pads.Add(components[components.Count - 1].pads);
-        //            }
-        //            else
-        //            {
-        //                components[components.Count - 1].moveComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
-        //                pads.Add(components[components.Count - 1].pads);
-        //            }
-        //        }
-        //    }
+            #region move components
+            if (theme == "Dark")
+            {
+                if (placeComponentSelected)
+                {
+                    //the first time the mouse moves the components needs to be drawn, because the moveComponent
+                    //function works by deleting the component, then redrawing it
+                    if (firstAccessComponent)
+                    {
+                        components[components.Count - 1].drawComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
+                        firstAccessComponent = false;
+                        pads.Add(components[components.Count - 1].pads);
+                    }
+                    else
+                    {
+                        components[components.Count - 1].moveComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
+                        pads.Add(components[components.Count - 1].pads);
+                    }
+                }
+            }
 
-        //    else if (SettingsPage.theme == "Light")
-        //    {
-        //        if (placeComponentSelected)
-        //        {
-        //            if (firstAccessComponent)
-        //            {
-        //                components[components.Count - 1].drawComponent(gridMousePos, rotation, new SolidColorBrush(Colors.Black));
-        //                firstAccessComponent = false;
-        //                pads.Add(components[components.Count - 1].pads);
-        //            }
-        //            else
-        //            {
-        //                components[components.Count - 1].moveComponent(gridMousePos, rotation, new SolidColorBrush(Colors.Black));
-        //                pads.Add(components[components.Count - 1].pads);
-        //            }
-        //        }
-        //    }
-        //    else if (SettingsPage.theme == "Default")
-        //    {
-        //        if (placeComponentSelected)
-        //        {
-        //            if (firstAccessComponent)
-        //            {
-        //                components[components.Count - 1].drawComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
-        //                firstAccessComponent = false;
-        //                pads.Add(components[components.Count - 1].pads);
-        //            }
-        //            else
-        //            {
-        //                components[components.Count - 1].moveComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
-        //                pads.Add(components[components.Count - 1].pads);
-        //            }
-        //        }
-        //    }
-        //    #endregion
+            else if (theme == "Light")
+            {
+                if (placeComponentSelected)
+                {
+                    if (firstAccessComponent)
+                    {
+                        components[components.Count - 1].drawComponent(gridMousePos, rotation, new SolidColorBrush(Colors.Black));
+                        firstAccessComponent = false;
+                        pads.Add(components[components.Count - 1].pads);
+                    }
+                    else
+                    {
+                        components[components.Count - 1].moveComponent(gridMousePos, rotation, new SolidColorBrush(Colors.Black));
+                        pads.Add(components[components.Count - 1].pads);
+                    }
+                }
+            }
+            else if (theme == "Default")
+            {
+                if (placeComponentSelected)
+                {
+                    if (firstAccessComponent)
+                    {
+                        components[components.Count - 1].drawComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
+                        firstAccessComponent = false;
+                        pads.Add(components[components.Count - 1].pads);
+                    }
+                    else
+                    {
+                        components[components.Count - 1].moveComponent(gridMousePos, rotation, new SolidColorBrush(Colors.White));
+                        pads.Add(components[components.Count - 1].pads);
+                    }
+                }
+            }
+            #endregion
 
-        //    #region draw wires while moving mouse
-        //    if (ShellPage.wireMode && wireStart)
-        //    {
-        //        if (startPoint != gridMousePos)
-        //        {
-        //            if (wire.wiringType)
-        //            {
-        //                if (!firstWireAccess)
-        //                {
-        //                    if (!wireContinues)
-        //                    {
-        //                        if (oneLineUsed)
-        //                        {
-        //                            allWires[allWires.Count - 1].deleteWire();
-        //                            allWires.Remove(allWires[allWires.Count - 1]);
-        //                        }
-        //                        else
-        //                        {
-        //                            allWires[allWires.Count - 1].deleteWire();
-        //                            allWires[allWires.Count - 2].deleteWire();
-        //                            allWires.Remove(allWires[allWires.Count - 1]);
-        //                            allWires.Remove(allWires[allWires.Count - 1]);
-        //                        }
-        //                    }
-        //                    if (wireContinues)
-        //                        wireContinues = false;
-        //                }
-        //                firstWireAccess = false;
+            #region draw wires while moving mouse
+            if (MainWindow.wireMode && wireStart)
+            {
+                if (startPoint != gridMousePos)
+                {
+                    if (wire.wiringType)
+                    {
+                        if (!firstWireAccess)
+                        {
+                            if (!wireContinues)
+                            {
+                                if (oneLineUsed)
+                                {
+                                    allWires[allWires.Count - 1].deleteWire();
+                                    allWires.Remove(allWires[allWires.Count - 1]);
+                                }
+                                else
+                                {
+                                    allWires[allWires.Count - 1].deleteWire();
+                                    allWires[allWires.Count - 2].deleteWire();
+                                    allWires.Remove(allWires[allWires.Count - 1]);
+                                    allWires.Remove(allWires[allWires.Count - 1]);
+                                }
+                            }
+                            if (wireContinues)
+                                wireContinues = false;
+                        }
+                        firstWireAccess = false;
 
-        //                if (startPoint.Y == gridMousePos.Y)//horizontal
-        //                {
-        //                    allWires.Add(new wire(drawingTable));
-        //                    allWires[allWires.Count - 1].drawWire(startPoint, gridMousePos, accent);
-        //                    oneLineUsed = true;
-        //                }
-        //                else if (startPoint.X == gridMousePos.X)//vertical
-        //                {
-        //                    allWires.Add(new wire(drawingTable));
-        //                    allWires[allWires.Count - 1].drawWire(startPoint, gridMousePos, accent);
-        //                    oneLineUsed = true;
-        //                }
-        //                else
-        //                {
-        //                    allWires.Add(new wire(drawingTable));
-        //                    allWires[allWires.Count - 1].drawWire(startPoint, new Point(gridMousePos.X, startPoint.Y), accent);
-        //                    allWires.Add(new wire(drawingTable));
-        //                    allWires[allWires.Count - 1].drawWire(new Point(gridMousePos.X, startPoint.Y), gridMousePos, accent);
-        //                    oneLineUsed = false;
-        //                }
-        //            }
-        //            else
-        //            {
-        //                if (!firstWireAccess)
-        //                {
-        //                    if (!wireContinues)
-        //                    {
-        //                        if (oneLineUsed)
-        //                        {
-        //                            allWires[allWires.Count - 1].deleteWire();
-        //                            allWires.Remove(allWires[allWires.Count - 1]);
-        //                        }
-        //                        else
-        //                        {
-        //                            allWires[allWires.Count - 1].deleteWire();
-        //                            allWires[allWires.Count - 2].deleteWire();
-        //                            allWires.Remove(allWires[allWires.Count - 1]);
-        //                            allWires.Remove(allWires[allWires.Count - 1]);
-        //                        }
-        //                    }
-        //                    if (wireContinues)
-        //                        wireContinues = false;
-        //                }
-        //                firstWireAccess = false;
+                        if (startPoint.Y == gridMousePos.Y)//horizontal
+                        {
+                            allWires.Add(new wire(usedcanvas));
+                            allWires[allWires.Count - 1].drawWire(startPoint, gridMousePos, accent);
+                            oneLineUsed = true;
+                        }
+                        else if (startPoint.X == gridMousePos.X)//vertical
+                        {
+                            allWires.Add(new wire(usedcanvas));
+                            allWires[allWires.Count - 1].drawWire(startPoint, gridMousePos, accent);
+                            oneLineUsed = true;
+                        }
+                        else
+                        {
+                            allWires.Add(new wire(usedcanvas));
+                            allWires[allWires.Count - 1].drawWire(startPoint, new Point(gridMousePos.X, startPoint.Y), accent);
+                            allWires.Add(new wire(usedcanvas));
+                            allWires[allWires.Count - 1].drawWire(new Point(gridMousePos.X, startPoint.Y), gridMousePos, accent);
+                            oneLineUsed = false;
+                        }
+                    }
+                    else
+                    {
+                        if (!firstWireAccess)
+                        {
+                            if (!wireContinues)
+                            {
+                                if (oneLineUsed)
+                                {
+                                    allWires[allWires.Count - 1].deleteWire();
+                                    allWires.Remove(allWires[allWires.Count - 1]);
+                                }
+                                else
+                                {
+                                    allWires[allWires.Count - 1].deleteWire();
+                                    allWires[allWires.Count - 2].deleteWire();
+                                    allWires.Remove(allWires[allWires.Count - 1]);
+                                    allWires.Remove(allWires[allWires.Count - 1]);
+                                }
+                            }
+                            if (wireContinues)
+                                wireContinues = false;
+                        }
+                        firstWireAccess = false;
 
-        //                if (startPoint.Y == gridMousePos.Y)//horizontal
-        //                {
-        //                    allWires.Add(new wire(drawingTable));
-        //                    allWires[allWires.Count - 1].drawWire(startPoint, gridMousePos, accent);
-        //                    oneLineUsed = true;
-        //                }
-        //                else if (startPoint.X == gridMousePos.X)//vertical
-        //                {
-        //                    allWires.Add(new wire(drawingTable));
-        //                    allWires[allWires.Count - 1].drawWire(startPoint, gridMousePos, accent);
-        //                    oneLineUsed = true;
-        //                }
-        //                else
-        //                {
-        //                    allWires.Add(new wire(drawingTable));
-        //                    allWires.Add(new wire(drawingTable));
-        //                    allWires[allWires.Count - 1].drawWire(startPoint, new Point(startPoint.X, gridMousePos.Y), accent);
-        //                    allWires[allWires.Count - 2].drawWire(new Point(startPoint.X, gridMousePos.Y), gridMousePos, accent);
-        //                    oneLineUsed = false;
-        //                }
-        //            }
-        //        }
+                        if (startPoint.Y == gridMousePos.Y)//horizontal
+                        {
+                            allWires.Add(new wire(usedcanvas));
+                            allWires[allWires.Count - 1].drawWire(startPoint, gridMousePos, accent);
+                            oneLineUsed = true;
+                        }
+                        else if (startPoint.X == gridMousePos.X)//vertical
+                        {
+                            allWires.Add(new wire(usedcanvas));
+                            allWires[allWires.Count - 1].drawWire(startPoint, gridMousePos, accent);
+                            oneLineUsed = true;
+                        }
+                        else
+                        {
+                            allWires.Add(new wire(usedcanvas));
+                            allWires.Add(new wire(usedcanvas));
+                            allWires[allWires.Count - 1].drawWire(startPoint, new Point(startPoint.X, gridMousePos.Y), accent);
+                            allWires[allWires.Count - 2].drawWire(new Point(startPoint.X, gridMousePos.Y), gridMousePos, accent);
+                            oneLineUsed = false;
+                        }
+                    }
+                }
 
-        //    }
-        //    #endregion
-        //}
+            }
+            #endregion
+        }
 
         #endregion
 
