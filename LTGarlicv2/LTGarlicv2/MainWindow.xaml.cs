@@ -29,6 +29,7 @@ using Windows.UI;
 using Microsoft.Win32;
 using System.Formats.Asn1;
 using System.Collections;
+using Windows.AI.MachineLearning;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -95,14 +96,14 @@ namespace LTGarlicv2
             
 
             if (item.Tag != null && item.Tag.Equals("MainItem"))
-            { 
+            {
                 newpage.displayMainPage(contentFrame).Click += creatButtononClick;
             }
             if (item.Tag != null && item.Tag.Equals("Settings"))
             {
                 newpage.displaySettings(contentFrame);
             }
-            else
+            if (item.Tag != null && item.Tag.Equals("addedPage"))
             {
                 string name = item.Content.ToString();
                 newpage.displayFilePage(contentFrame, name,mainLtGrid,MainLTWindow);
@@ -162,7 +163,8 @@ namespace LTGarlicv2
 
 
             NavigationViewItem newproject = new NavigationViewItem();
-            newproject.Content = filnamebox.Text;  // to be replaced with file name
+            newproject.Content = filnamebox.Text;
+            newproject.Tag = "addedPage";
             nvHamburgerleft.MenuItems.Add(newproject);
         }
     }
