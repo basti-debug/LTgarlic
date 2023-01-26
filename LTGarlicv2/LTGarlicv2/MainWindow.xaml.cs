@@ -51,16 +51,18 @@ namespace LTGarlicv2
 
             this.InitializeComponent();
             
+            // Custom TitleBar
 
             MainLTWindow.ExtendsContentIntoTitleBar = true;
             MainLTWindow.SetTitleBar(null);
 
-            newpage.displayMainPage(contentFrame).Click += creatButtononClick;
+            newpage.displayMainPage(contentFrame).Click += creatButtononClick; //Createbutton Handler
+            
 
-
-            nvHamburgerleft.SelectionChanged += NvSample_SelectionChanged;
+            nvHamburgerleft.SelectionChanged += NvSample_SelectionChanged; //SelectionChanged Handler
         }
 
+        #region switch pages 
         void NvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             var item = args.SelectedItem as NavigationViewItem;
@@ -74,11 +76,13 @@ namespace LTGarlicv2
             else
             {
                 string name = item.Content.ToString();
-                newpage.displayFilePage(contentFrame, name,mainLtGrid);
-            }
-            
+                newpage.displayFilePage(contentFrame, name,mainLtGrid,MainLTWindow);
+
+            }            
             
         }
+
+        #endregion
 
         async void addbutton_click(object sender, RoutedEventArgs args)
         {
@@ -132,30 +136,5 @@ namespace LTGarlicv2
             newproject.Content = filnamebox.Text;  // to be replaced with file name
             nvHamburgerleft.MenuItems.Add(newproject);
         }
-
-
-        private List<List<Ellipse>> pads = new();
-        public static List<wire> allWires = new();
-        public List<Ellipse> connections = new();
-        private double gridSize = 30;
-
-        public static int wireClickCnt = 0;
-        public static bool wireStart = false;
-        public static Point startPoint = new();
-        public static Point endPoint = new();
-
-        private SolidColorBrush accent = new SolidColorBrush((Color)Application.Current.Resources["SystemAccentColor"]);
-        private readonly List<component> components = new();
-        private bool placeComponentSelected = false;
-        private int rotation;
-        private int clickCounter = 0;
-
-        private Point actualMousePos = new();
-        private Point gridMousePos = new();
-        private bool firstAccessComponent = true;
-        public static bool oneLineUsed;
-        private bool firstWireAccess = true;
-
-        private bool wireContinues = false;
     }
 }
