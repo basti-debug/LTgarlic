@@ -22,11 +22,13 @@ public class diode : component
 {
     private readonly int height = 1200;
     private readonly int width = 1200;
-    private readonly int pinlength = 1200;
+    private readonly int pinlength = 600;
     private int sizeDiv = 20;
 
     public readonly string name = "diode";
     private readonly Canvas drawingTable;
+    public Point location = new();
+    public int rotation;
 
     public override List<Point> pins { get; set; }
     public override List<Ellipse> pads { get; set; }
@@ -39,8 +41,13 @@ public class diode : component
     private readonly Path myPath = new();
     public override void drawComponent(Point location, int rotation, SolidColorBrush color)
     {
-        pins diodePins = new pins();
-        var pinGroup = diodePins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
+        this.location = location;
+        this.rotation = rotation;
+
+        Point pin1 = location; //overhaul needed (no rotation)
+        Point pin2 = new Point(location.X, location.Y + 2 * pinlength / sizeDiv + width / sizeDiv);
+
+        pins diodePins = new pins(location, sizeDiv, width, height, pinlength, rotation, pin1, pin2);
 
         myPath.Stroke = color;
         myPath.StrokeThickness = 3;
@@ -50,25 +57,36 @@ public class diode : component
         pads = diodePins.getPads();
 
         #region draw Diode
-        var l1 = new LineGeometry()
+        LineGeometry pinLine1 = new LineGeometry
         {
             StartPoint = location,
-            EndPoint = new Point(location.X + width / sizeDiv, location.Y),
+            EndPoint = new Point(location.X, location.Y + pinlength / sizeDiv)
+        };
+        LineGeometry pinLine2 = new LineGeometry
+        {
+            StartPoint = new Point(location.X, location.Y + 2 * pinlength / sizeDiv + height / sizeDiv),
+            EndPoint = new Point(location.X, location.Y + pinlength / sizeDiv + height / sizeDiv)
+        };
+
+        var l1 = new LineGeometry()
+        {
+            StartPoint = new Point(location.X - width / sizeDiv / 2, location.Y + pinlength / sizeDiv),
+            EndPoint = new Point(location.X + width / sizeDiv / 2, location.Y + pinlength / sizeDiv),
         };
         var l2 = new LineGeometry()
         {
-            StartPoint = location,
-            EndPoint = new Point(location.X + width / 2 / sizeDiv, location.Y + height / sizeDiv),
+            StartPoint = new Point(location.X - width / sizeDiv / 2, location.Y + pinlength / sizeDiv),
+            EndPoint = new Point(location.X, location.Y + height / sizeDiv + pinlength / sizeDiv),
         };
         var l3 = new LineGeometry()
         {
-            StartPoint = new Point(location.X + width / sizeDiv, location.Y),
-            EndPoint = new Point(location.X + width / 2 / sizeDiv, location.Y + height / sizeDiv),
+            StartPoint = new Point(location.X + width / sizeDiv / 2, location.Y + pinlength / sizeDiv),
+            EndPoint = new Point(location.X, location.Y + height / sizeDiv + pinlength / sizeDiv),
         };
         var l4 = new LineGeometry()
         {
-            StartPoint = new Point(location.X, location.Y + height / sizeDiv),
-            EndPoint = new Point(location.X + width / sizeDiv, location.Y + height / sizeDiv)
+            StartPoint = new Point(location.X - width / sizeDiv / 2, location.Y + height / sizeDiv + pinlength / sizeDiv),
+            EndPoint = new Point(location.X + width / sizeDiv / 2, location.Y + height / sizeDiv + pinlength / sizeDiv)
         };
 
         var diodeGroup = new GeometryGroup();
@@ -77,8 +95,9 @@ public class diode : component
         diodeGroup.Children.Add(l3);
         diodeGroup.Children.Add(l4);
         #endregion
-        diodeGroup.Children.Add(pinGroup[0]);
-        diodeGroup.Children.Add(pinGroup[1]);
+
+        diodeGroup.Children.Add(pinLine1);
+        diodeGroup.Children.Add(pinLine2);
 
         myPath.Data = diodeGroup;
 
