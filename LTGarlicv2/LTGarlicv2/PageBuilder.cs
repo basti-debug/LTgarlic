@@ -88,6 +88,10 @@ namespace LTGarlicv2
 
         public IntPtr hwnd;
 
+        // currently opened file 
+
+        public StorageFile currentfile; 
+
         #endregion
 
         #region Pages
@@ -409,13 +413,17 @@ namespace LTGarlicv2
             }
             else
             {
-                Debug.WriteLine("open file abort");
+                Debug.WriteLine("create file abort");
             }
+
             NavigationViewItem newproject = new NavigationViewItem();
             newproject.Content = file.Name;
             newproject.Tag = "addedPage";
             nvham.MenuItems.Add(newproject);
-        
+
+            currentfile = file;
+
+
         } 
 
         private async void Openbutton_Click(object sender, RoutedEventArgs e)
@@ -551,46 +559,35 @@ namespace LTGarlicv2
 
         public async void save_Click(object sender, RoutedEventArgs args)
         {
-            ContentDialog filenamedig = new ContentDialog();
 
-            filenamedig.XamlRoot = a.XamlRoot;
-            filenamedig.Title = "Save File";
-            filenamedig.PrimaryButtonText = "Save";
-            filenamedig.CloseButtonText = "Discard";
-            filenamedig.DefaultButton = ContentDialogButton.Primary;
+            FileSavePicker fp = new FileSavePicker();
 
-            StackPanel ff = new StackPanel();
-            
-            TextBlock info = new TextBlock();
-            info.Text = "Do you want to save the Project? ";
-            info.Margin = new Thickness(0, 10, 0, 10);
-           
+            fp.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            fp.FileTypeChoices.Add("Spice Circuit", new List<string>() { ".asc" });
 
-            ff.Children.Add(info);
+            fp.SuggestedFileName = currentfile.Name;
 
-            
-            filenamedig.Content = ff;
+            WinRT.Interop.InitializeWithWindow.Initialize(fp, hwnd);
 
+            var file = await fp.PickSaveFileAsync();
 
-
-            try
+            if (file != null)
             {
-                ContentDialogResult result = await filenamedig.ShowAsync();
-                if (result == ContentDialogResult.Primary)
-                {
-                    // The user pressed the OK button
-                    spiceConverter.encodeFile(defaultsavinglocation);
+                TeachingTip titi = new TeachingTip();
+                titi.Content = "Your File " + file + " was saved";
+                buffersavingloc = file.Path;
+            }
+            else
+            {
+                Debug.WriteLine("save file abort");
+            }
+
+
+
+
+            spiceConverter.encodeFile(defaultsavinglocation);
                     
-                }
-                else if (result == ContentDialogResult.Secondary)
-                {
-                    // The user pressed the Cancel button
-                }
-            }
-            catch (ArgumentException ex)
-            {
-                // Handle the exception here
-            }
+                
         }
 
         private void drawingTable_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
