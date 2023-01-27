@@ -214,11 +214,17 @@ namespace LTGarlicv2
             mainCanva.Height = 2000;
             mainCanva.Width = 2000;
 
-            usedcanvas= mainCanva;
+            usedcanvas= mainCanva; // needed for global variable usage 
+
+            #region content 
 
             TextBlock Title = new TextBlock();
             Title.Text = "Welcome to LTGarlic";
             Title.FontSize = 30;
+
+            TextBlock info1 = new TextBlock();
+            info1.Text = "Version 2.6";
+            info1.FontSize = 15;
 
             Button createbutton = new Button();
             createbutton.Content = "Create a new File";
@@ -233,24 +239,47 @@ namespace LTGarlicv2
             Button openlib = new Button();
             openlib.Content = "Open a Libary";
 
+            TextBlock info2 = new TextBlock();
+            info2.Text = "New Features in v2.6: \n * you can now open .asc Files \n * you can save as a .asc \n * you can design a whole circuit";
+
+            TeachingTip tipsettings = new TeachingTip();
+            tipsettings.Title = "psst";
+            tipsettings.Subtitle = "look in the Settings for customisation and an instruction";
+            tipsettings.IsOpen= true;
 
             // Moving Objects inside the Canvas
             Canvas.SetLeft(Title, 50);
             Canvas.SetTop(Title, 100);
 
+            Canvas.SetLeft(info1, 50);
+            Canvas.SetTop(info1, 150);
+
+            Canvas.SetLeft(info2, 50);
+            Canvas.SetTop(info2, 180);
+
+            Canvas.SetLeft(tipsettings,50);
+            Canvas.SetTop(tipsettings, 400);
+
             Canvas.SetLeft(createbutton, 50);
-            Canvas.SetTop(createbutton, 200);
+            Canvas.SetTop(createbutton, 300);
 
             Canvas.SetLeft(openbutton, 190);
-            Canvas.SetTop(openbutton, 200);
+            Canvas.SetTop(openbutton, 300);
 
             Canvas.SetLeft(openlib, 295);
-            Canvas.SetTop(openlib, 200);
+            Canvas.SetTop(openlib, 300);
+
+
 
             mainCanva.Children.Add(createbutton);
             mainCanva.Children.Add(openbutton);
             mainCanva.Children.Add(openlib);
             mainCanva.Children.Add(Title);
+            mainCanva.Children.Add(info1);
+            mainCanva.Children.Add(info2);
+            mainCanva.Children.Add(tipsettings);
+
+            #endregion
 
             currentframe.Content = mainCanva;
 
@@ -328,29 +357,28 @@ namespace LTGarlicv2
             stacksettings.Children.Add(info1);
             stacksettings.Children.Add(themepanel);
 
-            #region Info2 - DefaultPath
+            #region Info2 - Gitlab
 
             TextBlock info2 = new TextBlock();
-            info2.Text = "Default Saving Path";
+            info2.Text = "View the Repository:";
             info2.FontSize = 15;
             info2.FontWeight = FontWeights.Bold;
             info2.Padding = new Thickness(50, 30, 0, 0);
 
-            defaultPathbox.Text = defaultsavinglocation;
+            TextBlock info3 = new TextBlock();
+            info3.Text = "Please report Bugs under the issues Tab. \nThere you can also find a instruction";
+            info3.Padding = new Thickness(50, 10, 0, 0);
 
-
-            Button saveconfigbutton = new Button();
-            saveconfigbutton.Content = "Save Configuration";
-            saveconfigbutton.Click += savecoClick;
-
-           
-
+            HyperlinkButton hyperlinkButton= new HyperlinkButton();
+            hyperlinkButton.Content = "Gitlab Repository";
+            hyperlinkButton.NavigateUri = new Uri("https://gitlab.com/basti-debug/LTgarlic");
+            hyperlinkButton.Padding = new Thickness(50,10, 0, 0);
 
             stacksettings.Children.Add(info2);
-            stacksettings.Children.Add(defaultPathbox);
-            stacksettings.Children.Add(saveconfigbutton);
-#endregion
+            stacksettings.Children.Add(info3);
+            stacksettings.Children.Add(hyperlinkButton);
 
+            #endregion
 
             currentframe.Content = stacksettings;
         }
