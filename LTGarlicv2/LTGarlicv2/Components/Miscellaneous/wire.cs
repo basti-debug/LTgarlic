@@ -35,6 +35,7 @@ public class wire
     }
 
     Line actualWire = new Line();
+
     public void drawWire(Point startPoint, Point endPoint, SolidColorBrush color)
     {
         this.startPoint = startPoint;

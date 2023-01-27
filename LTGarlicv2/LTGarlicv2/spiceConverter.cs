@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using Windows.UI.ApplicationSettings;
 using LTgarlic.Components.Miscellaneous;
 using Windows.Foundation;
+using System.Diagnostics;
+using Windows.ApplicationModel.Background;
 
 namespace LTGarlicv2
 {
@@ -124,10 +126,12 @@ namespace LTGarlicv2
             }
         }
 
-        private static void decodeFile(Canvas canvas, string path)
+        public static void decodeFile(Canvas canvas, string path)
         {
+
             string[] data = File.ReadAllLines(path);
             bool containsSheet = false;
+
             if (data[1].Contains("SHEET"))
                 containsSheet = true;
 
@@ -142,9 +146,31 @@ namespace LTGarlicv2
                     {
                         resistor res = new resistor(canvas);
                         string[] substrings = data[i].Split(' ');
-                        location.X = Convert.ToDouble(substrings[2]);
-                        location.Y = Convert.ToDouble(substrings[3]);
                         rotation = Convert.ToInt32(substrings[4].Substring(1));
+
+                        switch (rotation)
+                        {
+                            case 0:
+                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 + 15;
+                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 + 15;
+                                break;
+                            case 90:
+                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 - 135;
+                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 - 15;
+                                break;
+                            case 180:
+                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 - 105;
+                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 - 165;
+                                break;
+                            case 270:
+                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 + 45;
+                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 - 135;
+                                break;
+                        }
+
+                        res.location = location;
+                        res.rotation = rotation;
+                        PageBuilder.components.Add(res);
 
                         if (PageBuilder.theme == "Dark")
                         {
@@ -154,14 +180,21 @@ namespace LTGarlicv2
                         {
                             res.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
                         }
+                        else if (PageBuilder.theme == "Default")
+                        {
+                            res.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
+                        }
                     }
                     if (data[i].Contains("cap"))
                     {
                         capacitor cap = new capacitor(canvas);
                         string[] substrings = data[i].Split(' ');
+                        rotation = Convert.ToInt32(substrings[4].Substring(1));
                         location.X = Convert.ToDouble(substrings[2]);
                         location.Y = Convert.ToDouble(substrings[3]);
-                        rotation = Convert.ToInt32(substrings[4].Substring(1));
+                        cap.location = location;
+                        cap.rotation = rotation;
+                        PageBuilder.components.Add(cap);
 
                         if (PageBuilder.theme == "Dark")
                         {
@@ -171,6 +204,10 @@ namespace LTGarlicv2
                         {
                             cap.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
                         }
+                        else if (PageBuilder.theme == "Default")
+                        {
+                            cap.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
+                        }
                     }
                     if (data[i].Contains("diode"))
                     {
@@ -179,6 +216,9 @@ namespace LTGarlicv2
                         location.X = Convert.ToDouble(substrings[2]);
                         location.Y = Convert.ToDouble(substrings[3]);
                         rotation = Convert.ToInt32(substrings[4].Substring(1));
+                        dio.location = location;
+                        dio.rotation = rotation;
+                        PageBuilder.components.Add(dio);
 
                         if (PageBuilder.theme == "Dark")
                         {
@@ -188,14 +228,42 @@ namespace LTGarlicv2
                         {
                             dio.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
                         }
+                        else if (PageBuilder.theme == "Default")
+                        {
+                            dio.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
+                        }
                     }
                     if (data[i].Contains("ind"))
                     {
                         inductance ind = new inductance(canvas);
                         string[] substrings = data[i].Split(' ');
+                        rotation = Convert.ToInt32(substrings[4].Substring(1));
+
+                        switch (rotation)
+                        {
+                            case 0:
+                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 + 15;
+                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 + 15;
+                                break;
+                            case 90:
+                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 - 135;
+                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 - 15;
+                                break;
+                            case 180:
+                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 - 105;
+                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 - 165;
+                                break;
+                            case 270:
+                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 + 45;
+                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 - 135;
+                                break;
+                        }
+
                         location.X = Convert.ToDouble(substrings[2]);
                         location.Y = Convert.ToDouble(substrings[3]);
-                        rotation = Convert.ToInt32(substrings[4].Substring(1));
+                        ind.location = location;
+                        ind.rotation = rotation;
+                        PageBuilder.components.Add(ind);
 
                         if (PageBuilder.theme == "Dark")
                         {
@@ -204,6 +272,10 @@ namespace LTGarlicv2
                         else if (PageBuilder.theme == "Light")
                         {
                             ind.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
+                        }
+                        else if (PageBuilder.theme == "Default")
+                        {
+                            ind.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
                         }
                     }
                 }
@@ -220,6 +292,10 @@ namespace LTGarlicv2
                         location.Y = Convert.ToDouble(substrings[3]);
                         rotation = Convert.ToInt32(substrings[4].Substring(1));
 
+                        res.location = location;
+                        res.rotation = rotation;
+                        PageBuilder.components.Add(res);
+
                         if (PageBuilder.theme == "Dark")
                         {
                             res.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
@@ -227,6 +303,10 @@ namespace LTGarlicv2
                         else if (PageBuilder.theme == "Light")
                         {
                             res.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
+                        }
+                        else if (PageBuilder.theme == "Default")
+                        {
+                            res.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
                         }
                     }
                     if (data[i].Contains("cap"))
@@ -237,6 +317,10 @@ namespace LTGarlicv2
                         location.Y = Convert.ToDouble(substrings[3]);
                         rotation = Convert.ToInt32(substrings[4].Substring(1));
 
+                        cap.location = location;
+                        cap.rotation = rotation;
+                        PageBuilder.components.Add(cap);
+
                         if (PageBuilder.theme == "Dark")
                         {
                             cap.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
@@ -244,6 +328,10 @@ namespace LTGarlicv2
                         else if (PageBuilder.theme == "Light")
                         {
                             cap.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
+                        }
+                        else if (PageBuilder.theme == "Default")
+                        {
+                            cap.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
                         }
                     }
                     if (data[i].Contains("diode"))
@@ -254,6 +342,10 @@ namespace LTGarlicv2
                         location.Y = Convert.ToDouble(substrings[3]);
                         rotation = Convert.ToInt32(substrings[4].Substring(1));
 
+                        dio.location = location;
+                        dio.rotation = rotation;
+                        PageBuilder.components.Add(dio);
+
                         if (PageBuilder.theme == "Dark")
                         {
                             dio.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
@@ -261,6 +353,10 @@ namespace LTGarlicv2
                         else if (PageBuilder.theme == "Light")
                         {
                             dio.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
+                        }
+                        else if (PageBuilder.theme == "Default")
+                        {
+                            dio.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
                         }
                     }
                     if (data[i].Contains("ind"))
@@ -271,6 +367,10 @@ namespace LTGarlicv2
                         location.Y = Convert.ToDouble(substrings[3]);
                         rotation = Convert.ToInt32(substrings[4].Substring(1));
 
+                        ind.location = location;
+                        ind.rotation = rotation;
+                        PageBuilder.components.Add(ind);
+
                         if (PageBuilder.theme == "Dark")
                         {
                             ind.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
@@ -278,6 +378,10 @@ namespace LTGarlicv2
                         else if (PageBuilder.theme == "Light")
                         {
                             ind.drawComponent(location, rotation, new SolidColorBrush(Colors.Black));
+                        }
+                        else if (PageBuilder.theme == "Default")
+                        {
+                            ind.drawComponent(location, rotation, new SolidColorBrush(Colors.White));
                         }
                     }
                 }
