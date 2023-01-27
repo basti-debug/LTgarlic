@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Windows.Foundation;
+using Windows.Storage;
 using Windows.System;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -28,6 +29,8 @@ namespace LTGarlicv2
     {
         PageBuilder newpage = new PageBuilder();
 
+#region variables wiring
+
         public static bool wireMode = false;
 
         public static List<wire> allWires = new();
@@ -40,9 +43,20 @@ namespace LTGarlicv2
 
         public static bool oneLineUsed;
 
+#endregion
+
+
+        // variables grid frame and handler
         public static Grid mmgrid = null;
         public static Frame ffFrame = null;
+        public static Canvas mmcanvas = null;
         public IntPtr hwnd;
+
+        // variables for file 
+
+        public static StorageFile mcurrentfile = null;
+
+
 
         public MainWindow()
         {
@@ -102,7 +116,8 @@ namespace LTGarlicv2
             {
                 string name = item.Content.ToString();
                 newpage.displayFilePage(contentFrame, name,mainLtGrid,MainLTWindow);
-
+                Debug.WriteLine(mcurrentfile.Path);
+                spiceConverter.decodeFile(mmcanvas, mcurrentfile.Path);
             }            
             
         }

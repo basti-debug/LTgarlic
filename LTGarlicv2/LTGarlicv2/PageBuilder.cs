@@ -99,6 +99,9 @@ namespace LTGarlicv2
 
         public void displayFilePage(Frame currentframe, string filename, Grid b, Window window)
         {
+            
+            
+
             usedwindow = window;
             usedcurrentframe = currentframe;
             
@@ -121,6 +124,7 @@ namespace LTGarlicv2
             canvas.DoubleTapped += drawingTable_DoubleTapped;            
 
             usedcanvas = canvas;
+            MainWindow.mmcanvas = usedcanvas;
 
 
             // Heading 
@@ -446,6 +450,10 @@ namespace LTGarlicv2
                 titi.Content= "Your File " + file + " was opened";
                 buffersavingloc = file.Path;
 
+                MainWindow.mcurrentfile = file;
+
+                currentfile = file;
+
                 NavigationViewItem newproject = new NavigationViewItem();
                 newproject.Content = file.Name;
                 newproject.Tag = "addedPage";
@@ -584,6 +592,8 @@ namespace LTGarlicv2
                 TeachingTip titi = new TeachingTip();
                 titi.Content = "Your File " + file + " was saved";
                 buffersavingloc = file.Path;
+
+                usedcanvas.Children.Add(titi);
             }
             else
             {
@@ -593,7 +603,7 @@ namespace LTGarlicv2
 
 
 
-            spiceConverter.encodeFile(defaultsavinglocation);
+            spiceConverter.encodeFile(buffersavingloc);
                     
                 
         }
