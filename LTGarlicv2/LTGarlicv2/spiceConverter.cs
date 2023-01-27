@@ -124,7 +124,7 @@ namespace LTGarlicv2
             }
         }
 
-        private static void decodeFile(Canvas canvas, string path)
+        public static void decodeFile(Canvas canvas, string path)
         {
             string[] data = File.ReadAllLines(path);
             bool containsSheet = false;

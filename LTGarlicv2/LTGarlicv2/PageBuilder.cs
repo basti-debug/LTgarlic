@@ -392,7 +392,7 @@ namespace LTGarlicv2
 
             Random rnd = new Random();
             int num = 0;
-            for (int j = 0; j < 1; j++)
+            for (int j = 1; j < 1; j++)
             {
                 num = rnd.Next(10);
             }
@@ -428,6 +428,8 @@ namespace LTGarlicv2
 
         private async void Openbutton_Click(object sender, RoutedEventArgs e)
         {
+
+
             FileOpenPicker op = new FileOpenPicker();
 
             op.ViewMode = PickerViewMode.List;
@@ -443,6 +445,12 @@ namespace LTGarlicv2
                TeachingTip titi = new TeachingTip();
                 titi.Content= "Your File " + file + " was opened";
                 buffersavingloc = file.Path;
+
+                NavigationViewItem newproject = new NavigationViewItem();
+                newproject.Content = file.Name;
+                newproject.Tag = "addedPage";
+                nvham.MenuItems.Add(newproject);
+
             }
             else
             {
@@ -882,10 +890,8 @@ namespace LTGarlicv2
             #region draw wires while moving mouse
             if (MainWindow.wireMode && wireStart)
             {
-                Debug.WriteLine("main hubbsi");
                 if (startPoint != gridMousePos)
                 {
-                    Debug.WriteLine("main nigga");
                     if (wire.wiringType)
                     {
                         if (!firstWireAccess)

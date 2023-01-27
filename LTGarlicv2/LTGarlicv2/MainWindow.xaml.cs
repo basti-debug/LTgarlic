@@ -40,6 +40,8 @@ namespace LTGarlicv2
 
         public static bool oneLineUsed;
 
+        public static Grid mmgrid = null;
+        public static Frame ffFrame = null;
         public IntPtr hwnd;
 
         public MainWindow()
@@ -60,43 +62,25 @@ namespace LTGarlicv2
             newpage.displayMainPage(contentFrame,MainLTWindow,nvHamburgerleft);
 
             //SelectionChanged Handler
-            nvHamburgerleft.SelectionChanged += NvSample_SelectionChanged; 
-
-            contentFrame.KeyDown += ContentFrame_KeyDown;
-
-            
-
+            nvHamburgerleft.SelectionChanged += NvSample_SelectionChanged;
+            mmgrid = mainLtGrid;
+            ffFrame = contentFrame;
         }
 
-        private void ContentFrame_KeyDown(object sender, KeyRoutedEventArgs e)
+        #region helpers 
+
+        public static Grid getwindowdata()
         {
-            Debug.WriteLine("main giga");
-            if (e.Key == (VirtualKey)0x57)
-            {
-                Debug.WriteLine("main nigga");
-                wireMode = !wireMode;
-                if (wireMode == false)
-                {
-                    Debug.WriteLine("main false");
-                    wireStart = false;
-                    wireClickCnt = 0;
-
-                    if (oneLineUsed)
-                    {
-                        PageBuilder.allWires[PageBuilder.allWires.Count - 1].deleteWire();
-                        PageBuilder.allWires.Remove(PageBuilder.allWires[PageBuilder.allWires.Count - 1]);
-                    }
-                    else
-                    {
-                        Debug.WriteLine("main delete");
-                        PageBuilder.allWires[PageBuilder.allWires.Count - 1].deleteWire();
-                        PageBuilder.allWires[PageBuilder.allWires.Count - 2].deleteWire();
-                        PageBuilder.allWires.Remove(PageBuilder.allWires[PageBuilder.allWires.Count - 1]);
-                        PageBuilder.allWires.Remove(PageBuilder.allWires[PageBuilder.allWires.Count - 1]);
-                    }
-                }
-            }
+            return mmgrid;
         }
+
+        public static Frame GetFramedata()
+        {
+            return ffFrame;
+        }
+
+#endregion  
+
 
 
         #region switch pages 
