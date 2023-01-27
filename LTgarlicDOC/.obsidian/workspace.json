@@ -33,7 +33,7 @@
               "type": "markdown",
               "state": {
                 "file": "LTGarlic Documentation.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               }
             },
@@ -166,10 +166,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ddc4e2ef86cd9e58",
+  "active": "1e272a7a0541fdc4",
   "lastOpenFiles": [
-    "source/Pasted image 20230104021825.png",
+    "source/oldstructure.png",
     "LTGarlic Documentation.md",
+    "source/Pasted image 20230104021825.png",
     "source/Pasted image 20230104022656.png",
     "source/pic.png",
     "source/Pasted image 20230104021555.png"
