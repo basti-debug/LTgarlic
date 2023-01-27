@@ -1,35 +1,16 @@
 // Copyright (c) Microsoft Corporation and Contributors.
 // Licensed under the MIT License.
 
+using LTgarlic.Components.Miscellaneous;
 using Microsoft.UI.Xaml;
-using System.Windows;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Shapes;
-using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Storage.Pickers;
 using System.Diagnostics;
-using Microsoft.UI;
-using Windows.UI.ApplicationSettings;
-using components;
-using LTgarlic.Components.Miscellaneous;
-using components.Components;
+using Windows.Foundation;
 using Windows.System;
-using Windows.UI;
-using Microsoft.Win32;
-using System.Formats.Asn1;
-using System.Collections;
-using Windows.AI.MachineLearning;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -59,6 +40,7 @@ namespace LTGarlicv2
 
         public static bool oneLineUsed;
 
+        public IntPtr hwnd;
 
         public MainWindow()
         {
@@ -70,12 +52,20 @@ namespace LTGarlicv2
             MainLTWindow.ExtendsContentIntoTitleBar = true;
             MainLTWindow.SetTitleBar(null);
 
-            newpage.displayMainPage(contentFrame).Click += creatButtononClick; //Createbutton Handler
-            
+            // Transfer Handle to PageBuilder (needed for fileopendialog)
+            hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this); 
+            newpage.transferhwnd(hwnd);
 
-            nvHamburgerleft.SelectionChanged += NvSample_SelectionChanged; //SelectionChanged Handler
+            //create a new page 
+            newpage.displayMainPage(contentFrame,MainLTWindow,nvHamburgerleft);
+
+            //SelectionChanged Handler
+            nvHamburgerleft.SelectionChanged += NvSample_SelectionChanged; 
 
             contentFrame.KeyDown += ContentFrame_KeyDown;
+
+            
+
         }
 
         private void ContentFrame_KeyDown(object sender, KeyRoutedEventArgs e)
@@ -118,7 +108,7 @@ namespace LTGarlicv2
 
             if (item.Tag != null && item.Tag.Equals("MainItem"))
             {
-                newpage.displayMainPage(contentFrame).Click += creatButtononClick;
+                newpage.displayMainPage(contentFrame,MainLTWindow,nvHamburgerleft);
             }
             if (item.Tag != null && item.Tag.Equals("Settings"))
             {
@@ -137,58 +127,6 @@ namespace LTGarlicv2
 
        
 
-        async void addbutton_click(object sender, RoutedEventArgs args)
-        {
-            
-        }
-
-        async void wirebutton_click(object sender, RoutedEventArgs args)
-        {
-
-        }
-        async void savebutton_lick(object sender, RoutedEventArgs args)
-        {
-
-        }
-
-        async void  creatButtononClick(object sender, RoutedEventArgs args)
-        {
-            TeachingTip errortip = new TeachingTip();
-
-            ContentDialog filenamedig = new ContentDialog();
-
-            filenamedig.XamlRoot = mainLtGrid.XamlRoot;
-            filenamedig.Title = "Create a File";
-            filenamedig.PrimaryButtonText = "Create";
-            filenamedig.CloseButtonText = "Discard";
-            filenamedig.DefaultButton = ContentDialogButton.Primary;
-
-            TextBox filnamebox = new TextBox();          
-
-            filenamedig.Content = filnamebox;
-
-            try
-            {
-                ContentDialogResult result = await filenamedig.ShowAsync();
-                if (result == ContentDialogResult.Primary)
-                {
-                    // The user pressed the OK button
-                }
-                else if (result == ContentDialogResult.Secondary)
-                {
-                    // The user pressed the Cancel button
-                }
-            }
-            catch (ArgumentException ex)
-            {
-                // Handle the exception here
-            }
-
-
-            NavigationViewItem newproject = new NavigationViewItem();
-            newproject.Content = filnamebox.Text;
-            newproject.Tag = "addedPage";
-            nvHamburgerleft.MenuItems.Add(newproject);
-        }
+       
     }
 }

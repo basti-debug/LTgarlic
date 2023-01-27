@@ -23,11 +23,19 @@ using Microsoft.UI.Text;
 using System.IO;
 using Windows.System;
 using Microsoft.UI.Xaml.Input;
+using Windows.Storage.Pickers;
+using Windows.Storage;
+using WinRT.Interop;
+using WinRT;
+using System.Runtime.InteropServices;
 
 namespace LTGarlicv2
 {
     public class PageBuilder
     {
+        #region vars
+
+        // standard grid 
         Grid a = new Grid();
 
 
@@ -69,12 +77,18 @@ namespace LTGarlicv2
         private Frame usedcurrentframe = null;
         private Canvas usedcanvas = null;
         private Window usedwindow = null;
+        private NavigationView nvham = null;
 
         // default saving location
 
         public string buffersavingloc;
         public string defaultsavinglocation = @"C:\Users\gabri\Downloads\firstCircuit.asc";
 
+        // window handlers
+
+        public IntPtr hwnd;
+
+        #endregion
 
         #region Pages
 
@@ -183,11 +197,16 @@ namespace LTGarlicv2
 
         }
 
-        public Button displayMainPage(Frame currentframe)
+        public void displayMainPage(Frame currentframe, Window window, NavigationView nv)
         {
+            usedwindow = window;
+            nvham = nv;
+
             Canvas mainCanva = new Canvas();
             mainCanva.Height = 2000;
             mainCanva.Width = 2000;
+
+            usedcanvas= mainCanva;
 
             TextBlock Title = new TextBlock();
             Title.Text = "Welcome to LTGarlic";
@@ -195,11 +214,13 @@ namespace LTGarlicv2
 
             Button createbutton = new Button();
             createbutton.Content = "Create a new File";
+            createbutton.Click += createButtononClick;
 
 
             Button openbutton = new Button();
             openbutton.Content = "Open a File";
-            //openbutton.Background = new SolidColorBrush(Windows.UI.Colors.Red);           !! To be replaced by accentcolor 
+            openbutton.Background = accent;
+            openbutton.Click += Openbutton_Click;
 
             Button openlib = new Button();
             openlib.Content = "Open a Libary";
@@ -225,8 +246,9 @@ namespace LTGarlicv2
 
             currentframe.Content = mainCanva;
 
-            return createbutton;
         }
+
+        
 
         TextBox defaultPathbox = new TextBox();
         public void displaySettings(Frame currentframe)
@@ -354,7 +376,75 @@ namespace LTGarlicv2
             theme = "Dark";
         }
         #endregion
+
+        #region main Events 
+
+        async void createButtononClick(object sender, RoutedEventArgs args)
+        {
+            FileSavePicker fp = new FileSavePicker();
+
+            fp.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            fp.FileTypeChoices.Add("Spice Circuit", new List<string>() { ".asc" });
+
+            Random rnd = new Random();
+            int num = 0;
+            for (int j = 0; j < 1; j++)
+            {
+                num = rnd.Next(10);
+            }
+
+            string filename = "Circuit" + num;
+
+            fp.SuggestedFileName = filename;
+
+            WinRT.Interop.InitializeWithWindow.Initialize(fp, hwnd);
+
+            var file = await fp.PickSaveFileAsync();
+
+            if (file != null)
+            {
+                TeachingTip titi = new TeachingTip();
+                titi.Content = "Your File " + file + " was created";
+                buffersavingloc = file.Path;
+            }
+            else
+            {
+                Debug.WriteLine("open file abort");
+            }
+            NavigationViewItem newproject = new NavigationViewItem();
+            newproject.Content = file.Name;
+            newproject.Tag = "addedPage";
+            nvham.MenuItems.Add(newproject);
         
+        } 
+
+        private async void Openbutton_Click(object sender, RoutedEventArgs e)
+        {
+            FileOpenPicker op = new FileOpenPicker();
+
+            op.ViewMode = PickerViewMode.List;
+            op.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            op.FileTypeFilter.Add(".asc");
+
+            WinRT.Interop.InitializeWithWindow.Initialize(op, hwnd);
+
+            var file = await op.PickSingleFileAsync();
+
+            if (file != null)
+            {
+               TeachingTip titi = new TeachingTip();
+                titi.Content= "Your File " + file + " was opened";
+                buffersavingloc = file.Path;
+            }
+            else
+            {
+                Debug.WriteLine("open file abort");
+            }
+        }
+
+        #endregion
+
+        #region Editing Pages Events
 
         private async void Placmentbutton_Click(object sender, RoutedEventArgs e)
         {
@@ -371,7 +461,7 @@ namespace LTGarlicv2
             TextBlock info = new TextBlock();
             info.Text = "Select Parts:";
             info.Margin = new Thickness(0, 10, 0, 10);
-            
+
             ListView partsview = new ListView();
             List<string> partslist = new List<string>();
             partslist.Add("Resistor");
@@ -383,7 +473,7 @@ namespace LTGarlicv2
 
             ff.Children.Add(info);
             ff.Children.Add(partsview);
-           
+
 
 
             filenamedig.Content = ff;
@@ -396,15 +486,15 @@ namespace LTGarlicv2
                     // look which item is selected
                     // !! ADD PARTS HERE
 
-                    if(partsview.SelectedItem == "Resistor") 
+                    if (partsview.SelectedItem == "Resistor")
                     {
                         components.Add(new resistor(usedcanvas));
                     }
-                    if(partsview.SelectedItem == "Inductance")
+                    if (partsview.SelectedItem == "Inductance")
                     {
                         components.Add(new inductance(usedcanvas));
                     }
-                    if(partsview.SelectedItem == "Capacitor")
+                    if (partsview.SelectedItem == "Capacitor")
                     {
                         components.Add(new capacitor(usedcanvas));
                     }
@@ -415,8 +505,8 @@ namespace LTGarlicv2
 
                     rotation = 0;
                     placeComponentSelected = true;
-                    firstAccessComponent= true;
-                                        
+                    firstAccessComponent = true;
+
                 }
                 else if (result == ContentDialogResult.Secondary)
                 {
@@ -428,8 +518,6 @@ namespace LTGarlicv2
                 // Handle the exception here
             }
         }
-
-        #region Editing Pages Events
 
         private void Simbutton_Click(object sender, RoutedEventArgs e)
         {
@@ -902,6 +990,11 @@ namespace LTGarlicv2
         #endregion
 
         #region Helpers
+
+        public void transferhwnd(IntPtr ahwnd)
+        {
+            hwnd = ahwnd;
+        }
 
         #endregion
     }
