@@ -46,30 +46,18 @@ namespace LTGarlicv2
     public sealed partial class MainWindow : Window
     {
         PageBuilder newpage = new PageBuilder();
+
         public static bool wireMode = false;
-        private List<List<Ellipse>> pads = new();
+
         public static List<wire> allWires = new();
         public List<Ellipse> connections = new();
-        private double gridSize = 30;
 
         public static int wireClickCnt = 0;
         public static bool wireStart = false;
         public static Point startPoint = new();
         public static Point endPoint = new();
 
-
-        private readonly List<component> components = new();
-        private bool placeComponentSelected = false;
-        private int rotation;
-        private int clickCounter = 0;
-
-        private Point actualMousePos = new();
-        private Point gridMousePos = new();
-        private bool firstAccessComponent = true;
         public static bool oneLineUsed;
-        private bool firstWireAccess = true;
-
-        private bool wireContinues = false;
 
 
         public MainWindow()
@@ -86,7 +74,40 @@ namespace LTGarlicv2
             
 
             nvHamburgerleft.SelectionChanged += NvSample_SelectionChanged; //SelectionChanged Handler
+
+            contentFrame.KeyDown += ContentFrame_KeyDown;
         }
+
+        private void ContentFrame_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            Debug.WriteLine("main giga");
+            if (e.Key == (VirtualKey)0x57)
+            {
+                Debug.WriteLine("main nigga");
+                wireMode = !wireMode;
+                if (wireMode == false)
+                {
+                    Debug.WriteLine("main false");
+                    wireStart = false;
+                    wireClickCnt = 0;
+
+                    if (oneLineUsed)
+                    {
+                        PageBuilder.allWires[PageBuilder.allWires.Count - 1].deleteWire();
+                        PageBuilder.allWires.Remove(PageBuilder.allWires[PageBuilder.allWires.Count - 1]);
+                    }
+                    else
+                    {
+                        Debug.WriteLine("main delete");
+                        PageBuilder.allWires[PageBuilder.allWires.Count - 1].deleteWire();
+                        PageBuilder.allWires[PageBuilder.allWires.Count - 2].deleteWire();
+                        PageBuilder.allWires.Remove(PageBuilder.allWires[PageBuilder.allWires.Count - 1]);
+                        PageBuilder.allWires.Remove(PageBuilder.allWires[PageBuilder.allWires.Count - 1]);
+                    }
+                }
+            }
+        }
+
 
         #region switch pages 
         void NvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -113,6 +134,8 @@ namespace LTGarlicv2
         }
 
         #endregion
+
+       
 
         async void addbutton_click(object sender, RoutedEventArgs args)
         {

@@ -21,11 +21,13 @@ public class inductance : component
 {
     private readonly int height = 2400;
     private readonly int width = 1200;
-    private readonly int pinlength = 600;
+    private readonly int pinlength = 300;
     private int sizeDiv = 20;
 
     public readonly string name = "ind";
     private readonly Canvas drawingTable;
+    public Point location = new();
+    public int rotation;
 
     public override List<Point> pins { get; set; }
     public override List<Ellipse> pads { get; set; }
@@ -39,8 +41,13 @@ public class inductance : component
     private readonly Path myPath = new();
     public override void drawComponent(Point location, int rotation, SolidColorBrush color)
     {
-        pins indPins = new pins();
-        var pinGroup = indPins.drawPins(location, sizeDiv, width, height, pinlength, rotation);
+        this.location = location;
+        this.rotation = rotation;
+
+        Point pin1 = location; //overhaul needed (no rotation)
+        Point pin2 = new Point(location.X, location.Y + 2 * pinlength / sizeDiv + width / sizeDiv);
+
+        pins indPins = new pins(location, sizeDiv, width, height, pinlength, rotation, pin1, pin2);
 
         myPath.Stroke = color;
         myPath.StrokeThickness = 3;
@@ -50,15 +57,25 @@ public class inductance : component
 
         pads = indPins.getPads();
 
+        LineGeometry pinLine1 = new LineGeometry
+        {
+            StartPoint = location,
+            EndPoint = new Point(location.X, location.Y + pinlength / sizeDiv)
+        };
+        LineGeometry pinLine2 = new LineGeometry
+        {
+            StartPoint = new Point(location.X, location.Y + 2 * pinlength / sizeDiv + height / sizeDiv),
+            EndPoint = new Point(location.X, location.Y + pinlength / sizeDiv)
+        };
         var rect = new RectangleGeometry
         {
-            Rect = new Rect(location.X, location.Y, width / sizeDiv, height / sizeDiv)
+            Rect = new Rect(location.X - width / sizeDiv / 2, location.Y + pinlength / sizeDiv, width / sizeDiv, height / sizeDiv)
         };
 
         var indGroup = new GeometryGroup();
         indGroup.Children.Add(rect);
-        indGroup.Children.Add(pinGroup[0]);
-        indGroup.Children.Add(pinGroup[1]);
+        indGroup.Children.Add(pinLine1);
+        indGroup.Children.Add(pinLine2);
 
         myPath.Data = indGroup;
 

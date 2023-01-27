@@ -20,6 +20,9 @@ using Windows.UI.ApplicationSettings;
 using System.Security.Cryptography;
 using Windows.UI.Text;
 using Microsoft.UI.Text;
+using System.IO;
+using Windows.System;
+using Microsoft.UI.Xaml.Input;
 
 namespace LTGarlicv2
 {
@@ -30,7 +33,7 @@ namespace LTGarlicv2
 
         // for componentcreation
 
-        private readonly List<component> components = new();
+        public static readonly List<component> components = new();
         private int rotation;
         private int clickCounter = 0;
         private bool placeComponentSelected = false;
@@ -67,6 +70,11 @@ namespace LTGarlicv2
         private Canvas usedcanvas = null;
         private Window usedwindow = null;
 
+        // default saving location
+
+        public string buffersavingloc;
+        public string defaultsavinglocation = @"C:\Users\gabri\Downloads\firstCircuit.asc";
+
 
         #region Pages
 
@@ -92,7 +100,7 @@ namespace LTGarlicv2
             canvas.Background = new SolidColorBrush(Colors.Transparent);
             canvas.PointerMoved += drawingTable_PointerMoved;
             canvas.PointerPressed += drawingTable_PointerPressed;
-            canvas.DoubleTapped += drawingTable_DoubleTapped;
+            canvas.DoubleTapped += drawingTable_DoubleTapped;            
 
             usedcanvas = canvas;
 
@@ -110,8 +118,8 @@ namespace LTGarlicv2
 
             var hotbar = new CommandBar();
             
-            Canvas.SetLeft(hotbar, 500);
-            Canvas.SetTop(hotbar, 800);
+            Canvas.SetLeft(hotbar, 150);
+            Canvas.SetTop(hotbar, 100);
 
 
 
@@ -220,6 +228,7 @@ namespace LTGarlicv2
             return createbutton;
         }
 
+        TextBox defaultPathbox = new TextBox();
         public void displaySettings(Frame currentframe)
         {
 
@@ -289,6 +298,30 @@ namespace LTGarlicv2
             stacksettings.Children.Add(info1);
             stacksettings.Children.Add(themepanel);
 
+            #region Info2 - DefaultPath
+
+            TextBlock info2 = new TextBlock();
+            info2.Text = "Default Saving Path";
+            info2.FontSize = 15;
+            info2.FontWeight = FontWeights.Bold;
+            info2.Padding = new Thickness(50, 30, 0, 0);
+
+            defaultPathbox.Text = defaultsavinglocation;
+
+
+            Button saveconfigbutton = new Button();
+            saveconfigbutton.Content = "Save Configuration";
+            saveconfigbutton.Click += savecoClick;
+
+           
+
+
+            stacksettings.Children.Add(info2);
+            stacksettings.Children.Add(defaultPathbox);
+            stacksettings.Children.Add(saveconfigbutton);
+#endregion
+
+
             currentframe.Content = stacksettings;
         }
 
@@ -299,6 +332,12 @@ namespace LTGarlicv2
         #region Events
 
         #region Settings Buttons Events 
+
+        private void savecoClick(object sender, RoutedEventArgs e)
+        {
+            defaultsavinglocation = defaultPathbox.Text;
+        }
+
         private void Defaultstate_Click(object sender, RoutedEventArgs e)
         {
             theme = "Default";
@@ -396,17 +435,34 @@ namespace LTGarlicv2
         {
         }
         public void wiremode_Click(object sender, RoutedEventArgs args)
-        {
+        { 
+            MainWindow.wireMode = !MainWindow.wireMode;
+            if (MainWindow.wireMode == false)
+            {
+                wireStart = false;
+                wireClickCnt = 0;
 
+                if (oneLineUsed)
+                {
+                    allWires[allWires.Count - 1].deleteWire();
+                    allWires.Remove(allWires[allWires.Count - 1]);
+                }
+                else
+                {
+                    allWires[allWires.Count - 1].deleteWire();
+                    allWires[allWires.Count - 2].deleteWire();
+                    allWires.Remove(allWires[allWires.Count - 1]);
+                    allWires.Remove(allWires[allWires.Count - 1]);
+                }
+            }
         }
         public void rotate_Click(object sender, RoutedEventArgs args)
         {
 
         }
+
         public async void save_Click(object sender, RoutedEventArgs args)
         {
-            Debug.WriteLine("saved");
-            Debug.WriteLine(a.XamlRoot);
             ContentDialog filenamedig = new ContentDialog();
 
             filenamedig.XamlRoot = a.XamlRoot;
@@ -418,15 +474,16 @@ namespace LTGarlicv2
             StackPanel ff = new StackPanel();
             
             TextBlock info = new TextBlock();
-            info.Text = "Saving Location";
+            info.Text = "Do you want to save the Project? ";
             info.Margin = new Thickness(0, 10, 0, 10);
-            TextBox fillocation = new TextBox();
+           
 
             ff.Children.Add(info);
-            ff.Children.Add(fillocation);
 
             
             filenamedig.Content = ff;
+
+
 
             try
             {
@@ -434,6 +491,8 @@ namespace LTGarlicv2
                 if (result == ContentDialogResult.Primary)
                 {
                     // The user pressed the OK button
+                    spiceConverter.encodeFile(defaultsavinglocation);
+                    
                 }
                 else if (result == ContentDialogResult.Secondary)
                 {
@@ -448,6 +507,7 @@ namespace LTGarlicv2
 
         private void drawingTable_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
+            
             if (e.GetCurrentPoint(usedcurrentframe).Properties.IsLeftButtonPressed)
             {
                 #region placeComponent
@@ -737,8 +797,10 @@ namespace LTGarlicv2
             #region draw wires while moving mouse
             if (MainWindow.wireMode && wireStart)
             {
+                Debug.WriteLine("main hubbsi");
                 if (startPoint != gridMousePos)
                 {
+                    Debug.WriteLine("main nigga");
                     if (wire.wiringType)
                     {
                         if (!firstWireAccess)
