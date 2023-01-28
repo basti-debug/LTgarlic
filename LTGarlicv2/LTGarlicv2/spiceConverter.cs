@@ -151,20 +151,20 @@ namespace LTGarlicv2
                         switch (rotation)
                         {
                             case 0:
-                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 + 15;
-                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 + 15;
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 + 15;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 + 15;
                                 break;
                             case 90:
-                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 - 135;
-                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 - 15;
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 135;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 15;
                                 break;
                             case 180:
-                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 - 105;
-                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 - 165;
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 105;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 165;
                                 break;
                             case 270:
-                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 + 45;
-                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 - 135;
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 + 45;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 135;
                                 break;
                         }
 
@@ -190,8 +190,31 @@ namespace LTGarlicv2
                         capacitor cap = new capacitor(canvas);
                         string[] substrings = data[i].Split(' ');
                         rotation = Convert.ToInt32(substrings[4].Substring(1));
-                        location.X = Convert.ToDouble(substrings[2]);
-                        location.Y = Convert.ToDouble(substrings[3]);
+
+                        switch (rotation)
+                        {
+                            case 0:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 + 15;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 15;
+                                Debug.WriteLine(location.X);
+                                Debug.WriteLine(location.Y);
+                                break;
+                            case 90:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 75;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 + 15;
+                                break;
+                            case 180:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 105;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 75;
+                                break;
+                            case 270:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 15;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 105;
+                                break;
+                        }
+
+                        location.X = Convert.ToInt32(substrings[2]);
+                        location.Y = Convert.ToInt32(substrings[3]);
                         cap.location = location;
                         cap.rotation = rotation;
                         PageBuilder.components.Add(cap);
@@ -213,9 +236,30 @@ namespace LTGarlicv2
                     {
                         diode dio = new diode(canvas);
                         string[] substrings = data[i].Split(' ');
-                        location.X = Convert.ToDouble(substrings[2]);
-                        location.Y = Convert.ToDouble(substrings[3]);
                         rotation = Convert.ToInt32(substrings[4].Substring(1));
+
+                        switch (rotation)
+                        {
+                            case 0:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 + 15;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 15;
+                                break;
+                            case 90:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 75;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 + 15;
+                                break;
+                            case 180:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 105;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 75;
+                                break;
+                            case 270:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 15;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 105;
+                                break;
+                        }
+
+                        location.X = Convert.ToInt32(substrings[2]);
+                        location.Y = Convert.ToInt32(substrings[3]);
                         dio.location = location;
                         dio.rotation = rotation;
                         PageBuilder.components.Add(dio);
@@ -242,25 +286,25 @@ namespace LTGarlicv2
                         switch (rotation)
                         {
                             case 0:
-                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 + 15;
-                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 + 15;
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 + 15;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 + 15;
                                 break;
                             case 90:
-                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 - 135;
-                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 - 15;
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 135;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 15;
                                 break;
                             case 180:
-                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 - 105;
-                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 - 165;
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 105;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 165;
                                 break;
                             case 270:
-                                location.X = Convert.ToDouble(substrings[2]) / 16 * 30 + 45;
-                                location.Y = Convert.ToDouble(substrings[3]) / 16 * 30 - 135;
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 + 45;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 135;
                                 break;
                         }
 
-                        location.X = Convert.ToDouble(substrings[2]);
-                        location.Y = Convert.ToDouble(substrings[3]);
+                        location.X = Convert.ToInt32(substrings[2]);
+                        location.Y = Convert.ToInt32(substrings[3]);
                         ind.location = location;
                         ind.rotation = rotation;
                         PageBuilder.components.Add(ind);
@@ -288,9 +332,30 @@ namespace LTGarlicv2
                     {
                         resistor res = new resistor(canvas);
                         string[] substrings = data[i].Split(' ');
-                        location.X = Convert.ToDouble(substrings[2]);
-                        location.Y = Convert.ToDouble(substrings[3]);
                         rotation = Convert.ToInt32(substrings[4].Substring(1));
+
+                        switch (rotation)
+                        {
+                            case 0:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 + 15;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 + 15;
+                                break;
+                            case 90:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 135;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 15;
+                                break;
+                            case 180:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 105;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 165;
+                                break;
+                            case 270:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 + 45;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 135;
+                                break;
+                        }
+
+                        location.X = Convert.ToInt32(substrings[2]);
+                        location.Y = Convert.ToInt32(substrings[3]);
 
                         res.location = location;
                         res.rotation = rotation;
@@ -313,9 +378,30 @@ namespace LTGarlicv2
                     {
                         capacitor cap = new capacitor(canvas);
                         string[] substrings = data[i].Split(' ');
-                        location.X = Convert.ToDouble(substrings[2]);
-                        location.Y = Convert.ToDouble(substrings[3]);
                         rotation = Convert.ToInt32(substrings[4].Substring(1));
+
+                        switch (rotation)
+                        {
+                            case 0:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 + 15;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 15;
+                                break;
+                            case 90:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 75;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 + 15; 
+                                break;
+                            case 180:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 105;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 75;
+                                break;
+                            case 270:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 15;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 105;
+                                break;
+                        }
+
+                        location.X = Convert.ToInt32(substrings[2]);
+                        location.Y = Convert.ToInt32(substrings[3]);
 
                         cap.location = location;
                         cap.rotation = rotation;
@@ -338,9 +424,30 @@ namespace LTGarlicv2
                     {
                         diode dio = new diode(canvas);
                         string[] substrings = data[i].Split(' ');
-                        location.X = Convert.ToDouble(substrings[2]);
-                        location.Y = Convert.ToDouble(substrings[3]);
                         rotation = Convert.ToInt32(substrings[4].Substring(1));
+
+                        switch (rotation)
+                        {
+                            case 0:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 + 15;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 15;
+                                break;
+                            case 90:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 75;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 + 15;
+                                break;
+                            case 180:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 105;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 75;
+                                break;
+                            case 270:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 15;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 105;
+                                break;
+                        }
+
+                        location.X = Convert.ToInt32(substrings[2]);
+                        location.Y = Convert.ToInt32(substrings[3]);
 
                         dio.location = location;
                         dio.rotation = rotation;
@@ -363,9 +470,30 @@ namespace LTGarlicv2
                     {
                         inductance ind = new inductance(canvas);
                         string[] substrings = data[i].Split(' ');
-                        location.X = Convert.ToDouble(substrings[2]);
-                        location.Y = Convert.ToDouble(substrings[3]);
                         rotation = Convert.ToInt32(substrings[4].Substring(1));
+
+                        switch (rotation)
+                        {
+                            case 0:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 + 15;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 + 15;
+                                break;
+                            case 90:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 135;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 15;
+                                break;
+                            case 180:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 - 105;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 165;
+                                break;
+                            case 270:
+                                location.X = Convert.ToInt32(substrings[2]) / 16 * 30 + 45;
+                                location.Y = Convert.ToInt32(substrings[3]) / 16 * 30 - 135;
+                                break;
+                        }
+
+                        location.X = Convert.ToInt32(substrings[2]);
+                        location.Y = Convert.ToInt32(substrings[3]);
 
                         ind.location = location;
                         ind.rotation = rotation;
