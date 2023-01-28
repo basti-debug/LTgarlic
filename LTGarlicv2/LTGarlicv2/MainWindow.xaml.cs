@@ -116,7 +116,6 @@ namespace LTGarlicv2
             {
                 string name = item.Content.ToString();
                 newpage.displayFilePage(contentFrame, name,mainLtGrid,MainLTWindow);
-                Debug.WriteLine(mcurrentfile.Path);
                 spiceConverter.decodeFile(mmcanvas, mcurrentfile.Path);
             }            
             
