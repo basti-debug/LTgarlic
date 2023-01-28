@@ -140,8 +140,8 @@ namespace LTGarlicv2
 
             var hotbar = new CommandBar();
             
-            Canvas.SetLeft(hotbar, 150);
-            Canvas.SetTop(hotbar, 100);
+            Canvas.SetLeft(hotbar, 100);
+            Canvas.SetTop(hotbar, 200);
 
 
 
