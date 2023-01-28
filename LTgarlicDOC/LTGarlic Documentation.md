@@ -76,8 +76,22 @@ Currently it is possible to draw a variety of custom circuits, with the planned 
 
 
 ### Structure 
+The class diagram was too large to fit in one clear screenshot, so a few seperate screenshots have been taken.
 
+#### components folder
+![](source/components.png)
 
+#### Miscellaneous folder + spiceConverter
+![](source/Miscellaneous+spiceConverter.png)
+
+#### PageBuilder fields
+![](source/pb-fields.png)
+
+#### PageBuilder methods
+![](source/pb-methods.png)
+
+#### other
+![](source/windows.png)
 
 ### Functions 
 This particular program is set up in "pages". So there is a "Home Page" an "Editing Page" and a "Settings Page". All of the UI that stays up everytime, so on every Page is in the ShellPage.xaml
@@ -131,6 +145,8 @@ public void changeWiringType()
  - The redrawWire method deletes the wire and draws it again afterwards.
  - the changeWiringType changes how the wire is drawn. If the desired wire isn't horizontal or vertical, two lines are drawn to the canvas. The wiringType defines, if the horizontal line is drawn first, or the vertical line. The image below displays the two different wiring types.
 
+Note: In the current version, the wiring has some bugs, which will be addressed in later versions.
+
 ![](source/wireMode.png)
 
 #### de/encoding
@@ -150,7 +166,7 @@ decodeFile(Canvas canvas, string path)
 ~~~
 
  - The encodeFile method takes the file location (where the file will be saved) as a parameter. It converts the positions, rotations, etc. of components and wires and converts it to an LTspice-compilable format. It will be saved as a .asc file.
- - The decodeFile method takes a canvas and a path as parameters. It splits the LTspice-file into substrings and extracts information like component name, position, rotation, type, etc. and applies it to a new file, which will be opened in LTgarlic.
+ - The decodeFile method takes a canvas and a path as parameters. It splits the LTspice-file into substrings and extracts information like component name, position, rotation, type, etc. and applies it to a new file, which will be opened in LTgarlic. At the moment this method has some bugs which will be fixed in later versions.
 ## Layout 
 
 The Layout of the Programm is build up like this: you have a main "HomePage" where you can create Projects, open Projects or certain libaries. If you open or create a Project it will be added to the Menu on the left, currently represented by a Project called "Editing". There will be the possibility to change between different Projects in this Menu on the left side. If you are in a Project it should be possible to add Components and draw Wires. 
