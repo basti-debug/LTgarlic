@@ -4,7 +4,7 @@ LTGarlic is a alternative Spice Simulator themed around Windows's SDK for Window
 
 ***
 
-![Documenation](doc/LTGarlic Documentation.md)
+[Documenation](doc/LTGarlic Documentation.md)
 
 *** 
 
@@ -18,4 +18,4 @@ LTGarlic is a alternative Spice Simulator themed around Windows's SDK for Window
 
 #### Known Bugs:
 
-* opening of .asc Files currently doesnt work correctly because of an error regarding ![Issue](https://gitlab.com/basti-debug/LTgarlic/-/issues/42)
+* opening of .asc Files currently doesnt work correctly because of an error regarding [Issue](https://gitlab.com/basti-debug/LTgarlic/-/issues/42)
