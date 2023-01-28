@@ -50,7 +50,7 @@ Currently WinUI is lacking a very important and helpful tool, a XAML Editor. We 
 #### adding Pages errors
 At first we used the [Template Studio](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs) to create the basic outline of our Project, that worked and looked great at first, but as we tried to add our own pages via a function we hit a roadblock. At first you have to understand how WinUi3 creates programs. WinUI3 uses the [NVVM Model](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) and the Project was combined like this: 
 
-![[oldstructure.png]]
+![[oldstructure.png.png]]
 
 The whole page, so the base where everything else is combined, is the ShellPage, it contains a NavigationView. The Framework links the right content-area to files such as *EditingPage.xaml* or *MainHomePage.xaml* standing for the page where you can edit and create a schemetic, and the HomePage, where you can start or open a new project retrospectively. And here we had a Problem, we wanted to create a new item in the NavigationView hamburger menu on the left, so we can add new projects with tabs. But at first we needed to understand how all of this was binded etc. This took a huge amount of time because of the complex nature of the created application. But we got to the point where we could add new pages in the NavigationView so the hamburger menu on the left, but the 
 ~~~ cs
@@ -65,8 +65,6 @@ So we changed to a new completly blank Project last minute, where we added all o
 ## Features 
 
 Currently it is possible to draw a variety of custom circuits, with the planned extention of Simulation
-
-## How to use
 
 
 
@@ -94,19 +92,6 @@ The class diagram was too large to fit in one clear screenshot, so a few seperat
 ![](source/windows.png)
 
 ### Functions 
-This particular program is set up in "pages". So there is a "Home Page" an "Editing Page" and a "Settings Page". All of the UI that stays up everytime, so on every Page is in the ShellPage.xaml
-
-![](source/layoutpic.png)
-
-So the left hamburger menu and the titlebar is managed in this file. The behaviour of the menu is handled by the ShellPage.xaml.cs with the help of the .CORE project. (unfolding and opening)
-
-![](source/hammenu.png)
-
-*opened hamburger menu*
-
-![](source/foldedhammenu.png)
-
-*closed hamburger menu*
 
 #### components
 At the moment, there are four different components to choose from (diode, resistor, capacitor, inductance). Later, components could be added using LTspice-libraries.
@@ -167,18 +152,30 @@ decodeFile(Canvas canvas, string path)
 
  - The encodeFile method takes the file location (where the file will be saved) as a parameter. It converts the positions, rotations, etc. of components and wires and converts it to an LTspice-compilable format. It will be saved as a .asc file.
  - The decodeFile method takes a canvas and a path as parameters. It splits the LTspice-file into substrings and extracts information like component name, position, rotation, type, etc. and applies it to a new file, which will be opened in LTgarlic. At the moment this method has some bugs which will be fixed in later versions.
+ - 
 ## Layout 
 
-The Layout of the Programm is build up like this: you have a main "HomePage" where you can create Projects, open Projects or certain libaries. If you open or create a Project it will be added to the Menu on the left, currently represented by a Project called "Editing". There will be the possibility to change between different Projects in this Menu on the left side. If you are in a Project it should be possible to add Components and draw Wires. 
+The Layout of the Programm is build up like this: 
+you have a main "HomePage" where you can create Projects, open Projects or certain libaries. 
 
-![](source/hotbarmenu.png)
-*the hotbar at the bottom of the Program, with construction mode you can draw wires. Simulation Mode will open a new Window showing a empty plot, with the coursor you will be able to probe.*
-
-In the Future we could make the hotbar customisable with the helpof the three button menu on the right, where you could add more tools etc.
-
-In the Settings its possible to change the default saving loaction and change the theme from dark to light or vice versa. 
+![](source/homepage.png)
+*HomePage*
 
 
+If you open or create a Project it will be added to the Menu on the left.
+
+When the Project in the left Hamburger Menu is selected it will be displayed on your Main Screen on the right. There you can draw your schemetics and save them. 
+
+![](source/hotbar.png)
+
+*the hotbar at the top of the Program, with construction mode (**pencil**), where you can draw wires. Simulation Mode (**calculator**) where there will be opend a new Window, showing a empty plot, with the coursor you will be able to probe, in the near future*
+
+In the Future we could make the hotbar customisable with the Help of the three button menu on the right, where you could add more tools etc.
 
 
+
+
+## More Information
+
+For more Information please visit our ![GitLab Repository](https://gitlab.com/basti-debug/LTgarlic) where you can find our working packages (we used the issues), our gantt Diagramm and a Instruction.
 
