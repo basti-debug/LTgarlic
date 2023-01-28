@@ -657,6 +657,7 @@ namespace LTGarlicv2
                     {
                         startPoint = gridMousePos;
                         wireStart = true;
+                        Debug.WriteLine(gridMousePos);
 
                         foreach (var wire in allWires)
                         {
