@@ -1,5 +1,5 @@
 # LT Garlic 
-LTGarlic is a alternative Spice Simulator themed around Windows's SDK for Windows 11. 
+LTGarlic is an alternative Spice Simulator themed around Windows's SDK for Windows 11. 
 ![](doc/source/topbanner.png)
 
 ***
